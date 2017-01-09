@@ -8,4 +8,6 @@ README
    :scale: 50 %
    :alt: Under constructions ....
 
+
+https://odissea.github.io/pydeepgenomics
 **Note:** Not retrocompatible with python 2.* 
