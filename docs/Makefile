@@ -7,7 +7,7 @@ SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = pydeepgenomics
 SOURCEDIR     = source
 BUILDDIR      = build
-GH_PAGES_SOURCES = source Makefile
+GH_PAGES_SOURCES = docs/source docs/Makefile README.rst TODO.rst LICENSE.rst
 
 # Put it first so that "make" without argument is like "make help".
 help:
