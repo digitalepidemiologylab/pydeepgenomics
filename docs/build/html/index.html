@@ -20,8 +20,7 @@
         VERSION:     'a1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -33,6 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pydeepgenomics a1 documentation" href="#" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -82,10 +82,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Pydeepgenomics&#8217;s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 <li><a class="reference internal" href="#readme">README</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#todo">TODO</a><ul>
 <li><a class="reference internal" href="#general">General</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
@@ -134,7 +132,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/index.rst.txt"
+  <a href="_sources/index.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -160,7 +158,7 @@
       
   <div class="section" id="pydeepgenomics-s-documentation">
 <h1>Pydeepgenomics&#8217;s documentation!<a class="headerlink" href="#pydeepgenomics-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound" id="contents">
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -170,11 +168,11 @@
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
+</div>
 <div class="section" id="readme">
-<h2>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
+<h1>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="Under constructions ...." class="align-center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 100.0px; height: 100.0px;" /></a>
 <p><strong>Note:</strong> Not retrocompatible with python 2.*</p>
-</div>
 </div>
 <div class="section" id="todo">
 <h1>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h1>
@@ -240,19 +238,22 @@
 <h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="generaltools">
 <h4>Generaltools<a class="headerlink" href="#generaltools" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
+<ul>
 <li><dl class="first docutils">
 <dt>Recode the function list_elements:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>It should be cleaner</li>
 <li>It should be able to handle a tuble of extensions</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</li>
-<li>Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</li>
-<li><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</li>
+<li><p class="first">Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</p>
+</li>
+<li><p class="first">Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</p>
+</li>
+<li><p class="first"><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</p>
+</li>
 </ul>
 </div>
 <div class="section" id="generaldecorators">
@@ -385,7 +386,7 @@ yield current_time - previous_time</div></blockquote>
     </p>
     <p>
         &copy; Copyright 2016, Salathe group.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
     </p>
   </div>
 </footer>
