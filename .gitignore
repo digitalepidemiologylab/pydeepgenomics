@@ -1,0 +1,10 @@
+*__pycache__
+*.pyc
+*.out
+*.log
+*settings.py
+*latex
+*playground
+sftp-config.json
+setup.cfg
+.idea
