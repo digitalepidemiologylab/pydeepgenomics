@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>preprocess.examples package &#8212; pydeepgenomics a1 documentation</title>
+    <title>preprocess.filtering module &#8212; pydeepgenomics a1 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -81,11 +81,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">preprocess.examples package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-preprocess.examples">Module contents</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">preprocess.filtering module</a></li>
 </ul>
 </ul>
 </li>
@@ -101,7 +97,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/preprocess.examples.txt"
+  <a href="_sources/preprocess.filtering.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -125,23 +121,26 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="preprocess-examples-package">
-<h1>preprocess.examples package<a class="headerlink" href="#preprocess-examples-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.examples.1_split_vcf_files.html">preprocess.examples.1_split_vcf_files module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.examples.2_encode_genotypes.html">preprocess.examples.2_encode_genotypes module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.examples.3_form_subsets.html">preprocess.examples.3_form_subsets module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.examples.4_filter_and_split_files.html">preprocess.examples.4_filter_and_split_files module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.examples.setup_ex_env.html">preprocess.examples.setup_ex_env module</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="module-preprocess.examples">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-preprocess.examples" title="Permalink to this headline">¶</a></h2>
-</div>
+  <div class="section" id="module-preprocess.filtering">
+<span id="preprocess-filtering-module"></span><h1>preprocess.filtering module<a class="headerlink" href="#module-preprocess.filtering" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="preprocess.filtering.cut_files">
+<code class="descname">cut_files</code><span class="sig-paren">(</span><em>file_list</em>, <em>size_of_output_files</em>, <em>output_path</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/filtering.html#cut_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.filtering.cut_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="preprocess.filtering.do_subsets">
+<code class="descname">do_subsets</code><span class="sig-paren">(</span><em>path_data</em>, <em>path_subsets</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/filtering.html#do_subsets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.filtering.do_subsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="preprocess.filtering.mask_data">
+<code class="descname">mask_data</code><span class="sig-paren">(</span><em>path_data</em>, <em>fraction_pass</em>, <em>path_output=None</em>, <em>prefix_subset=None</em>, <em>verbose=False</em>, <em>logging=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/filtering.html#mask_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.filtering.mask_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>fraction_pass = nb between 0 and 1
+This function builds the output directory based on the name of the input dir
+and the prefix.</p>
+</dd></dl>
+
 </div>
 
 
