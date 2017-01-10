@@ -1,0 +1,4 @@
+{
+  "alltests/test_tools/test_generaltools.py::RandomChunks::test_raise_error_when_proportions_greater_than_one": true,
+  "alltests/test_tools/test_generaltools.py::RandomChunks::test_raise_error_when_proportions_less_than_one": true
+}

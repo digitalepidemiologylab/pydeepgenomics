@@ -3,12 +3,12 @@
 
 from functools import wraps
 import sys
-import types
+
 
 def outdated(func):
 
-    #Wraps makes the wrapper function to keep information about the wrapped
-    #function.
+    # Wraps makes the wrapper function to keep information about the wrapped
+    # function.
     @wraps(func)
     def outdated_func(*arguments, **args):
         print(
@@ -33,9 +33,9 @@ def accepts(*types):
                 assert isinstance(a, t), "arg %r does not match %s" % (a, t)
 
             return f(*args, **kwds)
-       #new_f.__name__ = f.__name__
-       #new_f.__doc__ = f.__doc__
-       #new_f.__module__ = f.__module__
+        # new_f.__name__ = f.__name__
+        # new_f.__doc__ = f.__doc__
+        # new_f.__module__ = f.__module__
         return new_f
     return check_accepts
 

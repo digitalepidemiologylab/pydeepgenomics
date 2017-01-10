@@ -10,6 +10,7 @@ import random
 import shutil
 import string
 import sys
+import time
 import unittest
 
 try:
@@ -284,6 +285,118 @@ class TestGetNbLinesFile(unittest.TestCase):
             os.path.join(self.path_to_playground, "not_empty_encoded_2.txt.gz"))
         self.assertEqual(self.nb_lines_not_empty_1, found_nb_of_lines_1)
         self.assertEqual(self.nb_lines_not_empty_2, found_nb_of_lines_2)
+
+
+class TestTimePointsToTimeLengthInHMinSec(unittest.TestCase):
+
+    def test_less_than_minute_time(self):
+        time_beg_in_sec = 100
+        time_end_in_sec = 150
+        expected_result = (0, 0, 50)
+        self.assertEqual(
+            gt.time_points_to_time_length_in_h_min_sec(
+                time_beg_in_sec,
+                time_end_in_sec),
+            expected_result)
+
+    def test_a_few_minutes_time(self):
+        time_beg_in_sec = 392
+        time_end_in_sec = 1789
+        expected_result = (0, 23, 17)
+        self.assertEqual(
+            gt.time_points_to_time_length_in_h_min_sec(
+                time_beg_in_sec,
+                time_end_in_sec),
+            expected_result)
+
+    def test_long_time(self):
+        time_beg_in_sec = 20000
+        time_end_in_sec = 3234830000
+        expected_result = (898558, 20, 0)
+        self.assertEqual(
+            gt.time_points_to_time_length_in_h_min_sec(
+                time_beg_in_sec,
+                time_end_in_sec),
+            expected_result)
+
+    def test_type_out_is_int(self):
+        time_beg_in_sec = 0
+        time_end_in_sec = 7200 + 720 + 7
+        results = gt.time_points_to_time_length_in_h_min_sec(
+                time_beg_in_sec,
+                time_end_in_sec)
+        for unit in results:
+            self.assertIsInstance(unit, int)
+
+    def test_type_out_is_float(self):
+        time_beg_in_sec = 0
+        time_end_in_sec = 7200.0 + 720.0 + 7.0
+        results = gt.time_points_to_time_length_in_h_min_sec(
+                time_beg_in_sec,
+                time_end_in_sec,
+                to_int=False)
+        for unit in results:
+            self.assertIsInstance(unit, float)
+
+"""
+class TimeSinceFirstCall(unittest.TestCase):
+
+    def test_correctly_measure_one_second(self):
+        timer = gt.time_since_first_call()
+        for _ in range(10):
+            timer.__next__()
+            time.sleep(0.1)
+        result = timer.__next__()
+        self.assertAlmostEqual(result[-1], 1)
+
+
+class TimeBetweenTwoCalls(unittest.TestCase):
+
+    def test_correctly_measure_one_second(self):
+        timer = gt.time_between_two_calls()
+        timer.__next__()
+        time.sleep(1)
+        result = timer.__next__()
+        self.assertAlmostEqual(result[-1], 1)
+"""
+
+class RandomChunks(unittest.TestCase):
+
+    def test_all_elements_from_chunk_are_in_original_list(self):
+        list_size = 10
+        list_ = [random.random() for _ in range(list_size)]
+        proportions = [1/list_size for _ in range(list_size)]
+        results = gt.random_chunks(list_, proportions)
+        for x in results:
+            self.assertEqual(len(x), 1)
+            self.assertTrue(x[0] in list_)
+
+    def test_correct_chunk_sizes(self):
+        list_size = 100
+        list_ = [random.random() for _ in range(list_size)]
+        proportions = (0.2, 0.5, 0.3)
+        expected_sizes = [list_size * i for i in proportions ]
+        results = gt.random_chunks(list_, proportions)
+        for chunk, expected in zip(results, expected_sizes):
+            self.assertEqual(len(chunk), expected)
+
+    def test_size_of_chunks_is_same_as_original_list(self):
+        list_size = 100
+        list_ = [random.random() for _ in range(list_size)]
+        proportions = (0.2, 0.5, 0.3)
+        results = gt.random_chunks(list_, proportions)
+        total_size = sum([len(chunk) for chunk in results])
+        self.assertEqual(total_size, list_size)
+
+    def test_raise_error_when_proportions_less_than_one(self):
+        list_ = list_ = [random.random() for _ in range(10)]
+        with self.assertRaises(ValueError):
+            gt.random_chunks(list_, (0.2, 0.2, 0.2))
+
+    def test_raise_error_when_proportions_greater_than_one(self):
+        list_ = list_ = [random.random() for _ in range(10)]
+        with self.assertRaises(ValueError):
+            gt.random_chunks(list_, (0.4, 0.4, 0.4))
 
 if __name__ == "__main__":
     unittest.main()

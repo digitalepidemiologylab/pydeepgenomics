@@ -11,7 +11,7 @@ NL = {
     "T": int(2),
     "G": int(4),
     "C": int(8)}
-# SNPSVALUESENCODED --> A-C 1st allele and then A-C 2nd allele
+# SNPS_VALUES_ENCODED --> A-C 1st allele and then A-C 2nd allele
 SVE = [
     NL["A"]*FBP,
     NL["T"]*FBP,
@@ -22,7 +22,7 @@ SVE = [
     (NL["G"])*FBP*16,
     (NL["C"])*FBP*16]
 
-# Reverse dictionnary to decode information
+# Reverse dictionary to decode information
 LN = {
     int((NL["C"])*FBP*16): "C2",
     int((NL["G"])*FBP*16): "G2",
@@ -35,7 +35,7 @@ LN = {
 
 
 # Encoding
-FILEBATCHSIZE = 1
+FILEBATCHSIZE = 10
 
 # Decoding
 
@@ -46,5 +46,6 @@ nbfilesmax = 100
 PROPTRAIN = 0.6
 PROPTEST = 0.2
 PROPVALID = 1 - PROPTRAIN - PROPTEST
-COPY = False
+
+# filtering
 SIZEFRAGMENTS = 50000

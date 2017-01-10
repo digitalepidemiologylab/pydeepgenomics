@@ -31,6 +31,7 @@ General
 * Find a way to keep consistent file naming and tree structure conventions all over the project
 * If we want to be more flexible on the file naming and tree structure, it might be interesting to give a file where the user can specify custom name patterns etc
 * Clean old code commented and still present
+* Make the whole thing quiet !
 
 Documentation
 ****************************************
@@ -101,7 +102,7 @@ Examples:
 * Check size of the vcf files folder before making a copy
 * Clean playground when script is over ?
 * verify which version of node is needed
-* Clean the example which does the encoding and add some of its functionality to the encoding module
+* Add the second part of example 4
 
 Tests
 ****************************************

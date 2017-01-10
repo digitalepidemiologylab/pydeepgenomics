@@ -10,9 +10,12 @@ import glob
 import gzip
 import math
 import os
+import random
 import re
 import sys
 import time
+
+from itertools import chain, islice
 
 cmd_subfolder = sys.path.append(
     os.path.dirname(os.path.abspath(__file__)).split("pydeepgenomics")[0])
@@ -24,10 +27,13 @@ except ImportError:
     from pydeepgenomics.tools import generaldecorators as gd
 
 __all__ = [
-    'list_elements', 'print_progress',
+    'list_elements',
+    'print_progress',
     'get_nb_lines_file',
     'time_points_to_time_length_in_h_min_sec',
-    'time_since_first_call']
+    'time_since_first_call',
+    "time_between_two_calls",
+    "random_chunks"]
 
 
 @gd.accepts(str, (str, None), str, bool, str, (list, tuple, None))
@@ -114,7 +120,7 @@ def list_elements(
                 path_to_explore,
                 iterator_dirs))
 
-    if type_ == None and verbose:
+    if type_ is None and verbose:
         print("In total {0} elements found in {1}".format(
             iterator_dirs+iterator_files,
             path_to_explore))
@@ -207,7 +213,8 @@ def time_points_to_time_length_in_h_min_sec(begin_time, end_time, to_int=True):
         h = int(math.floor(h))
         m = int(math.floor(m))
         s = int(math.floor(s))
-    return (h, m, s)
+    return h, m, s
+
 
 def time_since_first_call():
     begin_time = time.time()
@@ -218,6 +225,7 @@ def time_since_first_call():
             begin_time,
             current_time)
 
+
 def time_between_two_calls():
     current_time = time.time()
     yield 0
@@ -227,7 +235,32 @@ def time_between_two_calls():
             previous_time,
             current_time)
 
+
+@gd.accepts(list, (list, tuple), type, bool)
+def random_chunks(l, subset_proportions, output_format=tuple, force=False):
+    """Yield successive n-sized chunks from l."""
+    print("#######################")
+    print(round(sum(subset_proportions), 9))
+    if round(sum(subset_proportions), 6) != 1 and not force:
+        raise ValueError("Sum of proportions != 1.")
+
+    subsets_sizes = [
+        int(math.floor(len(l))*i) for i in subset_proportions
+    ]
+    # Add one element to the last chunk if flooring the number introduced
+    # a rounding error
+    if sum(subsets_sizes) == len(l) - 1:
+        subsets_sizes[-1] += 1
+    elif sum(subsets_sizes) != len(l):
+        raise ValueError(
+            "Chunks sizes do not match with list size.\n" +
+            "{0} != {1}".format(sum(subsets_sizes), len(l)))
+
+    random.shuffle(l)
+    it = iter(l)
+    for size in subsets_sizes:
+        yield output_format(chain((next(it),), islice(it, size - 1)))
+
 if __name__ == "__main__":
     doctest.testmod()
     print(__doc__)
-
