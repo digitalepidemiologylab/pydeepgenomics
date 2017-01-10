@@ -160,9 +160,9 @@ def find_matches(
 
         matching_references = new_matching_references
         matching_positions = new_matching_positions
-    print("We found {} matching ref of snps.".format(
+    print("Found {} matching ref of snps.".format(
         matching_references.shape[0]))
-    print("We found {} matching positions of snps.".format(
+    print("Found {} matching positions of snps.".format(
         matching_positions.shape[0]))
 
     return matching_references, matching_positions
@@ -401,19 +401,19 @@ def extract_snps_from_file(
         extension=".vcf.gz")
 
     # Find the reference SNPs in the actual vcf files
-    matchingreferences, matchingpositions = find_matches(vcf_files, ref_snps)
+    matching_references, matching_positions = find_matches(vcf_files, ref_snps)
 
     # Save the list of SNPs found
     if not os.path.isdir(os.path.join(path_to_vcf_files, "SelectionofSNPs")):
         os.mkdir(os.path.join(path_to_vcf_files, "SelectionofSNPs"))
-    matchingpositions.to_csv(
+    matching_positions.to_csv(
         path_or_buf=os.path.join(
             path_to_vcf_files,
             "SelectionofSNPs",
             "MatchingPositions.csv"),
         sep="\t",
         index=False)
-    matchingreferences.to_csv(
+    matching_references.to_csv(
         path_or_buf=os.path.join(
             path_to_vcf_files,
             "SelectionofSNPs",
@@ -465,10 +465,10 @@ def extract_snps_from_file(
 
         # Filter dataframe to have only snps corresponding to the file
 
-        filteredmatchpos = matchingpositions[
-            matchingpositions[VCF_HEADER[0]] == chrnb]
-        filteredmatchref = matchingreferences[
-            matchingreferences[VCF_HEADER[0]] == chrnb]
+        filtered_match_pos = matching_positions[
+            matching_positions[VCF_HEADER[0]] == chrnb]
+        filtered_match_ref = matching_references[
+            matching_references[VCF_HEADER[0]] == chrnb]
 
         lines_from_origin_vcf = gzip.open(files, "r").readlines()
         out_pos = open(output_file_pos, 'a')
@@ -477,21 +477,21 @@ def extract_snps_from_file(
         it_ids = 0
 
         print("Extract corresponding positions")
-        for linenb in filteredmatchpos["Corresponding row in vcf file"]:
+        for line_nb in filtered_match_pos["Corresponding row in vcf file"]:
 
-            out_pos.write(lines_from_origin_vcf[linenb-1])
+            out_pos.write(lines_from_origin_vcf[line_nb-1])
             it_positions += 1
             print("Information on {0}/{1} matching positions copied".format(
                 it_positions,
-                matchingpositions.shape[0]))
+                matching_positions.shape[0]))
 
         print("Extract corresponding references")
-        for linenb in filteredmatchref["Corresponding row in vcf file"]:
-            out_id.write(lines_from_origin_vcf[linenb-1])
+        for line_nb in filtered_match_ref["Corresponding row in vcf file"]:
+            out_id.write(lines_from_origin_vcf[line_nb-1])
             it_ids += 1
             print("Information on {0}/{1} matching references copied".format(
                 it_ids,
-                matchingreferences.shape[0]))
+                matching_references.shape[0]))
 
         out_pos.close()
         out_id.close()

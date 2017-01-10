@@ -1,5 +1,0 @@
-##fileformat=VCFv4.2
-##fileDate=20161213
-##source=PLINKv1.90
-##contig=<ID=1,length=811>
-##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">

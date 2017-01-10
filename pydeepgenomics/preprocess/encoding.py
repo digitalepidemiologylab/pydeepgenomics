@@ -222,7 +222,7 @@ def encode_file_positions(
     }
 
     _custom_output(
-        "\nFunction {0} started at {1}".format(
+        "Function {0} started at {1}".format(
             encode_file_positions.__name__,
             str(datetime.datetime.now())) +
         "\nProcessing files in {0}:".format(path_to_data), print_parameters)
@@ -315,7 +315,7 @@ def verify_decoding(
     errors_next_pos = []
 
     _custom_output(
-        "\nFunction {0} started at {1}".format(
+        "Function {0} started at {1}".format(
             verify_decoding.__name__,
             str(datetime.datetime.now())) +
         "\nTesting files in {0}:".format(

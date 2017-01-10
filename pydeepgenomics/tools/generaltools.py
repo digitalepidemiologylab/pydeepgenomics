@@ -114,7 +114,7 @@ def list_elements(
                 path_to_explore,
                 iterator_dirs))
 
-    if type_ == "all" and verbose:
+    if type_ == None and verbose:
         print("In total {0} elements found in {1}".format(
             iterator_dirs+iterator_files,
             path_to_explore))

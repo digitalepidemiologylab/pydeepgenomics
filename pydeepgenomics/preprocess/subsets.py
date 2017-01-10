@@ -6,8 +6,11 @@ import gzip
 import math
 import os
 import random
+import shutil
 import subprocess
 import sys
+
+from itertools import chain, islice
 
 # If custom version of params doesn't exist, copy template
 
@@ -16,22 +19,26 @@ cmd_subfolder = os.path.abspath(os.path.dirname(__file__)).split(
 try:
     from pydeepgenomics.preprocess import encoding, settings
     from pydeepgenomics.tools import generaltools as gt
+    from pydeepgenomics.tools import generaldecorators as gd
 except ImportError:
     if cmd_subfolder not in sys.path:
         sys.path.append(cmd_subfolder)
     from pydeepgenomics.preprocess import encoding, settings
     from pydeepgenomics.tools import generaltools as gt
+    from pydeepgenomics.tools import generaldecorators as gd
 
 
-def create_chrom_dirs(path_to_dirs, list_of_chrs):
+@gd.accepts(str, (list, tuple))
+def create_subsets_dirs(path_to_dirs, list_of_chrs):
 
-    os.mkdir(os.path.join(path_to_dirs, "Train"))
-    os.mkdir(os.path.join(path_to_dirs, "Test"))
-    os.mkdir(os.path.join(path_to_dirs, "Valid"))
+    # os.makedirs(os.path.join(path_to_dirs, "Train"))
+    # os.makedirs(os.path.join(path_to_dirs, "Test"))
+    # os.makedirs(os.path.join(path_to_dirs, "Valid"))
+
     for chrom in list_of_chrs:
-        os.mkdir(os.path.join(path_to_dirs, "Train", chrom))
-        os.mkdir(os.path.join(path_to_dirs, "Test", chrom))
-        os.mkdir(os.path.join(path_to_dirs, "Valid", chrom))
+        os.makedirs(os.path.join(path_to_dirs, "Train", chrom))
+        os.makedirs(os.path.join(path_to_dirs, "Test", chrom))
+        os.makedirs(os.path.join(path_to_dirs, "Valid", chrom))
 
 
 def cut_files(file_list, size_of_output_files, output_path, copy=True):
@@ -143,7 +150,7 @@ def do_subsets(path_data, path_subsets):
     if not os.path.isdir(os.path.join(path_subsets, "Subsets")):
         os.mkdir(os.path.join(path_subsets, "Subsets"))
         os.mkdir(os.path.join(path_subsets, "Subsets", "FULL"))
-        create_chrom_dirs(
+        create_subsets_dirs(
             os.path.join(path_subsets, "Subsets", "FULL"), list_of_chroms)
         subprocess.call(
             "cp -rf {0} {1}".format(
@@ -156,7 +163,7 @@ def do_subsets(path_data, path_subsets):
             shell=True)
     elif not os.path.isdir(os.path.join(path_subsets, "Subsets", "FULL")):
         os.mkdir(os.path.join(path_subsets, "Subsets", "FULL"))
-        create_chrom_dirs(
+        create_subsets_dirs(
             os.path.join(path_subsets, "Subsets", "FULL"), list_of_chroms)
         subprocess.call(
             "rm -r {0}/10_PERCENT {0}/1_PERCENT".format(
@@ -179,7 +186,7 @@ def do_subsets(path_data, path_subsets):
                 os.path.join(path_subsets, "Subsets", "1_PERCENT")),
             shell=True)
         os.mkdir(os.path.join(path_subsets, "Subsets", "10_PERCENT"))
-        create_chrom_dirs(
+        create_subsets_dirs(
             os.path.join(path_subsets, "Subsets", "10_PERCENT"), list_of_chroms)
         subprocess.call("cp -rf {0} {1}".format(
             os.path.join(path_subsets, "Subsets", "10_PERCENT"),
@@ -375,3 +382,76 @@ def do_subsets(path_data, path_subsets):
                     sub_name,
                     generation_name),
                 prefix_subset="1PER_")
+
+
+@gd.accepts(list, (list, tuple), type, bool)
+def random_chunks(l, subset_proportions, ourput_format=tuple, force=False):
+    """Yield successive n-sized chunks from l."""
+    if sum(subset_proportions) != 1 and not force:
+        raise ValueError("Sum of proportions != 1.")
+
+    subsets_sizes = [
+        int(math.floor(len(l))*i) for i in subset_proportions
+    ]
+    # Add one element to the last chunk if flooring the number introduced
+    # a rounding error
+    if sum(subsets_sizes) == len(l) - 1:
+        subsets_sizes[-1] += 1
+    elif sum(subsets_sizes) != len(l):
+        raise ValueError(
+            "Chunks sizes do not match with list size.\n" +
+            "{0} != {1}".format(sum(subsets_sizes), len(l)))
+
+    random.shuffle(l)
+    it = iter(l)
+    for size in subsets_sizes:
+        yield ourput_format(chain((next(it),), islice(it, size - 1)))
+
+
+@gd.accepts(str, str, bool)
+def make_subsets(path_data, path_subsets, copy=False):
+
+    if copy:
+        moving = shutil.copy
+    else:
+        moving = shutil.move
+
+    list_chroms = gt.list_elements(path_data, type_="dir")
+    list_chroms_names = [os.path.basename(i).split(".")[0] for i in list_chroms]
+
+    create_subsets_dirs(path_subsets, list_chroms_names)
+
+    for index_1, (chrom, chrom_name) in enumerate(
+            zip(list_chroms, list_chroms_names)):
+
+        files = gt.list_elements(
+            chrom,
+            type_="file",
+            extension=".txt.gz",
+            exception=[os.path.join(chrom, "_meta.txt.gz")])
+
+        subsets = random_chunks(
+            files, (settings.PROPTEST, settings.PROPTRAIN, settings.PROPVALID))
+
+        test_files, train_files, valid_files = subsets
+
+        test_files_out = [os.path.join(
+            path_subsets,
+            "Test",
+            chrom_name) for _ in range(len(test_files))]
+        train_files_out = [os.path.join(
+            path_subsets,
+            "Train",
+            chrom_name) for _ in range(len(train_files))]
+        valid_files_out = [os.path.join(
+            path_subsets,
+            "Valid",
+            chrom_name) for _ in range(len(valid_files))]
+
+        for index_2, (in_, out_) in enumerate(
+                zip(
+                    test_files+train_files+valid_files,
+                    test_files_out+train_files_out+valid_files_out)):
+            moving(in_, out_)
+        shutil.move(os.path.join(chrom, "_meta.txt.gz"), os.path.join(path_subsets, "_meta_"+chrom_name+".txt.gz" ))
+        shutil.move(os.path.join(chrom, "_comments.txt"), os.path.join(path_subsets, "_comments_"+chrom_name+".txt"))
