@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # build the docs
 cd docs
+sphinx-apidoc -d 3 -f -e -o ./source ../pydeepgenomics/preprocess
+sphinx-apidoc -d 3 -f -e -o ./source ../pydeepgenomics/tools
+sphinx-apidoc -d 3 -f -e -o ./source ../alltests
 make clean
 make html
 cd ..
