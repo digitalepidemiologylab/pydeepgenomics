@@ -64,18 +64,20 @@ Generaldecorators
 Preprocessing
 -------------
 
+* Try to organise in coherent modules
+
 Encoding
 ~~~~~~~~
 * When iter in batch of elements use generator with this kind of solutions:
 
-        .. code-block:: python
+    .. code-block:: python
 
-                from itertools import chain, islice
-                 
-                def morceaux(iterable, taille, format=tuple):
-                    it = iter(iterable)
-                    while True:
-                        yield format(chain((next(it),), islice(it, taille - 1)))
+            from itertools import chain, islice
+
+            def morceaux(iterable, taille, format=tuple):
+                it = iter(iterable)
+                while True:
+                    yield format(chain((next(it),), islice(it, taille - 1)))
 
   (For python 2. Find how to convert that to python 3)
 * Give the task of logging/printing information to a _function to lighten the code from unnecessary information (also calculation of the time points ...)
@@ -96,6 +98,10 @@ Subsets:
 ~~~~~~~~
 * Use the os, sys and shutil libraries instead of the os calls
 * Use a generator when doing some action on a list files in a loop and removing the last element processed after each round of the loop
+
+cutting:
+~~~~~~~~
+* Finish this part and code the corresponding example
 
 Examples:
 ~~~~~~~~~

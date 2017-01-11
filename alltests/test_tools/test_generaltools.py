@@ -389,14 +389,26 @@ class RandomChunks(unittest.TestCase):
         self.assertEqual(total_size, list_size)
 
     def test_raise_error_when_proportions_less_than_one(self):
-        list_ = list_ = [random.random() for _ in range(10)]
+        list_ = [random.random() for _ in range(10)]
+        proportions = (0.2, 0.2, 0.2)
         with self.assertRaises(ValueError):
-            gt.random_chunks(list_, (0.2, 0.2, 0.2))
+            _, _, _ = gt.random_chunks(list_, proportions)
 
     def test_raise_error_when_proportions_greater_than_one(self):
-        list_ = list_ = [random.random() for _ in range(10)]
+        list_ = [random.random() for _ in range(10)]
+        proportions = (0.4, 0.4, 0.4)
         with self.assertRaises(ValueError):
-            gt.random_chunks(list_, (0.4, 0.4, 0.4))
+            _, _, _ = gt.random_chunks(list_, proportions)
+
+    def test_force_with_incorrect_proportions(self):
+        list_ = [random.random() for _ in range(10)]
+        proportions = (0.4, 0.4, 0.4)
+
+        try:
+            _, _, _ = gt.random_chunks(list_, proportions, force=True)
+        except ValueError:
+            self.fail("{0} raised ValueError while force was set to True!".format(gt.random_chunks.__name__))
+
 
 if __name__ == "__main__":
     unittest.main()

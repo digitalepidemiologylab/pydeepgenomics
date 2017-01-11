@@ -17,8 +17,8 @@ except ImportError:
 
 if __name__ == "__main__":
 
-    prob_rich_region_to_normal = 0.1
-    prob_normal_to_rich_region = 0.073
+    prob_rich_region_to_normal = 0.03
+    prob_normal_to_rich_region = 0.03
 
     files = gt.list_elements(os.path.abspath("."),  extension=".vcf")
     header_size = 6
