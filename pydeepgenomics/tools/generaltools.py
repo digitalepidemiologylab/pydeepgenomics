@@ -51,27 +51,22 @@ def list_elements(
     order.
 
     Args:
-        path_to_folder (:obj:`str`): Complete or relative path to the folder
+        path_to_folder (:obj:`str`): Complete or relative path to the folder\
          you want to explore.
-
-        type_ (:obj:`str|None`, optional): Type of items you want to list,
-         can be :code:`"dir"`, :code:`"file"` or :code:`None` (default
-         behavior). When set to :code:`None`, the function does not care
+        type_ (:obj:`str|None`, optional): Type of items you want to list,\
+         can be :code:`"dir"`, :code:`"file"` or :code:`None` (default\
+         behavior). When set to :code:`None`, the function does not care\
          about the type and returns all items.
-
-        extension (:obj:`str`, optional): Add a filter to the function to
-         only return the items whose name finish with the string given to
+        extension (:obj:`str`, optional): Add a filter to the function to\
+         only return the items whose name finish with the string given to\
          extension. By default extension is an empty string.
-
-        sort (:obj:`str`, optional): Indicate how the output list is
-         sorted. By default, the output is sorted by natural order (
-         :code:`sort="natural"`). It can also be set to
-         :code:`sort="alphanumeric".
-
-        exception (:obj:`list|tuple|None`, optional): List or tuple of
+        sort (:obj:`str`, optional): Indicate how the output list is\
+         sorted. By default, the output is sorted by natural order (\
+         :code:`sort="natural"`). It can also be set to\
+         :code:`sort="alphanumeric".\
+        exception (:obj:`list|tuple|None`, optional): List or tuple of\
          specific items to ignore. By defaultNone
-
-        verbose (:obj:`bool`, optional): Makes the function print more
+        verbose (:obj:`bool`, optional): Makes the function print more\
          information. (False by default)
 
     Returns:
