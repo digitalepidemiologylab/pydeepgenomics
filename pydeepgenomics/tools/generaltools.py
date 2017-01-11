@@ -82,6 +82,10 @@ def list_elements(
         >>> list_elements(".", extension=".py")
         ['.\\__init__.py', '.\\generaldecorators.py', '.\\generaltools.py']
 
+    Todo:
+        * Make it cleaner and easier to read
+        * add some modularity ?
+
     """
 
     if exception is None:
@@ -202,7 +206,7 @@ def get_nb_lines_file(infile):
         lines = 0
         for _ in f:
             lines += 1
-        return lines
+    return lines
 
 
 @gd.accepts((float, int), (float, int), bool)

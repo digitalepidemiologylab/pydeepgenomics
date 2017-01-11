@@ -1,8 +1,8 @@
 TODO
-########################################
+####
 
 General
-****************************************
+*******
 
 
 * recode the bash scripts in python 
@@ -34,37 +34,38 @@ General
 * Make the whole thing quiet !
 
 Documentation
-****************************************
+*************
 
 * Almost every modules still need to be documented ...
 * Try to host the whole documentation as a static website on github
 * Include the documentation generation script inside the repo
 
 Library
-****************************************
+*******
 
 Tools
-----------------------------------------
+-----
 Generaltools
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 * Recode the function list_elements: 
-	* It should be cleaner
-	* It should be able to handle a tuble of extensions
+    * It should be cleaner
+    * It should be able to handle a tuble of extensions
 * Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)
 * Add options to the timers (:code:`time_since_first_call` and :code:`time_since_last_call`) so that they can give the raw time and not systematically the formated time
 * :code:`_custom_output` should take care of the other possible options when logging is ready
+* Add some filters :code:`get_nb_lines_file`
 
 Generaldecorators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 * RAS for the moment
 
 Preprocessing
-----------------------------------------
+-------------
 
 Encoding
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
 * When iter in batch of elements use generator with this kind of solutions:
 
         .. code-block:: python
@@ -83,7 +84,7 @@ Encoding
 * Clean the function :code:`verify_decoding` to have smaller functionnal units and a code easier to read.
 
 vcf
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
 
 * rewrite split.js in python and/or at least in a more portable version.
 * add tests
@@ -92,12 +93,12 @@ vcf
 * Create a more general "get_nb_lines" in generaltool able to handle the case used in the function "lines" ?
 
 Subsets:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
 * Use the os, sys and shutil libraries instead of the os calls
 * Use a generator when doing some action on a list files in a loop and removing the last element processed after each round of the loop
 
 Examples:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
 
 * Check size of the vcf files folder before making a copy
 * Clean playground when script is over ?
@@ -105,46 +106,46 @@ Examples:
 * Add the second part of example 4
 
 Tests
-****************************************
+*****
 
 General
-----------------------------------------
+-------
 * Note: the tests were added a few months after the beginning of the project, thus their sparsity and the diffculty to test some functions
 * In general, add new cases to be tested for the different test sets to be sure that the extrem cases are taken into account.
 * I used unittest to familiarize myself with unit testing but it would be better to have everything in py.test or nose later.
 
 Tools
-----------------------------------------
+-----
 
 General tools
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 * Use :code:`_write_multiple_files` and playground to do the tests instead of testing on a directory of the module
 * Document the tests ?
 * Add tests to be sure the functions which manage files handle both relative and absolute paths
 
 General decorators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 * Prepare tests for the
 * Document the tests
 
 VCF
-----------------------------------------
+---
 
 vcf
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
 * Do everything !
 * (But first the vcf module may be broken into smaller units so that unit testing has a sens ...)
 * Document the tests
 
 import time
 def time_since_first_call():
-	previous_time = None
-	current_time = time.time()
-	yield 0
+    previous_time = None
+    current_time = time.time()
+    yield 0
 
-	while True:
+    while True:
 
-		previous_time, current_time = current_time, time.time()
-		yield current_time - previous_time
+        previous_time, current_time = current_time, time.time()
+        yield current_time - previous_time

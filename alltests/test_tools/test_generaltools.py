@@ -338,7 +338,7 @@ class TestTimePointsToTimeLengthInHMinSec(unittest.TestCase):
         for unit in results:
             self.assertIsInstance(unit, float)
 
-"""
+
 class TimeSinceFirstCall(unittest.TestCase):
 
     def test_correctly_measure_one_second(self):
@@ -358,7 +358,7 @@ class TimeBetweenTwoCalls(unittest.TestCase):
         time.sleep(1)
         result = timer.__next__()
         self.assertAlmostEqual(result[-1], 1)
-"""
+
 
 class RandomChunks(unittest.TestCase):
 

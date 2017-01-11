@@ -268,37 +268,6 @@ def do_subsets(
                 prefix_subset="1PER_")
 
 
-def cut_files(file_list, size_of_output_files, output_path, copy=True):
-    for file in file_list:
-        filename = file.split("/")[-1].split(".")[0]
-        nblines = gt.get_nb_lines_file(file)
-        nboffiles = math.ceil(nblines / size_of_output_files)
-        overlapping = math.floor(
-            (size_of_output_files - nblines % size_of_output_files) / nboffiles)
-
-        begin = 0
-        for i in range(int(nboffiles)):
-            end = int(min(begin + size_of_output_files, nblines))
-            if end - begin < size_of_output_files:
-                begin = int(end - size_of_output_files)
-            subsetoflines = range(begin, end)
-            begin += int(size_of_output_files - overlapping)
-
-            with open(output_path + "/" + filename + "-" + str(i + 1) + ".txt",
-                      "w") as \
-                    outfile, gzip.open(file, "rt") as infile:
-
-                lines = infile.readlines()
-                for index in subsetoflines:
-                    outfile.write(lines[index])
-            subprocess.call("gzip {}".format(
-                output_path + "/" + filename + "-" + str(i + 1) + ".txt"),
-                shell=True)
-
-        if not copy:
-            subprocess.call("rm {}".format(file), shell=True)
-
-
 def _build_output_tree_struct(path_in, path_out):
 
     for (sub_path, _, _) in os.walk(path_in):
