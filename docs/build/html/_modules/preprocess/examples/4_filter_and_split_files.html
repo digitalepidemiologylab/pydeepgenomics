@@ -122,17 +122,20 @@
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
     <span class="s2">&quot;pydeepgenomics&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess</span> <span class="k">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">subsets</span><span class="p">,</span> <span class="n">filtering</span>
+    <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess</span> <span class="k">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">subsets</span><span class="p">,</span> <span class="n">filtering</span><span class="p">,</span> <span class="n">cutting</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess.vcf</span> <span class="k">import</span> <span class="n">vcf</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaltools</span> <span class="k">as</span> <span class="n">gt</span>
 
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">cmd_subfolder</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd_subfolder</span><span class="p">)</span>
-    <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess</span> <span class="k">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">subsets</span><span class="p">,</span> <span class="n">filtering</span>
+    <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess</span> <span class="k">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">subsets</span><span class="p">,</span> <span class="n">filtering</span><span class="p">,</span> <span class="n">cutting</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess.vcf</span> <span class="k">import</span> <span class="n">vcf</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaltools</span> <span class="k">as</span> <span class="n">gt</span>
 
@@ -140,6 +143,7 @@
 <span class="n">PATH_TO_PLAYGROUND</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span>
     <span class="s2">&quot;playground&quot;</span><span class="p">)</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="example_4"><a class="viewcode-back" href="../../../preprocess.examples.4_filter_and_split_files.html#preprocess.examples.4_filter_and_split_files.example_4">[docs]</a><span class="k">def</span> <span class="nf">example_4</span><span class="p">():</span>
@@ -147,12 +151,18 @@
         <span class="s2">&quot;python &quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s2">&quot;setup_ex_env.py&quot;</span><span class="p">),</span>
         <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">vcf</span><span class="o">.</span><span class="n">split_vcf_files</span><span class="p">(</span><span class="n">PATH_TO_PLAYGROUND</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="c1"># list_chrs = gt.list_elements(</span>
-    <span class="c1">#    PATH_TO_PLAYGROUND,</span>
-    <span class="c1">#    type_=&quot;file&quot;,</span>
-    <span class="c1">#    extension=&quot;.vcf.gz&quot;)</span>
-    <span class="c1"># list_chrs = [os.path.basename(i).split(&quot;.&quot;)[0] for i in list_chrs]</span>
-    <span class="n">filtering</span><span class="o">.</span><span class="n">mask_data</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PATH_TO_PLAYGROUND</span><span class="p">,</span> <span class="s2">&quot;split_by_chr&quot;</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span></div>
+    <span class="n">averages</span> <span class="o">=</span> <span class="n">cutting</span><span class="o">.</span><span class="n">density_of_snps</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">PATH_TO_PLAYGROUND</span><span class="p">,</span>
+            <span class="s2">&quot;split_by_chr&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;_meta.txt.gz&quot;</span> <span class="p">),</span>
+        <span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">averages</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;POS&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;averages&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="s2">&quot;Moving average&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+    <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Press Enter to continue...&quot;</span><span class="p">)</span></div>
+    <span class="c1">#filtering.mask_data(os.path.join(PATH_TO_PLAYGROUND, &quot;split_by_chr&quot;), 0.1)</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

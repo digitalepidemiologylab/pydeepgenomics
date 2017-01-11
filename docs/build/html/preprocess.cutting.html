@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>preprocess package &#8212; pydeepgenomics a1 documentation</title>
+    <title>preprocess.cutting module &#8212; pydeepgenomics a1 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -81,12 +81,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">preprocess package</a><ul>
-<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-preprocess">Module contents</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">preprocess.cutting module</a></li>
 </ul>
 </ul>
 </li>
@@ -102,7 +97,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/preprocess.txt"
+  <a href="_sources/preprocess.cutting.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -126,52 +121,18 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="preprocess-package">
-<h1>preprocess package<a class="headerlink" href="#preprocess-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.examples.html">preprocess.examples package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.examples.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preprocess.examples.1_split_vcf_files.html">preprocess.examples.1_split_vcf_files module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preprocess.examples.2_encode_genotypes.html">preprocess.examples.2_encode_genotypes module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preprocess.examples.3_form_subsets.html">preprocess.examples.3_form_subsets module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preprocess.examples.4_filter_and_split_files.html">preprocess.examples.4_filter_and_split_files module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preprocess.examples.setup_ex_env.html">preprocess.examples.setup_ex_env module</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.examples.html#module-preprocess.examples">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.vcf.html">preprocess.vcf package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.vcf.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preprocess.vcf.vcf.html">preprocess.vcf.vcf module</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess.vcf.html#module-preprocess.vcf">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.cutting.html">preprocess.cutting module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.encoding.html">preprocess.encoding module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.filtering.html">preprocess.filtering module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.settings.html">preprocess.settings module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.settings_template.html">preprocess.settings_template module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.subsets.html">preprocess.subsets module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocess.verifications.html">preprocess.verifications module</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="module-preprocess">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-preprocess" title="Permalink to this headline">¶</a></h2>
-</div>
+  <div class="section" id="module-preprocess.cutting">
+<span id="preprocess-cutting-module"></span><h1>preprocess.cutting module<a class="headerlink" href="#module-preprocess.cutting" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="preprocess.cutting.cut_file">
+<code class="descname">cut_file</code><span class="sig-paren">(</span><em>file</em>, <em>size_of_output_files</em>, <em>output_path</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/cutting.html#cut_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.cutting.cut_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="preprocess.cutting.density_of_snps">
+<code class="descname">density_of_snps</code><span class="sig-paren">(</span><em>meta_file</em>, <em>window=1000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/cutting.html#density_of_snps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.cutting.density_of_snps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 

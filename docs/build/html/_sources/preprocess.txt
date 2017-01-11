@@ -14,6 +14,7 @@ Submodules
 
 .. toctree::
 
+   preprocess.cutting
    preprocess.encoding
    preprocess.filtering
    preprocess.settings

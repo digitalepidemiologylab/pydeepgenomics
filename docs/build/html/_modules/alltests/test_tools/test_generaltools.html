@@ -456,27 +456,27 @@
         <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span></div></div>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">class TimeSinceFirstCall(unittest.TestCase):</span>
 
-<span class="sd">    def test_correctly_measure_one_second(self):</span>
-<span class="sd">        timer = gt.time_since_first_call()</span>
-<span class="sd">        for _ in range(10):</span>
-<span class="sd">            timer.__next__()</span>
-<span class="sd">            time.sleep(0.1)</span>
-<span class="sd">        result = timer.__next__()</span>
-<span class="sd">        self.assertAlmostEqual(result[-1], 1)</span>
+<div class="viewcode-block" id="TimeSinceFirstCall"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.TimeSinceFirstCall">[docs]</a><span class="k">class</span> <span class="nc">TimeSinceFirstCall</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TimeSinceFirstCall.test_correctly_measure_one_second"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.TimeSinceFirstCall.test_correctly_measure_one_second">[docs]</a>    <span class="k">def</span> <span class="nf">test_correctly_measure_one_second</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">time_since_first_call</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span></div></div>
 
 
-<span class="sd">class TimeBetweenTwoCalls(unittest.TestCase):</span>
+<div class="viewcode-block" id="TimeBetweenTwoCalls"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.TimeBetweenTwoCalls">[docs]</a><span class="k">class</span> <span class="nc">TimeBetweenTwoCalls</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-<span class="sd">    def test_correctly_measure_one_second(self):</span>
-<span class="sd">        timer = gt.time_between_two_calls()</span>
-<span class="sd">        timer.__next__()</span>
-<span class="sd">        time.sleep(1)</span>
-<span class="sd">        result = timer.__next__()</span>
-<span class="sd">        self.assertAlmostEqual(result[-1], 1)</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="TimeBetweenTwoCalls.test_correctly_measure_one_second"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.TimeBetweenTwoCalls.test_correctly_measure_one_second">[docs]</a>    <span class="k">def</span> <span class="nf">test_correctly_measure_one_second</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">time_between_two_calls</span><span class="p">()</span>
+        <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span></div></div>
+
 
 <div class="viewcode-block" id="RandomChunks"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.RandomChunks">[docs]</a><span class="k">class</span> <span class="nc">RandomChunks</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
@@ -507,14 +507,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">total_size</span><span class="p">,</span> <span class="n">list_size</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RandomChunks.test_raise_error_when_proportions_less_than_one"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.RandomChunks.test_raise_error_when_proportions_less_than_one">[docs]</a>    <span class="k">def</span> <span class="nf">test_raise_error_when_proportions_less_than_one</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">list_</span> <span class="o">=</span> <span class="n">list_</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+        <span class="n">list_</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+        <span class="n">proportions</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-            <span class="n">gt</span><span class="o">.</span><span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span></div>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="n">proportions</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RandomChunks.test_raise_error_when_proportions_greater_than_one"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.RandomChunks.test_raise_error_when_proportions_greater_than_one">[docs]</a>    <span class="k">def</span> <span class="nf">test_raise_error_when_proportions_greater_than_one</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">list_</span> <span class="o">=</span> <span class="n">list_</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+        <span class="n">list_</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+        <span class="n">proportions</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-            <span class="n">gt</span><span class="o">.</span><span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span></div></div>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="n">proportions</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomChunks.test_force_with_incorrect_proportions"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaltools.html#alltests.test_tools.test_generaltools.RandomChunks.test_force_with_incorrect_proportions">[docs]</a>    <span class="k">def</span> <span class="nf">test_force_with_incorrect_proportions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">list_</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+        <span class="n">proportions</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="n">proportions</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> raised ValueError while force was set to True!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gt</span><span class="o">.</span><span class="n">random_chunks</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span></div></div>
+
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
