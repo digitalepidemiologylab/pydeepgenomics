@@ -53,19 +53,24 @@ def list_elements(
     Args:
         path_to_folder (:obj:`str`): Complete or relative path to the folder\
          you want to explore.
+
         type_ (:obj:`str|None`, optional): Type of items you want to list,\
          can be :code:`"dir"`, :code:`"file"` or :code:`None` (default\
          behavior). When set to :code:`None`, the function does not care\
          about the type and returns all items.
+
         extension (:obj:`str`, optional): Add a filter to the function to\
          only return the items whose name finish with the string given to\
          extension. By default extension is an empty string.
+
         sort (:obj:`str`, optional): Indicate how the output list is\
          sorted. By default, the output is sorted by natural order (\
          :code:`sort="natural"`). It can also be set to\
-         :code:`sort="alphanumeric".\
+         :code:`sort="alphanumeric".
+
         exception (:obj:`list|tuple|None`, optional): List or tuple of\
          specific items to ignore. By defaultNone
+
         verbose (:obj:`bool`, optional): Makes the function print more\
          information. (False by default)
 
@@ -153,9 +158,7 @@ def list_elements(
 
 @gd.accepts(list)
 def _natural_sort(list_):
-    """Sort a list by natural order.
-
-    This function takes a list and returns a
+    """Sorts a list by natural order.
 
     Args:
         list_ (:obj:`list`): Complete or relative path to the folder
@@ -192,7 +195,7 @@ def print_progress(
         suffix='',
         decimals=1,
         bar_length=100):
-    """Function to print a progress bar.
+    """A nice way to show that your code is still running.
 
     This function prints a progress bar corresponding to the ratio between
     the number of iterations and the expected total number of iterations.
@@ -201,18 +204,19 @@ def print_progress(
     suffix).
 
     Args:
-        iteration (:obj:`int`): the number of iterations already past total (
-         int): the expected total number of iterations
+        iteration (:obj:`int`): the number of iterations already past
 
-        prefix (:obj:`str`): field to display custom information (default is
-         '').
+        total (:obj:`int`): the expected total number of iterations
 
-        suffix (:obj:`str`): field to display custom information (default is
-         '').
+        prefix (:obj:`str`, optional): field to display custom information (\
+         default is '').
 
-        decimals (:obj:`int`): number of decimals to show.
+        suffix (:obj:`str`, optional): field to display custom information (\
+         default is '').
 
-        bar_length (:obj:`int`)
+        decimals (:obj:`int`, optional): number of decimals to show.
+
+        bar_length (:obj:`int`, optional)
 
     Returns:
         None
@@ -221,9 +225,7 @@ def print_progress(
         None
 
     Todo:
-
         * Disable the "fancy bar" by default (use simple \# or = instead)
-
     """
     format_str = "{0:." + str(decimals) + "f}"
     percents = format_str.format(100 * (iteration / float(total)))
@@ -248,29 +250,19 @@ def print_progress(
 def get_nb_lines_file(infile):
     """Open an eventually zipped file and return its number of lines.
 
-    This function takes a list and returns a
+    This function opens the file received as argument and open it depending
+    on its extension (For the moment, only classic text files and gzipped
+    files can be opened.)
 
     Args:
-        list_ (:obj:`list`): Complete or relative path to the folder
-         you want to explore.
+        infile (:obj:`str`): Complete or relative path to the file you want\
+         to open you want to explore.
 
     Returns:
-        :obj:`list`:
+        :obj:`int`: The number of lines in the file.
 
     Raises:
         AssertError: Raised when the types of the arguments are not respected.
-
-    Examples:
-        To sort a simple list of strings :
-            >>> list_ = [str(i) for i in range(20)]
-            >>> expected_out =  ['0', '1', '2', '3', '4', '5', '6', '7', '8',
-            ... '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19']
-            >>> out = _natural_sort(list_)
-            >>> out == expected_out
-            True
-            >>> out == sorted(list_)
-            False
-
     """
     opener_dict = {".gz": gzip.open}
     opener = open
@@ -287,6 +279,23 @@ def get_nb_lines_file(infile):
 
 @gd.accepts((float, int), (float, int), bool)
 def time_points_to_time_length_in_h_min_sec(begin_time, end_time, to_int=True):
+    """Takes to time points in second and returns the difference in h, min, s.
+
+    Args:
+        begin_time (:obj:`float|int`): First time point in seconds (*e.g.*\
+         given by :code:`time.time()`)
+        end_time (:obj:`float|int`): Second time point in seconds (*e.g.*\
+         given by :code:`time.time()`)
+        to_int (:obj:`bool`): Forces the output to be a tuple of integers
+
+    Returns:
+        :obj:`tuple`: Tuple containing the result in the form (h, min,\
+         s) where h, min and s are integers or floats depending on
+         :code:`to_int`
+
+    Raises:
+        AssertError: Raised when the types of the arguments are not respected.
+    """
     m, s = divmod(end_time - begin_time, 60)
     h, m = divmod(m, 60)
     if to_int:
@@ -296,29 +305,110 @@ def time_points_to_time_length_in_h_min_sec(begin_time, end_time, to_int=True):
     return h, m, s
 
 
-def time_since_first_call():
+@gd.accepts(bool)
+def time_since_first_call(raw=False):
+    """A basic timer which returns the time spent since the first call.
+
+    Generator of time durations. The first call initialise the generator with
+    the current time and yields 0. All further calls yield the time spent
+    since the first call.
+
+    Args:
+        raw (:obj:`bool`, optional): Indicate if the time yielded is\
+         formatted (:code:`raw=False`, by default) or not.
+
+    Yields:
+        :obj:`tuple|float`: Depending on :code:`raw` yields a tuple of\
+         integers *(h, min, s)* or a float.
+
+    Raises:
+        AssertError: Raised when the types of the arguments are not respected.
+
+    Examples:
+
+        >>> import time
+        >>> timer = time_since_first_call()
+        >>> for _ in range(10):
+        ...     t = timer.__next__()
+        ...     time.sleep(0.1)
+        >>> result = timer.__next__()
+        >>> result == (0, 0, 1)
+        True
+    """
     begin_time = time.time()
-    yield 0
+    yield 0.0
     while True:
         current_time = time.time()
-        yield time_points_to_time_length_in_h_min_sec(
-            begin_time,
-            current_time)
+        if raw:
+            yield current_time - begin_time
+        else:
+            yield time_points_to_time_length_in_h_min_sec(
+                begin_time,
+                current_time)
 
 
-def time_between_two_calls():
+@gd.accepts(bool)
+def time_between_two_calls(raw=False):
+    """A basic timer which returns the time spent since the last call.
+
+    Generator of time durations. The first call initialise the generator with
+    the current time and yields 0. All further calls yield the time spent
+    since the precedent call.
+
+    Args:
+        raw (:obj:`bool`, optional): Indicate if the time yielded is\
+         formatted (:code:`raw=False`, by default) or not.
+
+    Yields:
+        :obj:`tuple|float`: Depending on :code:`raw` yields a tuple of\
+         integers *(h, min, s)* or a float.
+
+    Raises:
+        AssertError: Raised when the types of the arguments are not respected.
+
+    Examples:
+
+        >>> import time
+        >>> timer = time_between_two_calls()
+        >>> for _ in range(10):
+        ...     t = timer.__next__()
+        ...     time.sleep(0.1)
+        >>> result = timer.__next__()
+        >>> result == (0, 0, 0)
+        True
+    """
     current_time = time.time()
-    yield 0
+    yield 0.0
     while True:
         previous_time, current_time = current_time, time.time()
-        yield time_points_to_time_length_in_h_min_sec(
-            previous_time,
-            current_time)
+        if raw:
+            yield current_time - previous_time
+        else:
+            yield time_points_to_time_length_in_h_min_sec(
+                previous_time,
+                current_time)
 
 
 @gd.accepts(list, (list, tuple), type, bool)
 def random_chunks(l, subset_proportions, output_format=tuple, force=False):
-    """Yield successive n-sized chunks from l."""
+    """Shuffles the list and returns chunks.
+
+    This generator of sizes corresponding to the proportions.
+
+    Args:
+        l (:obj:`list`): original list
+         subset_proportions (:obj:`list|tuple`): sizes of the chunks given as\
+        proportions of the original list.
+        l (:obj:`type`, optional):
+        l (:obj:`bool`, optional):
+
+    Yields:
+        :obj:`tuple|list`:
+
+    Raises:
+        AssertError: Raised when the types of the arguments are not respected.
+        ValueError:
+    """
     sum_proportions = sum(subset_proportions)
     if round(sum_proportions, 9) != 1 and not force:
         raise ValueError(
