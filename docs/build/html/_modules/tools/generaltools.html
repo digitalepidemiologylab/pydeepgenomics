@@ -170,27 +170,27 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        path_to_folder (:obj:`str`): Complete or relative path to the folder</span>
-<span class="sd">        you want to explore.</span>
+<span class="sd">         you want to explore.</span>
 
 <span class="sd">        type_ (:obj:`str|None`, optional): Type of items you want to list,</span>
-<span class="sd">        can be :code:`&quot;dir&quot;`, :code:`&quot;file&quot;` or :code:`None` (default</span>
-<span class="sd">        behavior). When set to :code:`None`, the function does not care</span>
-<span class="sd">        about the type and returns all items.</span>
+<span class="sd">         can be :code:`&quot;dir&quot;`, :code:`&quot;file&quot;` or :code:`None` (default</span>
+<span class="sd">         behavior). When set to :code:`None`, the function does not care</span>
+<span class="sd">         about the type and returns all items.</span>
 
 <span class="sd">        extension (:obj:`str`, optional): Add a filter to the function to</span>
-<span class="sd">        only return the items whose name finish with the string given to</span>
-<span class="sd">        extension. By default extension is an empty string.</span>
+<span class="sd">         only return the items whose name finish with the string given to</span>
+<span class="sd">         extension. By default extension is an empty string.</span>
 
 <span class="sd">        sort (:obj:`str`, optional): Indicate how the output list is</span>
-<span class="sd">        sorted. By default, the output is sorted by natural order (</span>
-<span class="sd">        :code:`sort=&quot;natural&quot;`). It can also be set to</span>
-<span class="sd">        :code:`sort=&quot;alphanumeric&quot;.</span>
+<span class="sd">         sorted. By default, the output is sorted by natural order (</span>
+<span class="sd">         :code:`sort=&quot;natural&quot;`). It can also be set to</span>
+<span class="sd">         :code:`sort=&quot;alphanumeric&quot;.</span>
 
 <span class="sd">        exception (:obj:`list|tuple|None`, optional): List or tuple of</span>
-<span class="sd">        specific items to ignore. By defaultNone</span>
+<span class="sd">         specific items to ignore. By defaultNone</span>
 
 <span class="sd">        verbose (:obj:`bool`, optional): Makes the function print more</span>
-<span class="sd">        information. (False by default)</span>
+<span class="sd">         information. (False by default)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        :obj:`list`:</span>
@@ -200,21 +200,21 @@
 
 <span class="sd">    Examples:</span>
 <span class="sd">        To get the list of the python files in the current directory:</span>
-<span class="sd">        &gt;&gt;&gt; elements = list_elements(&quot;.&quot;, extension=&quot;.py&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; expected_out = [</span>
-<span class="sd">        ... os.path.join(&#39;.&#39;, &#39;__init__.py&#39;), os.path.join(&#39;.&#39;,</span>
-<span class="sd">        ... &#39;generaldecorators.py&#39;), os.path.join(&#39;.&#39;, &#39;generaltools.py&#39;)]</span>
-<span class="sd">        &gt;&gt;&gt; elements == expected_out</span>
-<span class="sd">        True</span>
+<span class="sd">            &gt;&gt;&gt; elements = list_elements(&quot;.&quot;, extension=&quot;.py&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; expected_out = [</span>
+<span class="sd">            ... os.path.join(&#39;.&#39;, &#39;__init__.py&#39;), os.path.join(&#39;.&#39;,</span>
+<span class="sd">            ... &#39;generaldecorators.py&#39;), os.path.join(&#39;.&#39;, &#39;generaltools.py&#39;)]</span>
+<span class="sd">            &gt;&gt;&gt; elements == expected_out</span>
+<span class="sd">            True</span>
 
 <span class="sd">        Similarly, with absolute paths:</span>
-<span class="sd">        &gt;&gt;&gt; elements = list_elements(os.path.abspath(&quot;.&quot;), extension=&quot;.py&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; expected_out = [</span>
-<span class="sd">        ... os.path.join(os.path.abspath(&#39;.&#39;), &#39;__init__.py&#39;), os.path.join(</span>
-<span class="sd">        ... os.path.abspath(&#39;.&#39;), &#39;generaldecorators.py&#39;), os.path.join(</span>
-<span class="sd">        ... os.path.abspath(&#39;.&#39;), &#39;generaltools.py&#39;)]</span>
-<span class="sd">        &gt;&gt;&gt; elements == expected_out</span>
-<span class="sd">        True</span>
+<span class="sd">            &gt;&gt;&gt; elements = list_elements(os.path.abspath(&quot;.&quot;), extension=&quot;.py&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; expected_out = [</span>
+<span class="sd">            ... os.path.join(os.path.abspath(&#39;.&#39;), &#39;__init__.py&#39;), os.path.join(</span>
+<span class="sd">            ... os.path.abspath(&#39;.&#39;), &#39;generaldecorators.py&#39;), os.path.join(</span>
+<span class="sd">            ... os.path.abspath(&#39;.&#39;), &#39;generaltools.py&#39;)]</span>
+<span class="sd">            &gt;&gt;&gt; elements == expected_out</span>
+<span class="sd">            True</span>
 
 <span class="sd">    Todo:</span>
 <span class="sd">        * Make it cleaner and easier to read :</span>
@@ -325,13 +325,13 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        iteration (:obj:`int`): the number of iterations already past total (</span>
-<span class="sd">        int): the expected total number of iterations</span>
+<span class="sd">         int): the expected total number of iterations</span>
 
 <span class="sd">        prefix (:obj:`str`): field to display custom information (default is</span>
-<span class="sd">        &#39;&#39;).</span>
+<span class="sd">         &#39;&#39;).</span>
 
 <span class="sd">        suffix (:obj:`str`): field to display custom information (default is</span>
-<span class="sd">        &#39;&#39;).</span>
+<span class="sd">         &#39;&#39;).</span>
 
 <span class="sd">        decimals (:obj:`int`): number of decimals to show.</span>
 
@@ -375,7 +375,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        list_ (:obj:`list`): Complete or relative path to the folder</span>
-<span class="sd">        you want to explore.</span>
+<span class="sd">         you want to explore.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        :obj:`list`:</span>
@@ -385,14 +385,14 @@
 
 <span class="sd">    Examples:</span>
 <span class="sd">        To sort a simple list of strings :</span>
-<span class="sd">        &gt;&gt;&gt; list_ = [str(i) for i in range(20)]</span>
-<span class="sd">        &gt;&gt;&gt; expected_out =  [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;,</span>
-<span class="sd">        ... &#39;9&#39;, &#39;10&#39;, &#39;11&#39;, &#39;12&#39;, &#39;13&#39;, &#39;14&#39;, &#39;15&#39;, &#39;16&#39;, &#39;17&#39;, &#39;18&#39;, &#39;19&#39;]</span>
-<span class="sd">        &gt;&gt;&gt; out = _natural_sort(list_)</span>
-<span class="sd">        &gt;&gt;&gt; out == expected_out</span>
-<span class="sd">        True</span>
-<span class="sd">        &gt;&gt;&gt; out == sorted(list_)</span>
-<span class="sd">        False</span>
+<span class="sd">            &gt;&gt;&gt; list_ = [str(i) for i in range(20)]</span>
+<span class="sd">            &gt;&gt;&gt; expected_out =  [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;,</span>
+<span class="sd">            ... &#39;9&#39;, &#39;10&#39;, &#39;11&#39;, &#39;12&#39;, &#39;13&#39;, &#39;14&#39;, &#39;15&#39;, &#39;16&#39;, &#39;17&#39;, &#39;18&#39;, &#39;19&#39;]</span>
+<span class="sd">            &gt;&gt;&gt; out = _natural_sort(list_)</span>
+<span class="sd">            &gt;&gt;&gt; out == expected_out</span>
+<span class="sd">            True</span>
+<span class="sd">            &gt;&gt;&gt; out == sorted(list_)</span>
+<span class="sd">            False</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">opener_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;.gz&quot;</span><span class="p">:</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">}</span>

@@ -52,27 +52,27 @@ def list_elements(
 
     Args:
         path_to_folder (:obj:`str`): Complete or relative path to the folder
-        you want to explore.
+         you want to explore.
 
         type_ (:obj:`str|None`, optional): Type of items you want to list,
-        can be :code:`"dir"`, :code:`"file"` or :code:`None` (default
-        behavior). When set to :code:`None`, the function does not care
-        about the type and returns all items.
+         can be :code:`"dir"`, :code:`"file"` or :code:`None` (default
+         behavior). When set to :code:`None`, the function does not care
+         about the type and returns all items.
 
         extension (:obj:`str`, optional): Add a filter to the function to
-        only return the items whose name finish with the string given to
-        extension. By default extension is an empty string.
+         only return the items whose name finish with the string given to
+         extension. By default extension is an empty string.
 
         sort (:obj:`str`, optional): Indicate how the output list is
-        sorted. By default, the output is sorted by natural order (
-        :code:`sort="natural"`). It can also be set to
-        :code:`sort="alphanumeric".
+         sorted. By default, the output is sorted by natural order (
+         :code:`sort="natural"`). It can also be set to
+         :code:`sort="alphanumeric".
 
         exception (:obj:`list|tuple|None`, optional): List or tuple of
-        specific items to ignore. By defaultNone
+         specific items to ignore. By defaultNone
 
         verbose (:obj:`bool`, optional): Makes the function print more
-        information. (False by default)
+         information. (False by default)
 
     Returns:
         :obj:`list`:
@@ -82,21 +82,21 @@ def list_elements(
 
     Examples:
         To get the list of the python files in the current directory:
-        >>> elements = list_elements(".", extension=".py")
-        >>> expected_out = [
-        ... os.path.join('.', '__init__.py'), os.path.join('.',
-        ... 'generaldecorators.py'), os.path.join('.', 'generaltools.py')]
-        >>> elements == expected_out
-        True
+            >>> elements = list_elements(".", extension=".py")
+            >>> expected_out = [
+            ... os.path.join('.', '__init__.py'), os.path.join('.',
+            ... 'generaldecorators.py'), os.path.join('.', 'generaltools.py')]
+            >>> elements == expected_out
+            True
 
         Similarly, with absolute paths:
-        >>> elements = list_elements(os.path.abspath("."), extension=".py")
-        >>> expected_out = [
-        ... os.path.join(os.path.abspath('.'), '__init__.py'), os.path.join(
-        ... os.path.abspath('.'), 'generaldecorators.py'), os.path.join(
-        ... os.path.abspath('.'), 'generaltools.py')]
-        >>> elements == expected_out
-        True
+            >>> elements = list_elements(os.path.abspath("."), extension=".py")
+            >>> expected_out = [
+            ... os.path.join(os.path.abspath('.'), '__init__.py'), os.path.join(
+            ... os.path.abspath('.'), 'generaldecorators.py'), os.path.join(
+            ... os.path.abspath('.'), 'generaltools.py')]
+            >>> elements == expected_out
+            True
 
     Todo:
         * Make it cleaner and easier to read :
@@ -207,13 +207,13 @@ def print_progress(
 
     Args:
         iteration (:obj:`int`): the number of iterations already past total (
-        int): the expected total number of iterations
+         int): the expected total number of iterations
 
         prefix (:obj:`str`): field to display custom information (default is
-        '').
+         '').
 
         suffix (:obj:`str`): field to display custom information (default is
-        '').
+         '').
 
         decimals (:obj:`int`): number of decimals to show.
 
@@ -257,7 +257,7 @@ def get_nb_lines_file(infile):
 
     Args:
         list_ (:obj:`list`): Complete or relative path to the folder
-        you want to explore.
+         you want to explore.
 
     Returns:
         :obj:`list`:
@@ -267,14 +267,14 @@ def get_nb_lines_file(infile):
 
     Examples:
         To sort a simple list of strings :
-        >>> list_ = [str(i) for i in range(20)]
-        >>> expected_out =  ['0', '1', '2', '3', '4', '5', '6', '7', '8',
-        ... '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19']
-        >>> out = _natural_sort(list_)
-        >>> out == expected_out
-        True
-        >>> out == sorted(list_)
-        False
+            >>> list_ = [str(i) for i in range(20)]
+            >>> expected_out =  ['0', '1', '2', '3', '4', '5', '6', '7', '8',
+            ... '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19']
+            >>> out = _natural_sort(list_)
+            >>> out == expected_out
+            True
+            >>> out == sorted(list_)
+            False
 
     """
     opener_dict = {".gz": gzip.open}
