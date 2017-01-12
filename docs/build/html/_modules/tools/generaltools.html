@@ -26,6 +26,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
@@ -509,21 +510,50 @@
 <div class="viewcode-block" id="random_chunks"><a class="viewcode-back" href="../../tools.generaltools.html#tools.generaltools.random_chunks">[docs]</a><span class="k">def</span> <span class="nf">random_chunks</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">subset_proportions</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Shuffles the list and returns chunks.</span>
 
-<span class="sd">    This generator of sizes corresponding to the proportions.</span>
+<span class="sd">    This generator takes a list and the proportions in which you want to</span>
+<span class="sd">    subdivide this list and yields random subsets of this list.</span>
+
+<span class="sd">        .. warning::</span>
+<span class="sd">           The sizes of the chunks is equal to the floored multiplication of</span>
+<span class="sd">           the size of the original list by the given proportions. Thus,</span>
+<span class="sd">           a rounding error might often happen and the size of the all the</span>
+<span class="sd">           chunks would not match the size of the original list. To correct</span>
+<span class="sd">           that, the remaining elements of the list are added to the last</span>
+<span class="sd">           chunk (corresponding to :code:`subset_proportions`[-1]). We let it</span>
+<span class="sd">           that way as it didn&#39;t affect our work a lot but this behaviours</span>
+<span class="sd">           will probably change in further versions.</span>
+
 
 <span class="sd">    Args:</span>
-<span class="sd">        l (:obj:`list`): original list subset_proportions (\</span>
-<span class="sd">         :obj:`list|tuple`): sizes of the chunks given as proportions of the\</span>
-<span class="sd">         original list.</span>
-<span class="sd">        l (:obj:`type`, optional):</span>
-<span class="sd">        l (:obj:`bool`, optional):</span>
+<span class="sd">        l (:obj:`list`): original list</span>
+<span class="sd">        subset_proportions (:obj:`list|tuple`): sizes of the chunks given as\</span>
+<span class="sd">         proportions of the original list.</span>
+<span class="sd">        output_format (:obj:`type`, optional): type of output format. By\</span>
+<span class="sd">         default, chunks are returned in tuples (:code:`output_format=tuple`)\</span>
+<span class="sd">         but can also be list.</span>
+<span class="sd">        force (:obj:`bool`, optional): Ignore the *ValueError* raised when the\</span>
+<span class="sd">         sum of the proportions is not equal to 1.</span>
 
 <span class="sd">    Yields:</span>
 <span class="sd">        :obj:`tuple|list`:</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        AssertError: Raised when the types of the arguments are not respected.</span>
-<span class="sd">        ValueError:</span>
+<span class="sd">        ValueError: Raised when the sum of the proportions (rounded at\</span>
+<span class="sd">         :math:`10^{-9}`)\ is different than 1.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; list_ = list(range(100))</span>
+<span class="sd">        &gt;&gt;&gt; a, b, c = random_chunks(list_, (0.2, 0.5, 0.3))</span>
+<span class="sd">        &gt;&gt;&gt; len(a) == 2</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; len(b) == 5</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; len(c) == 3</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; type(a)</span>
+<span class="sd">        &lt;class &#39;tuple&#39;&gt;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sum_proportions</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">subset_proportions</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">round</span><span class="p">(</span><span class="n">sum_proportions</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">force</span><span class="p">:</span>
@@ -533,8 +563,8 @@
         <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">))</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">subset_proportions</span><span class="p">]</span>
     <span class="c1"># Add one element to the last chunk if flooring the number introduced</span>
     <span class="c1"># a rounding error</span>
-    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">subsets_sizes</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">subsets_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">subsets_sizes</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">subsets_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">subsets_sizes</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">sum</span><span class="p">(</span><span class="n">subsets_sizes</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">force</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
             <span class="s2">&quot;Chunks sizes do not match with list size.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>

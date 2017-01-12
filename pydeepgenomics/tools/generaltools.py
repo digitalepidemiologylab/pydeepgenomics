@@ -393,21 +393,50 @@ def time_between_two_calls(raw=False):
 def random_chunks(l, subset_proportions, output_format=tuple, force=False):
     """Shuffles the list and returns chunks.
 
-    This generator of sizes corresponding to the proportions.
+    This generator takes a list and the proportions in which you want to
+    subdivide this list and yields random subsets of this list.
+
+        .. warning::
+           The sizes of the chunks is equal to the floored multiplication of
+           the size of the original list by the given proportions. Thus,
+           a rounding error might often happen and the size of the all the
+           chunks would not match the size of the original list. To correct
+           that, the remaining elements of the list are added to the last
+           chunk (corresponding to :code:`subset_proportions`[-1]). We let it
+           that way as it didn't affect our work a lot but this behaviours
+           will probably change in further versions.
+
 
     Args:
-        l (:obj:`list`): original list subset_proportions (\
-         :obj:`list|tuple`): sizes of the chunks given as proportions of the\
-         original list.
-        l (:obj:`type`, optional):
-        l (:obj:`bool`, optional):
+        l (:obj:`list`): original list
+        subset_proportions (:obj:`list|tuple`): sizes of the chunks given as\
+         proportions of the original list.
+        output_format (:obj:`type`, optional): type of output format. By\
+         default, chunks are returned in tuples (:code:`output_format=tuple`)\
+         but can also be list.
+        force (:obj:`bool`, optional): Ignore the *ValueError* raised when the\
+         sum of the proportions is not equal to 1.
 
     Yields:
         :obj:`tuple|list`:
 
     Raises:
         AssertError: Raised when the types of the arguments are not respected.
-        ValueError:
+        ValueError: Raised when the sum of the proportions (rounded at\
+         :math:`10^{-9}`)\ is different than 1.
+
+    Examples:
+
+        >>> list_ = list(range(100))
+        >>> a, b, c = random_chunks(list_, (0.2, 0.5, 0.3))
+        >>> len(a) == 20
+        True
+        >>> len(b) == 50
+        True
+        >>> len(c) == 30
+        True
+        >>> type(a)
+        <class 'tuple'>
     """
     sum_proportions = sum(subset_proportions)
     if round(sum_proportions, 9) != 1 and not force:
@@ -417,8 +446,8 @@ def random_chunks(l, subset_proportions, output_format=tuple, force=False):
         int(math.floor(len(l))*i) for i in subset_proportions]
     # Add one element to the last chunk if flooring the number introduced
     # a rounding error
-    if sum(subsets_sizes) == len(l) - 1:
-        subsets_sizes[-1] += 1
+    if sum(subsets_sizes) <= len(l) - 1:
+        subsets_sizes[-1] += len(l) - sum(subsets_sizes)
     elif sum(subsets_sizes) != len(l) and not force:
         raise ValueError(
             "Chunks sizes do not match with list size.\n" +
