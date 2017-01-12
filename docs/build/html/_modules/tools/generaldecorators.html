@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tools.generaldecorators &#8212; pydeepgenomics  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="pydeepgenomics  documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Pydeepgenomics</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://www.digitalepidemiologylab.org/">Digital Epidemiology Lab</a></li>
+                <li><a href="../.././py-modindex.html">Modules</a></li>
+                <li><a href="../.././genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Pydeepgenomics <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Go to <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for tools.generaldecorators</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;This module contains decorators used in some of the packages of this</span>
+<span class="sd">project and for development.</span>
+
+<span class="sd">The decorators designed in this modules are not specific to the project and</span>
+<span class="sd">can be used elsewhere. They offer some features to make the code look cleaner</span>
+<span class="sd">(*e.g.* control the types of the arguments given to a function) or to help</span>
+<span class="sd">development (*e.g.* label outdated functions still present in the code and</span>
+<span class="sd">some other tools coming in future versions)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">doctest</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+
+
+<div class="viewcode-block" id="outdated"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.outdated">[docs]</a><span class="k">def</span> <span class="nf">outdated</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mark a function as outdated and signals it to the user if the function</span>
+<span class="sd">    is called.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func (:obj:`function`): function to be wrapped in this decorator</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        outdated_func (:obj:`function`): wrapped function</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">            &gt;&gt;&gt; @outdated</span>
+<span class="sd">            ... def func():</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func()</span>
+<span class="sd">            The function &quot;func&quot; has been called but is outdated.</span>
+<span class="sd">            Note that it might not function correctly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Wraps makes the wrapper function to keep information about the wrapped</span>
+    <span class="c1"># function.</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">outdated_func</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> has been called but is &quot;</span>
+            <span class="s2">&quot;outdated.</span><span class="se">\n</span><span class="s2">Note that it might not function correctly.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outdated_func</span></div>
+
+
+<div class="viewcode-block" id="accepts"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.accepts">[docs]</a><span class="k">def</span> <span class="nf">accepts</span><span class="p">(</span><span class="o">*</span><span class="n">types</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compare the type of the arguments given to the function with some</span>
+<span class="sd">    &quot;reference&quot; types specified to the decorator.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        *types (:obj:`type`): &quot;Reference&quot; types which will be compared to the\</span>
+<span class="sd">         ones given to the wrapped function.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        check_accepts (:obj:`function`): wrapped function</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: When the arguments given to the wrapped function are</span>
+<span class="sd">         not of the types given to the wrapper or when too many arguments are</span>
+<span class="sd">         given to the wrapped function.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        Function which accepts only one argument of one specific type:</span>
+<span class="sd">            &gt;&gt;&gt; @accepts(int)</span>
+<span class="sd">            ... def func(x):</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func(1)</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func(&quot;a&quot;)</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;Incorrect type !&quot;)</span>
+<span class="sd">            Incorrect type !</span>
+
+<span class="sd">        Function which accepts multiple :</span>
+<span class="sd">            &gt;&gt;&gt; @accepts(str, (list, tuple))</span>
+<span class="sd">            ... def func(x, y):</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func(&quot;foo&quot;, (1, 2, 3))</span>
+<span class="sd">            &gt;&gt;&gt; func(&quot;bar&quot;, [1, 2, 3])</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func(&quot;foo&quot;, {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3})</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;Incorrect type !&quot;)</span>
+<span class="sd">            Incorrect type !</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func((1, 2, 3), &quot;foo&quot;)</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;The order of the  parameters matters!&quot;)</span>
+<span class="sd">            The order of the  parameters matters!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">check_accepts</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="n">f</span><span class="o">.</span><span class="n">__code__</span><span class="o">.</span><span class="n">co_argcount</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">new_f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">types</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="s2">&quot;arg </span><span class="si">%r</span><span class="s2"> does not match </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_f</span>
+    <span class="k">return</span> <span class="n">check_accepts</span></div>
+
+
+<div class="viewcode-block" id="returns"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.returns">[docs]</a><span class="k">def</span> <span class="nf">returns</span><span class="p">(</span><span class="n">rtype</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compare the type of the object returned by the wrapped function with</span>
+<span class="sd">    a &quot;reference&quot; type specified to the decorator.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rtype (:obj:`type`): &quot;Reference&quot; types which will be compared to the\</span>
+<span class="sd">         ones given to the wrapped function.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        check_returns (:obj:`function`): wrapped function</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: When the arguments given to the wrapped function are</span>
+<span class="sd">         not of the types given to the wrapper.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        Function which accepts only one argument of one specific type:</span>
+<span class="sd">            &gt;&gt;&gt; @returns(int)</span>
+<span class="sd">            ... def func():</span>
+<span class="sd">            ...     return 1</span>
+<span class="sd">            &gt;&gt;&gt; func()</span>
+<span class="sd">            1</span>
+<span class="sd">            &gt;&gt;&gt; @returns(int)</span>
+<span class="sd">            ... def func():</span>
+<span class="sd">            ...     return &quot;a&quot;</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func()</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;Incorrect return type !&quot;)</span>
+<span class="sd">            Incorrect return type !</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">check_returns</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">new_f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">rtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">rtype</span><span class="p">),</span> \
+                    <span class="s2">&quot;return value </span><span class="si">%r</span><span class="s2"> does not match </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">rtype</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">result</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span>
+                <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">return</span> <span class="n">new_f</span>
+    <span class="k">return</span> <span class="n">check_returns</span></div>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Salathe group.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
