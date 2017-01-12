@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s in here ? &#8212; pydeepgenomics  documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Pydeepgenomics</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://www.digitalepidemiologylab.org/">Digital Epidemiology Lab</a></li>
+                <li><a href="./py-modindex.html">Modules</a></li>
+                <li><a href="./genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Pydeepgenomics <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Go to <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">What&#8217;s in here ?</a><ul>
+<li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
+<li><a class="reference internal" href="#general-transformations">General transformations:</a></li>
+<li><a class="reference internal" href="#application-specific-transformations">Application specific transformations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/description.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="what-s-in-here">
+<h1>What&#8217;s in here ?<a class="headerlink" href="#what-s-in-here" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>The preprocessing can be separated in two main parts:</p>
+<ol class="arabic simple">
+<li>The general transformation of the vcf text files (often used in
+bioinformatics applications) to a format simpler to use in our projects with
+decoupled meta information files and sample files.</li>
+<li>A more application specific part consisting for example in grouping all
+the information on each sample of a GWAS to train a model on genome wide
+information.</li>
+</ol>
+<p>We chose to do these steps with homemade custom solutions although some tools
+certainly already exist for a few reasons:</p>
+<ol class="arabic simple">
+<li>We had no good knowledge of these tools nor someone with a real expertise
+within easy reach. We had a try with GATK, bcf tools or PLINK and we still
+use them for some purpose but they are quite heavy to manipulate when your
+not used to it. Moreover, some features to keep the files shaped according
+to the standards classic standard were not necessary for our exploratory
+analysis and slow down the whole process.</li>
+<li>We had little prior knowledge of the conventions in genomic data formating
+nor how it was structured. Thus, making the preprocessing ourselves could
+help us familiarize ourselves with this kind of dataset.</li>
+</ol>
+<div class="section" id="general-transformations">
+<h3>General transformations:<a class="headerlink" href="#general-transformations" title="Permalink to this headline">¶</a></h3>
+<p>The datasets we received
+BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a>
+Explaination of the structure of a vcf file</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##fileformat=VCFv4.1</span>
+<span class="c1">##FILTER=&lt;ID=PASS,Description=&quot;All filters passed&quot;&gt;</span>
+<span class="c1">##fileDate=20150218</span>
+<span class="c1">##reference=ftp://ftp.1000genomes.ebi.ac.uk//vol1/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz</span>
+<span class="c1">##source=1000GenomesPhase3Pipeline</span>
+<span class="c1">##contig=&lt;ID=1,assembly=b37,length=249250621&gt;</span>
+<span class="c1">##contig=&lt;ID=2,assembly=b37,length=243199373&gt;</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="c1">##INFO=&lt;ID=VT,Number=.,Type=String,Description=&quot;indicates what type of variant the line represents&quot;&gt;</span>
+<span class="c1">##INFO=&lt;ID=EX_TARGET,Number=0,Type=Flag,Description=&quot;indicates whether a variant is within the exon pull down target boundaries&quot;&gt;</span>
+<span class="c1">##INFO=&lt;ID=MULTI_ALLELIC,Number=0,Type=Flag,Description=&quot;indicates whether a site is multi-allelic&quot;&gt;</span>
+<span class="c1">#CHROM  POS             ID              REF     ALT     QUAL    FILTER  INFO FORMAT  HG00096 HG00097</span>
+<span class="mi">22</span>      <span class="mi">16050075</span>        <span class="n">rs587697622</span>     <span class="n">A</span>       <span class="n">G</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+<span class="mi">22</span>      <span class="mi">16050115</span>        <span class="n">rs587755077</span>     <span class="n">G</span>       <span class="n">A</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+<span class="mi">22</span>      <span class="mi">16050213</span>        <span class="n">rs587654921</span>     <span class="n">C</span>       <span class="n">T</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Blabla</p>
+</div>
+<div class="section" id="application-specific-transformations">
+<h3>Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h3>
+<p>Idea
+Workflow</p>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Salathe group.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -12,6 +12,9 @@
 .. include:: ../../README.rst
 
 |
+.. include:: ./description.rst
+
+|
 .. include:: ../../TODO.rst
 
 |
