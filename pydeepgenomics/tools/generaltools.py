@@ -396,9 +396,9 @@ def random_chunks(l, subset_proportions, output_format=tuple, force=False):
     This generator of sizes corresponding to the proportions.
 
     Args:
-        l (:obj:`list`): original list
-         subset_proportions (:obj:`list|tuple`): sizes of the chunks given as\
-        proportions of the original list.
+        l (:obj:`list`): original list subset_proportions (\
+         :obj:`list|tuple`): sizes of the chunks given as proportions of the\
+         original list.
         l (:obj:`type`, optional):
         l (:obj:`bool`, optional):
 

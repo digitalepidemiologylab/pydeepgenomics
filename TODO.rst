@@ -145,13 +145,5 @@ vcf
 * (But first the vcf module may be broken into smaller units so that unit testing has a sens ...)
 * Document the tests
 
-import time
-def time_since_first_call():
-    previous_time = None
-    current_time = time.time()
-    yield 0
+------------
 
-    while True:
-
-        previous_time, current_time = current_time, time.time()
-        yield current_time - previous_time

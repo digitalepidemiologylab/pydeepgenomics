@@ -4,23 +4,23 @@
    contain the root `toctree` directive.
 
 Pydeepgenomics's documentation!
-##################################
+###############################
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+.. include:: ../../README.rst
 
-Indices and tables
-##################################
+|
+.. include:: ../../TODO.rst
+
+|
+.. include:: ../../LICENSE.rst
+
+.. Indices and tables
+   ##################
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-.. include:: ../../README.rst
-
-.. include:: ../../TODO.rst
-
-.. include:: ../../LICENSE.rst
-

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Pydeepgenomics’s documentation! &#8212; pydeepgenomics a1 documentation</title>
+    <title>Pydeepgenomics’s documentation! &#8212; pydeepgenomics  documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,10 +17,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'a1',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -32,7 +33,6 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="pydeepgenomics a1 documentation" href="#" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -59,6 +59,8 @@
           <ul class="nav navbar-nav">
             
                 <li><a href="http://www.digitalepidemiologylab.org/">Salathe Group</a></li>
+                <li><a href="./py-modindex.html">Modules</a></li>
+                <li><a href="./genindex.html">Index</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -82,8 +84,12 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Pydeepgenomics&#8217;s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-<li><a class="reference internal" href="#readme">README</a></li>
+<li><a class="reference internal" href="#readme">README</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#what-s-in-here">What&#8217;s in here ?</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#todo">TODO</a><ul>
 <li><a class="reference internal" href="#general">General</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
@@ -118,22 +124,19 @@
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#license">LICENSE</a></li>
 </ul>
 </ul>
 </li>
               
             
             
-              
-                
-              
-            
             
             
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/index.txt"
+  <a href="_sources/index.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -159,22 +162,43 @@
       
   <div class="section" id="pydeepgenomics-s-documentation">
 <h1>Pydeepgenomics&#8217;s documentation!<a class="headerlink" href="#pydeepgenomics-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound" id="contents">
+<div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
-</ul>
 </div>
 <div class="section" id="readme">
 <h1>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="Under constructions ...." class="align-center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 100.0px; height: 100.0px;" /></a>
-<p><a class="reference external" href="https://odissea.github.io/pydeepgenomics">https://odissea.github.io/pydeepgenomics</a>
-<strong>Note:</strong> Not retrocompatible with python 2.*</p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 100.0px; height: 100.0px;" /></a>
+<p class="caption"><span class="caption-text">Still under constructions ....
+(<em>ref.</em> <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png">image of this beautiful plasmid</a>.)</span></p>
+</div>
+<div class="line-block">
+<div class="line"><strong>General notes:</strong></div>
+<div class="line">Documentation on: <a class="reference external" href="https://odissea.github.io/pydeepgenomics">https://odissea.github.io/pydeepgenomics</a></div>
+<div class="line">Code on: <a class="reference external" href="https://github.com/Odissea/pydeepgenomics">https://github.com/Odissea/pydeepgenomics</a></div>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The idea behind this project is to give tools to work with deep neural
+networks on genomic data. It was originally designed for two distinct
+projects currently in progress: the first one on <a class="reference external" href="https://github.com/salathegroup/deep-height">predictions of a
+quantitative trait</a>
+and the second one on genotype imputation.</p>
+</div>
+<div class="section" id="what-s-in-here">
+<h2>What&#8217;s in here ?<a class="headerlink" href="#what-s-in-here" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Not retrocompatible with python 2.*</div>
+<div class="line">For the moment, it only works with text (<em>.vcf</em>) files.</div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 <div class="section" id="todo">
 <h1>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h1>
@@ -242,24 +266,20 @@
 <h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="generaltools">
 <h4>Generaltools<a class="headerlink" href="#generaltools" title="Permalink to this headline">¶</a></h4>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Recode the function list_elements:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>It should be cleaner</li>
 <li>It should be able to handle a tuble of extensions</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</p>
-</li>
-<li><p class="first">Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</p>
-</li>
-<li><p class="first"><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</p>
-</li>
-<li><p class="first">Add some filters <code class="code docutils literal"><span class="pre">get_nb_lines_file</span></code></p>
-</li>
+<li>Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</li>
+<li>Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</li>
+<li><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</li>
+<li>Add some filters <code class="code docutils literal"><span class="pre">get_nb_lines_file</span></code></li>
 </ul>
 </div>
 <div class="section" id="generaldecorators">
@@ -371,21 +391,21 @@
 <li>(But first the vcf module may be broken into smaller units so that unit testing has a sens ...)</li>
 <li>Document the tests</li>
 </ul>
-<p>import time
-def time_since_first_call():</p>
-<blockquote>
-<div><p>previous_time = None
-current_time = time.time()
-yield 0</p>
-<p>while True:</p>
-<blockquote>
-<div>previous_time, current_time = current_time, time.time()
-yield current_time - previous_time</div></blockquote>
-</div></blockquote>
-<p># LICENSE</p>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="license">
+<h1>LICENSE<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
 </div>
 
 
@@ -401,7 +421,7 @@ yield current_time - previous_time</div></blockquote>
     </p>
     <p>
         &copy; Copyright 2016, Salathe group.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>
