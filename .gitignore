@@ -2,5 +2,6 @@
 *__pycache__
 *playground
 .idea
+./docs/build
 *.___jb_old___
 *.___jb_bak___
