@@ -70,6 +70,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
+    'sphinx.ext.todo',
     'sphinxcontrib.napoleon']
 
 autodoc_member_order = 'groupwise'

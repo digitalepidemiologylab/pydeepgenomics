@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""This module contains decorators used in most of the packages of this project.
+"""This module contains functions used in most of the packages of this project.
 
-The decorators designed in this modules are not specific to the project and are
-used in most of the other packages.
+The functions designed in this modules are not specific to the project and are
+used in a lot of the modules.
 """
 import doctest
 import glob
@@ -69,7 +69,7 @@ def list_elements(
          :code:`sort="alphanumeric".
 
         exception (:obj:`list|tuple|None`, optional): List or tuple of\
-         specific items to ignore. By defaultNone
+         specific items to ignore. None by default
 
         verbose (:obj:`bool`, optional): Makes the function print more\
          information. (False by default)
@@ -102,10 +102,10 @@ def list_elements(
         * Make it cleaner and easier to read :
             * Reduce redundancy
             * Outsource the prints to :code:`custom_output` when this
-            function is moved to the current module.
+              function is moved to the current module.
         * add some modularity ?
         * Raise exceptions when incorrect parameters are given (Wrong
-        string, inconsitent value etc.)
+          string, inconsitent value etc.)
     """
 
     if exception is None:
@@ -209,10 +209,10 @@ def print_progress(
         total (:obj:`int`): the expected total number of iterations
 
         prefix (:obj:`str`, optional): field to display custom information (\
-         default is '').
+         default is ``''``).
 
         suffix (:obj:`str`, optional): field to display custom information (\
-         default is '').
+         default is ``''``).
 
         decimals (:obj:`int`, optional): number of decimals to show.
 
@@ -437,6 +437,13 @@ def random_chunks(l, subset_proportions, output_format=tuple, force=False):
         True
         >>> type(a)
         <class 'tuple'>
+        >>> for value in a+b+c:
+        ...     try:
+        ...         list_.remove(value)
+        ...     except ValueError:
+        ...         print("Value not in list !")
+        >>> list_
+        []
     """
     sum_proportions = sum(subset_proportions)
     if round(sum_proportions, 9) != 1 and not force:

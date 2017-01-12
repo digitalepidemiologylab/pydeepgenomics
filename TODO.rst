@@ -101,7 +101,7 @@ Subsets:
 
 cutting:
 ~~~~~~~~
-* Finish this part and code the corresponding example
+* Finish this part and code of the corresponding example
 
 Examples:
 ~~~~~~~~~
@@ -116,9 +116,11 @@ Tests
 
 General
 -------
-* Note: the tests were added a few months after the beginning of the project, thus their sparsity and the diffculty to test some functions
-* In general, add new cases to be tested for the different test sets to be sure that the extrem cases are taken into account.
-* I used unittest to familiarize myself with unit testing but it would be better to have everything in py.test or nose later.
+* Note: the tests were added a few months after the beginning of the project, thus their sparsity and the difficulty to test some functions
+* In general, add new cases to be tested for the different test sets to be
+  sure that the extreme cases are taken into account.
+* I used unittest to familiarize myself with unit testing but it would be better
+  to have everything in py.test or nose later.
 
 Tools
 -----
@@ -129,6 +131,8 @@ General tools
 * Use :code:`_write_multiple_files` and playground to do the tests instead of testing on a directory of the module
 * Document the tests ?
 * Add tests to be sure the functions which manage files handle both relative and absolute paths
+* Check that all functions raise the correct errors when given the wrong
+  arguments
 
 General decorators
 ~~~~~~~~~~~~~~~~~~

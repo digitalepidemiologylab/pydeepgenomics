@@ -1,7 +1,7 @@
-alltests
-========
+tools
+=====
 
 .. toctree::
    :maxdepth: 3
 
-   alltests
+   tools

@@ -127,238 +127,238 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">try</span><span class="p">:</span>
-	<span class="kn">from</span> <span class="nn">StringIO</span> <span class="k">import</span> <span class="n">StringIO</span>
+    <span class="kn">from</span> <span class="nn">StringIO</span> <span class="k">import</span> <span class="n">StringIO</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-	<span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">StringIO</span>
+    <span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">StringIO</span>
 
 <span class="k">try</span><span class="p">:</span>
-	<span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaldecorators</span> <span class="k">as</span> <span class="n">gd</span>
+    <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaldecorators</span> <span class="k">as</span> <span class="n">gd</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-	<span class="n">cmd_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;alltests&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-	<span class="k">if</span> <span class="n">cmd_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-		<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd_dir</span><span class="p">)</span>
-	<span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaldecorators</span> <span class="k">as</span> <span class="n">gd</span>
+    <span class="n">cmd_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;alltests&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">cmd_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd_dir</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaldecorators</span> <span class="k">as</span> <span class="n">gd</span>
 
 
 <span class="nd">@contextmanager</span>
 <div class="viewcode-block" id="capture"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.capture">[docs]</a><span class="k">def</span> <span class="nf">capture</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-	<span class="n">out</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
-	<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
-	<span class="k">try</span><span class="p">:</span>
-		<span class="n">command</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-		<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-		<span class="k">yield</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-	<span class="k">finally</span><span class="p">:</span>
-		<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span></div>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">command</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span></div>
 
 
 <div class="viewcode-block" id="TestOutdated"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated">[docs]</a><span class="k">class</span> <span class="nc">TestOutdated</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-<div class="viewcode-block" id="TestOutdated.test_without_decorator"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_without_decorator">[docs]</a>	<span class="k">def</span> <span class="nf">test_without_decorator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestOutdated.test_without_decorator"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_without_decorator">[docs]</a>    <span class="k">def</span> <span class="nf">test_without_decorator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="k">def</span> <span class="nf">basic_print_outdated</span><span class="p">():</span>
-			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-		<span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">def</span> <span class="nf">basic_print_outdated</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+        <span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
 
-		<span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_print_outdated</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div>
+        <span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_print_outdated</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestOutdated.test_on_a_sentence"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_on_a_sentence">[docs]</a>	<span class="k">def</span> <span class="nf">test_on_a_sentence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestOutdated.test_on_a_sentence"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_on_a_sentence">[docs]</a>    <span class="k">def</span> <span class="nf">test_on_a_sentence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">outdated</span>
-		<span class="k">def</span> <span class="nf">basic_print_outdated</span><span class="p">():</span>
-			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-		<span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> from </span><span class="se">\&quot;</span><span class="si">{1}</span><span class="se">\&quot;</span><span class="s2"> has been called but is </span><span class="se">\</span>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">outdated</span>
+        <span class="k">def</span> <span class="nf">basic_print_outdated</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+        <span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> has been called but is </span><span class="se">\</span>
 <span class="s2">outdated.</span><span class="se">\n</span><span class="s2">Note that it might not function correctly.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-			<span class="s2">&quot;basic_print_outdated&quot;</span><span class="p">,</span> <span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;basic_print_outdated&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
 
-		<span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_print_outdated</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div>
+        <span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_print_outdated</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestOutdated.test_fct_with_return"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_fct_with_return">[docs]</a>	<span class="k">def</span> <span class="nf">test_fct_with_return</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestOutdated.test_fct_with_return"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_fct_with_return">[docs]</a>    <span class="k">def</span> <span class="nf">test_fct_with_return</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">outdated</span>
-		<span class="k">def</span> <span class="nf">basic_return_outdated</span><span class="p">():</span>
-			<span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">outdated</span>
+        <span class="k">def</span> <span class="nf">basic_return_outdated</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span>
 
-		<span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> from </span><span class="se">\&quot;</span><span class="si">{1}</span><span class="se">\&quot;</span><span class="s2"> has been called but is </span><span class="se">\</span>
+        <span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> has been called but is </span><span class="se">\</span>
 <span class="s2">outdated.</span><span class="se">\n</span><span class="s2">Note that it might not function correctly.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-			<span class="s2">&quot;basic_return_outdated&quot;</span><span class="p">,</span> <span class="n">__file__</span><span class="p">)</span>
-		<span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_return_outdated</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-		<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
-		<span class="n">expected_retuned</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span>
-		<span class="n">returned</span> <span class="o">=</span> <span class="n">basic_return_outdated</span><span class="p">()</span>
-		<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_retuned</span><span class="p">,</span> <span class="n">returned</span><span class="p">)</span></div>
+            <span class="s2">&quot;basic_return_outdated&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_return_outdated</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+        <span class="n">expected_retuned</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span>
+        <span class="n">returned</span> <span class="o">=</span> <span class="n">basic_return_outdated</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_retuned</span><span class="p">,</span> <span class="n">returned</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestOutdated.test_fct_with_arguments"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_fct_with_arguments">[docs]</a>	<span class="k">def</span> <span class="nf">test_fct_with_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestOutdated.test_fct_with_arguments"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestOutdated.test_fct_with_arguments">[docs]</a>    <span class="k">def</span> <span class="nf">test_fct_with_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">outdated</span>
-		<span class="k">def</span> <span class="nf">basic_take_arguments_outdated</span><span class="p">(</span><span class="n">str_1</span><span class="p">,</span> <span class="n">str_2</span><span class="p">):</span>
-			<span class="nb">print</span><span class="p">(</span><span class="n">str_1</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">str_2</span><span class="p">)</span>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">outdated</span>
+        <span class="k">def</span> <span class="nf">basic_take_arguments_outdated</span><span class="p">(</span><span class="n">str_1</span><span class="p">,</span> <span class="n">str_2</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">str_1</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">str_2</span><span class="p">)</span>
 
-		<span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> from </span><span class="se">\&quot;</span><span class="si">{1}</span><span class="se">\&quot;</span><span class="s2"> has been called but is </span><span class="se">\</span>
+        <span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> has been called but is </span><span class="se">\</span>
 <span class="s2">outdated.</span><span class="se">\n</span><span class="s2">Note that it might not function correctly.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-			<span class="s2">&quot;basic_take_arguments_outdated&quot;</span><span class="p">,</span> <span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;basic_take_arguments_outdated&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
 
-		<span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_take_arguments_outdated</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;world!&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div></div>
+        <span class="k">with</span> <span class="n">capture</span><span class="p">(</span><span class="n">basic_take_arguments_outdated</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;world!&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="TestAccepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts">[docs]</a><span class="k">class</span> <span class="nc">TestAccepts</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-<div class="viewcode-block" id="TestAccepts.test_simple_string_correct_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_simple_string_correct_arg_accepts">[docs]</a>	<span class="k">def</span> <span class="nf">test_simple_string_correct_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestAccepts.test_simple_string_correct_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_simple_string_correct_arg_accepts">[docs]</a>    <span class="k">def</span> <span class="nf">test_simple_string_correct_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">simple_string_correct_arg_accepts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
-			<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-		<span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
-		<span class="k">with</span> <span class="n">capture</span><span class="p">(</span>
-				<span class="n">simple_string_correct_arg_accepts</span><span class="p">,</span>
-				<span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">simple_string_correct_arg_accepts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="n">expected_out</span> <span class="o">=</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">with</span> <span class="n">capture</span><span class="p">(</span>
+                <span class="n">simple_string_correct_arg_accepts</span><span class="p">,</span>
+                <span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected_out</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestAccepts.test_simple_string_incorrect_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_simple_string_incorrect_arg_accepts">[docs]</a>	<span class="k">def</span> <span class="nf">test_simple_string_incorrect_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">simple_string_incorrect_arg_accepts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
-			<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-		<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
-			<span class="n">simple_string_incorrect_arg_accepts</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TestAccepts.test_simple_string_incorrect_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_simple_string_incorrect_arg_accepts">[docs]</a>    <span class="k">def</span> <span class="nf">test_simple_string_incorrect_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">simple_string_incorrect_arg_accepts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+            <span class="n">simple_string_incorrect_arg_accepts</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestAccepts.test_multiple_correct_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_multiple_correct_arg_accepts">[docs]</a>	<span class="k">def</span> <span class="nf">test_multiple_correct_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestAccepts.test_multiple_correct_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_multiple_correct_arg_accepts">[docs]</a>    <span class="k">def</span> <span class="nf">test_multiple_correct_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">simple_string_correct_arg_accepts</span><span class="p">(</span>
-				<span class="n">string</span><span class="p">,</span>
-				<span class="n">int_</span><span class="p">,</span>
-				<span class="n">float_</span><span class="p">,</span>
-				<span class="n">list_</span><span class="p">,</span>
-				<span class="n">tuple_</span><span class="p">):</span>
-			<span class="n">output</span> <span class="o">=</span> <span class="p">[</span>
-				<span class="nb">str</span><span class="p">(</span><span class="n">tuple_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">int_</span><span class="o">+</span><span class="n">float_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">ele</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span>
-				<span class="n">string</span> <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">list_</span><span class="p">]</span>
-			<span class="k">return</span> <span class="n">output</span>
-		<span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;apples.&quot;</span>
-		<span class="n">input_int</span> <span class="o">=</span> <span class="mi">3</span>
-		<span class="n">input_float</span> <span class="o">=</span> <span class="mf">0.5</span>
-		<span class="n">input_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span> <span class="s2">&quot;excellent&quot;</span><span class="p">]</span>
-		<span class="n">input_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;I ate &quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-		<span class="n">expected_output</span> <span class="o">=</span> <span class="p">[</span>
-			<span class="s2">&quot;I ate 3.5 good apples.&quot;</span><span class="p">,</span>
-			<span class="s2">&quot;I ate 3.5 bad apples.&quot;</span><span class="p">,</span>
-			<span class="s2">&quot;I ate 3.5 excellent apples.&quot;</span><span class="p">,</span>
-		<span class="p">]</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
-			<span class="n">simple_string_correct_arg_accepts</span><span class="p">(</span>
-				<span class="n">input_str</span><span class="p">,</span>
-				<span class="n">input_int</span><span class="p">,</span>
-				<span class="n">input_float</span><span class="p">,</span>
-				<span class="n">input_list</span><span class="p">,</span>
-				<span class="n">input_tuple</span><span class="p">),</span>
-			<span class="n">expected_output</span>
-		<span class="p">)</span></div>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">simple_string_correct_arg_accepts</span><span class="p">(</span>
+                <span class="n">string</span><span class="p">,</span>
+                <span class="n">int_</span><span class="p">,</span>
+                <span class="n">float_</span><span class="p">,</span>
+                <span class="n">list_</span><span class="p">,</span>
+                <span class="n">tuple_</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">tuple_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">int_</span><span class="o">+</span><span class="n">float_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">ele</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span>
+                <span class="n">string</span> <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">list_</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">output</span>
+        <span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;apples.&quot;</span>
+        <span class="n">input_int</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">input_float</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">input_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span> <span class="s2">&quot;excellent&quot;</span><span class="p">]</span>
+        <span class="n">input_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;I ate &quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">expected_output</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;I ate 3.5 good apples.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I ate 3.5 bad apples.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I ate 3.5 excellent apples.&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+            <span class="n">simple_string_correct_arg_accepts</span><span class="p">(</span>
+                <span class="n">input_str</span><span class="p">,</span>
+                <span class="n">input_int</span><span class="p">,</span>
+                <span class="n">input_float</span><span class="p">,</span>
+                <span class="n">input_list</span><span class="p">,</span>
+                <span class="n">input_tuple</span><span class="p">),</span>
+            <span class="n">expected_output</span>
+        <span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestAccepts.test_multiple_partial_correct_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_multiple_partial_correct_arg_accepts">[docs]</a>	<span class="k">def</span> <span class="nf">test_multiple_partial_correct_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">simple_string_correct_arg_accepts</span><span class="p">(</span>
-				<span class="n">string</span><span class="p">,</span>
-				<span class="n">int_</span><span class="p">,</span>
-				<span class="n">float_</span><span class="p">,</span>
-				<span class="n">list_</span><span class="p">,</span>
-				<span class="n">tuple_</span><span class="p">):</span>
-			<span class="n">output</span> <span class="o">=</span> <span class="p">[</span>
-				<span class="nb">str</span><span class="p">(</span><span class="n">tuple_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">int_</span><span class="o">+</span><span class="n">float_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">ele</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span>
-				<span class="n">string</span> <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">list_</span><span class="p">]</span>
-			<span class="k">return</span> <span class="n">output</span>
-		<span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;apples.&quot;</span>
-		<span class="n">input_float</span> <span class="o">=</span> <span class="mf">0.5</span>
-		<span class="n">input_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span> <span class="s2">&quot;excellent&quot;</span><span class="p">]</span>
-		<span class="n">input_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;I ate &quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="viewcode-block" id="TestAccepts.test_multiple_partial_correct_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_multiple_partial_correct_arg_accepts">[docs]</a>    <span class="k">def</span> <span class="nf">test_multiple_partial_correct_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">simple_string_correct_arg_accepts</span><span class="p">(</span>
+                <span class="n">string</span><span class="p">,</span>
+                <span class="n">int_</span><span class="p">,</span>
+                <span class="n">float_</span><span class="p">,</span>
+                <span class="n">list_</span><span class="p">,</span>
+                <span class="n">tuple_</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">tuple_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">int_</span><span class="o">+</span><span class="n">float_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">ele</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span>
+                <span class="n">string</span> <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">list_</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">output</span>
+        <span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;apples.&quot;</span>
+        <span class="n">input_float</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">input_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span> <span class="s2">&quot;excellent&quot;</span><span class="p">]</span>
+        <span class="n">input_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;I ate &quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-		<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
-			<span class="n">simple_string_correct_arg_accepts</span><span class="p">(</span>
-				<span class="n">input_str</span><span class="p">,</span>
-				<span class="n">input_str</span><span class="p">,</span>
-				<span class="n">input_float</span><span class="p">,</span>
-				<span class="n">input_list</span><span class="p">,</span>
-				<span class="n">input_tuple</span><span class="p">)</span></div>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+            <span class="n">simple_string_correct_arg_accepts</span><span class="p">(</span>
+                <span class="n">input_str</span><span class="p">,</span>
+                <span class="n">input_str</span><span class="p">,</span>
+                <span class="n">input_float</span><span class="p">,</span>
+                <span class="n">input_list</span><span class="p">,</span>
+                <span class="n">input_tuple</span><span class="p">)</span></div>
 
 <span class="c1"># Problematic test, the AssertError is not correctly catched</span>
-	<span class="c1"># def test_too_many_arg_accepts(self):</span>
-	<span class="c1"># 	@gd.accepts(str)</span>
-	<span class="c1"># 	def too_many_arg_accepts(</span>
-	<span class="c1"># 			string1, string2):</span>
-	<span class="c1"># 		output = string1 + string2</span>
-	<span class="c1"># 		return output</span>
-	<span class="c1"># 	str1 = &quot;Hello&quot;</span>
-	<span class="c1"># 	str2 = &quot; world!&quot;</span>
+    <span class="c1"># def test_too_many_arg_accepts(self):</span>
+    <span class="c1"># 	@gd.accepts(str)</span>
+    <span class="c1"># 	def too_many_arg_accepts(</span>
+    <span class="c1"># 			string1, string2):</span>
+    <span class="c1"># 		output = string1 + string2</span>
+    <span class="c1"># 		return output</span>
+    <span class="c1"># 	str1 = &quot;Hello&quot;</span>
+    <span class="c1"># 	str2 = &quot; world!&quot;</span>
 <span class="c1">#</span>
-	<span class="c1"># 	with self.assertRaises(AssertionError):</span>
-	<span class="c1"># 		too_many_arg_accepts(str1, str2)</span>
+    <span class="c1"># 	with self.assertRaises(AssertionError):</span>
+    <span class="c1"># 		too_many_arg_accepts(str1, str2)</span>
 
-<div class="viewcode-block" id="TestAccepts.test_multiple_types_for_one_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_multiple_types_for_one_arg_accepts">[docs]</a>	<span class="k">def</span> <span class="nf">test_multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">((</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
-		<span class="k">def</span> <span class="nf">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">):</span>
-			<span class="k">return</span> <span class="n">number1</span> <span class="o">+</span> <span class="n">number2</span>
-		<span class="n">n1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-		<span class="n">n2</span> <span class="o">=</span> <span class="mf">3.14159</span>
-		<span class="n">n3</span> <span class="o">=</span> <span class="s2">&quot;1.4142&quot;</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n1</span><span class="p">),</span> <span class="n">n1</span><span class="o">+</span><span class="n">n1</span><span class="p">)</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">),</span> <span class="n">n1</span><span class="o">+</span><span class="n">n2</span><span class="p">)</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">n2</span><span class="p">),</span> <span class="n">n2</span><span class="o">+</span><span class="n">n2</span><span class="p">)</span>
-		<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
-			<span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n3</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="TestAccepts.test_multiple_types_for_one_arg_accepts"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestAccepts.test_multiple_types_for_one_arg_accepts">[docs]</a>    <span class="k">def</span> <span class="nf">test_multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">((</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+        <span class="k">def</span> <span class="nf">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">number1</span> <span class="o">+</span> <span class="n">number2</span>
+        <span class="n">n1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+        <span class="n">n2</span> <span class="o">=</span> <span class="mf">3.14159</span>
+        <span class="n">n3</span> <span class="o">=</span> <span class="s2">&quot;1.4142&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n1</span><span class="p">),</span> <span class="n">n1</span><span class="o">+</span><span class="n">n1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">),</span> <span class="n">n1</span><span class="o">+</span><span class="n">n2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">n2</span><span class="p">),</span> <span class="n">n2</span><span class="o">+</span><span class="n">n2</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+            <span class="n">multiple_types_for_one_arg_accepts</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n3</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="TestReturns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns">[docs]</a><span class="k">class</span> <span class="nc">TestReturns</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-<div class="viewcode-block" id="TestReturns.test_correct_return_none_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_correct_return_none_returns">[docs]</a>	<span class="k">def</span> <span class="nf">test_correct_return_none_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestReturns.test_correct_return_none_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_correct_return_none_returns">[docs]</a>    <span class="k">def</span> <span class="nf">test_correct_return_none_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">correct_return_none_returns</span><span class="p">():</span>
-			<span class="k">return</span>
-		<span class="n">x</span> <span class="o">=</span> <span class="n">correct_return_none_returns</span><span class="p">()</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">correct_return_none_returns</span><span class="p">():</span>
+            <span class="k">return</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">correct_return_none_returns</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestReturns.test_incorrect_return_none_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_incorrect_return_none_returns">[docs]</a>	<span class="k">def</span> <span class="nf">test_incorrect_return_none_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestReturns.test_incorrect_return_none_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_incorrect_return_none_returns">[docs]</a>    <span class="k">def</span> <span class="nf">test_incorrect_return_none_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">incorrect_return_none_returns</span><span class="p">():</span>
-			<span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span>
-		<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
-			<span class="n">incorrect_return_none_returns</span><span class="p">()</span></div>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">incorrect_return_none_returns</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+            <span class="n">incorrect_return_none_returns</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="TestReturns.test_correct_return_simple_string_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_correct_return_simple_string_returns">[docs]</a>	<span class="k">def</span> <span class="nf">test_correct_return_simple_string_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestReturns.test_correct_return_simple_string_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_correct_return_simple_string_returns">[docs]</a>    <span class="k">def</span> <span class="nf">test_correct_return_simple_string_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">correct_return_simple_string_returns</span><span class="p">():</span>
-			<span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span>
-		<span class="n">x</span> <span class="o">=</span> <span class="n">correct_return_simple_string_returns</span><span class="p">()</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">))</span></div>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">correct_return_simple_string_returns</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">correct_return_simple_string_returns</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="TestReturns.test_incorrect_return_simple_string_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_incorrect_return_simple_string_returns">[docs]</a>	<span class="k">def</span> <span class="nf">test_incorrect_return_simple_string_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestReturns.test_incorrect_return_simple_string_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_incorrect_return_simple_string_returns">[docs]</a>    <span class="k">def</span> <span class="nf">test_incorrect_return_simple_string_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">incorrect_return_simple_string_returns</span><span class="p">():</span>
-			<span class="k">return</span> <span class="mf">1.7320</span>
-		<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
-			<span class="n">incorrect_return_simple_string_returns</span><span class="p">()</span></div>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">incorrect_return_simple_string_returns</span><span class="p">():</span>
+            <span class="k">return</span> <span class="mf">1.7320</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+            <span class="n">incorrect_return_simple_string_returns</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="TestReturns.test_correct_return_tuple_of_args_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_correct_return_tuple_of_args_returns">[docs]</a>	<span class="k">def</span> <span class="nf">test_correct_return_tuple_of_args_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestReturns.test_correct_return_tuple_of_args_returns"><a class="viewcode-back" href="../../../alltests.test_tools.test_generaldecorators.html#alltests.test_tools.test_generaldecorators.TestReturns.test_correct_return_tuple_of_args_returns">[docs]</a>    <span class="k">def</span> <span class="nf">test_correct_return_tuple_of_args_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-		<span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>
-		<span class="k">def</span> <span class="nf">correct_return_tuple_of_args_returns</span><span class="p">():</span>
-			<span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="mi">7</span>
-		<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">correct_return_tuple_of_args_returns</span><span class="p">()</span>
+        <span class="nd">@gd</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">correct_return_tuple_of_args_returns</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="mi">7</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">correct_return_tuple_of_args_returns</span><span class="p">()</span>
 
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">))</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span></div></div>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
-	<span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 
     </div>

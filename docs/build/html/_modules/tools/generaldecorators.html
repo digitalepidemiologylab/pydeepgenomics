@@ -117,29 +117,95 @@
   <h1>Source code for tools.generaldecorators</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;This module contains decorators used in some of the packages of this</span>
+<span class="sd">project and for development.</span>
 
+<span class="sd">The decorators designed in this modules are not specific to the project and</span>
+<span class="sd">can be used elsewhere. They offer some features to make the code look cleaner</span>
+<span class="sd">(*e.g.* control the types of the arguments given to a function) or to help</span>
+<span class="sd">development (*e.g.* label outdated functions still present in the code and</span>
+<span class="sd">some other tools coming in future versions)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">doctest</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 
 
 <div class="viewcode-block" id="outdated"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.outdated">[docs]</a><span class="k">def</span> <span class="nf">outdated</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mark a function as outdated and signals it to the user if the function</span>
+<span class="sd">    is called.</span>
 
+<span class="sd">    Args:</span>
+<span class="sd">        func (:obj:`function`): function to be wrapped in this decorator</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        outdated_func (:obj:`function`): wrapped function</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">            &gt;&gt;&gt; @outdated</span>
+<span class="sd">            ... def func():</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func()</span>
+<span class="sd">            The function &quot;func&quot; has been called but is outdated.</span>
+<span class="sd">            Note that it might not function correctly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Wraps makes the wrapper function to keep information about the wrapped</span>
     <span class="c1"># function.</span>
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">outdated_func</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span>
-            <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> from </span><span class="se">\&quot;</span><span class="si">{1}</span><span class="se">\&quot;</span><span class="s2"> has been called but is &quot;</span>
+            <span class="s2">&quot;The function </span><span class="se">\&quot;</span><span class="si">{0}</span><span class="se">\&quot;</span><span class="s2"> has been called but is &quot;</span>
             <span class="s2">&quot;outdated.</span><span class="se">\n</span><span class="s2">Note that it might not function correctly.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
-                <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n">__module__</span><span class="p">]</span><span class="o">.</span><span class="n">__file__</span><span class="p">))</span>
+                <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">outdated_func</span></div>
 
 
 <div class="viewcode-block" id="accepts"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.accepts">[docs]</a><span class="k">def</span> <span class="nf">accepts</span><span class="p">(</span><span class="o">*</span><span class="n">types</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compare the type of the arguments given to the function with some</span>
+<span class="sd">    &quot;reference&quot; types specified to the decorator.</span>
 
+<span class="sd">    Args:</span>
+<span class="sd">        *types (:obj:`type`): &quot;Reference&quot; types which will be compared to the\</span>
+<span class="sd">         ones given to the wrapped function.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        check_accepts (:obj:`function`): wrapped function</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: When the arguments given to the wrapped function are</span>
+<span class="sd">         not of the types given to the wrapper or when too many arguments are</span>
+<span class="sd">         given to the wrapped function.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        Function which accepts only one argument of one specific type:</span>
+<span class="sd">            &gt;&gt;&gt; @accepts(int)</span>
+<span class="sd">            ... def func(x):</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func(1)</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func(&quot;a&quot;)</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;Incorrect type !&quot;)</span>
+<span class="sd">            Incorrect type !</span>
+
+<span class="sd">        Function which accepts multiple :</span>
+<span class="sd">            &gt;&gt;&gt; @accepts(str, (list, tuple))</span>
+<span class="sd">            ... def func(x, y):</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func(&quot;foo&quot;, (1, 2, 3))</span>
+<span class="sd">            &gt;&gt;&gt; func(&quot;bar&quot;, [1, 2, 3])</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func(&quot;foo&quot;, {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3})</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;Incorrect type !&quot;)</span>
+<span class="sd">            Incorrect type !</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func((1, 2, 3), &quot;foo&quot;)</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;The order of the  parameters matters!&quot;)</span>
+<span class="sd">            The order of the  parameters matters!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">check_accepts</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
 
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="n">f</span><span class="o">.</span><span class="n">__code__</span><span class="o">.</span><span class="n">co_argcount</span>
@@ -150,15 +216,56 @@
                 <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="s2">&quot;arg </span><span class="si">%r</span><span class="s2"> does not match </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 
             <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-        <span class="c1"># new_f.__name__ = f.__name__</span>
-        <span class="c1"># new_f.__doc__ = f.__doc__</span>
-        <span class="c1"># new_f.__module__ = f.__module__</span>
+
         <span class="k">return</span> <span class="n">new_f</span>
     <span class="k">return</span> <span class="n">check_accepts</span></div>
 
 
 <div class="viewcode-block" id="returns"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.returns">[docs]</a><span class="k">def</span> <span class="nf">returns</span><span class="p">(</span><span class="n">rtype</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compare the type of the object returned by the wrapped function with</span>
+<span class="sd">    a &quot;reference&quot; type specified to the decorator.</span>
 
+<span class="sd">    Args:</span>
+<span class="sd">        rtype (:obj:`type`): &quot;Reference&quot; types which will be compared to the\</span>
+<span class="sd">         ones given to the wrapped function.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        outdated_func (:obj:`function`): wrapped function</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: When the arguments given to the wrapped function are</span>
+<span class="sd">         not of the types given to the wrapper or when too many arguments are</span>
+<span class="sd">         given to the wrapped function.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        Function which accepts only one argument of one specific type:</span>
+<span class="sd">            &gt;&gt;&gt; @accepts(int)</span>
+<span class="sd">            ... def func(x):</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func(1)</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func(&quot;a&quot;)</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;Incorrect type !&quot;)</span>
+<span class="sd">            Incorrect type !</span>
+
+<span class="sd">        Function which accepts multiple :</span>
+<span class="sd">            &gt;&gt;&gt; @accepts(str, (list, tuple))</span>
+<span class="sd">            ... def func(x, y):</span>
+<span class="sd">            ...     pass</span>
+<span class="sd">            &gt;&gt;&gt; func(&quot;foo&quot;, (1, 2, 3))</span>
+<span class="sd">            &gt;&gt;&gt; func(&quot;bar&quot;, [1, 2, 3])</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func(&quot;foo&quot;, {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3})</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;Incorrect type !&quot;)</span>
+<span class="sd">            Incorrect type !</span>
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            ...     func((1, 2, 3), &quot;foo&quot;)</span>
+<span class="sd">            ... except AssertionError:</span>
+<span class="sd">            ...     print(&quot;The order of the  parameters matters!&quot;)</span>
+<span class="sd">            The order of the  parameters matters!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">check_returns</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">new_f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
@@ -170,11 +277,13 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span>
                 <span class="k">return</span> <span class="n">result</span>
-        <span class="c1"># new_f.__name__ = f.__name__</span>
-        <span class="c1"># new_f.__doc__ = f.__doc__</span>
-        <span class="c1"># new_f.__module__ = f.__module__</span>
+
         <span class="k">return</span> <span class="n">new_f</span>
     <span class="k">return</span> <span class="n">check_returns</span></div>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 </pre></div>
 
     </div>

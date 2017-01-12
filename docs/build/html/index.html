@@ -359,24 +359,20 @@ Workflow</p>
 <h3>3.3.1&nbsp;&nbsp;&nbsp;Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="generaltools">
 <h4>3.3.1.1&nbsp;&nbsp;&nbsp;Generaltools<a class="headerlink" href="#generaltools" title="Permalink to this headline">¶</a></h4>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Recode the function list_elements:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>It should be cleaner</li>
 <li>It should be able to handle a tuble of extensions</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</p>
-</li>
-<li><p class="first">Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</p>
-</li>
-<li><p class="first"><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</p>
-</li>
-<li><p class="first">Add some filters <code class="code docutils literal"><span class="pre">get_nb_lines_file</span></code></p>
-</li>
+<li>Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</li>
+<li>Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</li>
+<li><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</li>
+<li>Add some filters <code class="code docutils literal"><span class="pre">get_nb_lines_file</span></code></li>
 </ul>
 </div>
 <div class="section" id="generaldecorators">
@@ -437,7 +433,7 @@ Workflow</p>
 <div class="section" id="cutting">
 <h4>3.3.2.4&nbsp;&nbsp;&nbsp;cutting:<a class="headerlink" href="#cutting" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>Finish this part and code the corresponding example</li>
+<li>Finish this part and code of the corresponding example</li>
 </ul>
 </div>
 <div class="section" id="examples">
@@ -456,9 +452,11 @@ Workflow</p>
 <div class="section" id="id2">
 <h3>3.4.1&nbsp;&nbsp;&nbsp;General<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Note: the tests were added a few months after the beginning of the project, thus their sparsity and the diffculty to test some functions</li>
-<li>In general, add new cases to be tested for the different test sets to be sure that the extrem cases are taken into account.</li>
-<li>I used unittest to familiarize myself with unit testing but it would be better to have everything in py.test or nose later.</li>
+<li>Note: the tests were added a few months after the beginning of the project, thus their sparsity and the difficulty to test some functions</li>
+<li>In general, add new cases to be tested for the different test sets to be
+sure that the extreme cases are taken into account.</li>
+<li>I used unittest to familiarize myself with unit testing but it would be better
+to have everything in py.test or nose later.</li>
 </ul>
 </div>
 <div class="section" id="id3">
@@ -469,6 +467,8 @@ Workflow</p>
 <li>Use <code class="code docutils literal"><span class="pre">_write_multiple_files</span></code> and playground to do the tests instead of testing on a directory of the module</li>
 <li>Document the tests ?</li>
 <li>Add tests to be sure the functions which manage files handle both relative and absolute paths</li>
+<li>Check that all functions raise the correct errors when given the wrong
+arguments</li>
 </ul>
 </div>
 <div class="section" id="general-decorators">

@@ -117,10 +117,10 @@
   <h1>Source code for tools.generaltools</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;This module contains decorators used in most of the packages of this project.</span>
+<span class="sd">&quot;&quot;&quot;This module contains functions used in most of the packages of this project.</span>
 
-<span class="sd">The decorators designed in this modules are not specific to the project and are</span>
-<span class="sd">used in most of the other packages.</span>
+<span class="sd">The functions designed in this modules are not specific to the project and are</span>
+<span class="sd">used in a lot of the modules.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">doctest</span>
 <span class="kn">import</span> <span class="nn">glob</span>
@@ -186,7 +186,7 @@
 <span class="sd">         :code:`sort=&quot;alphanumeric&quot;.</span>
 
 <span class="sd">        exception (:obj:`list|tuple|None`, optional): List or tuple of\</span>
-<span class="sd">         specific items to ignore. By defaultNone</span>
+<span class="sd">         specific items to ignore. None by default</span>
 
 <span class="sd">        verbose (:obj:`bool`, optional): Makes the function print more\</span>
 <span class="sd">         information. (False by default)</span>
@@ -219,10 +219,10 @@
 <span class="sd">        * Make it cleaner and easier to read :</span>
 <span class="sd">            * Reduce redundancy</span>
 <span class="sd">            * Outsource the prints to :code:`custom_output` when this</span>
-<span class="sd">            function is moved to the current module.</span>
+<span class="sd">              function is moved to the current module.</span>
 <span class="sd">        * add some modularity ?</span>
 <span class="sd">        * Raise exceptions when incorrect parameters are given (Wrong</span>
-<span class="sd">        string, inconsitent value etc.)</span>
+<span class="sd">          string, inconsitent value etc.)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">exception</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -326,10 +326,10 @@
 <span class="sd">        total (:obj:`int`): the expected total number of iterations</span>
 
 <span class="sd">        prefix (:obj:`str`, optional): field to display custom information (\</span>
-<span class="sd">         default is &#39;&#39;).</span>
+<span class="sd">         default is ``&#39;&#39;``).</span>
 
 <span class="sd">        suffix (:obj:`str`, optional): field to display custom information (\</span>
-<span class="sd">         default is &#39;&#39;).</span>
+<span class="sd">         default is ``&#39;&#39;``).</span>
 
 <span class="sd">        decimals (:obj:`int`, optional): number of decimals to show.</span>
 
@@ -546,11 +546,11 @@
 
 <span class="sd">        &gt;&gt;&gt; list_ = list(range(100))</span>
 <span class="sd">        &gt;&gt;&gt; a, b, c = random_chunks(list_, (0.2, 0.5, 0.3))</span>
-<span class="sd">        &gt;&gt;&gt; len(a) == 2</span>
+<span class="sd">        &gt;&gt;&gt; len(a) == 20</span>
 <span class="sd">        True</span>
-<span class="sd">        &gt;&gt;&gt; len(b) == 5</span>
+<span class="sd">        &gt;&gt;&gt; len(b) == 50</span>
 <span class="sd">        True</span>
-<span class="sd">        &gt;&gt;&gt; len(c) == 3</span>
+<span class="sd">        &gt;&gt;&gt; len(c) == 30</span>
 <span class="sd">        True</span>
 <span class="sd">        &gt;&gt;&gt; type(a)</span>
 <span class="sd">        &lt;class &#39;tuple&#39;&gt;</span>
