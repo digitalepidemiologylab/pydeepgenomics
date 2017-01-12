@@ -151,7 +151,8 @@ if html_theme == 'bootstrap':
         # Note the "1" or "True" value above as the third argument to indicate
         # an arbitrary url.
         'navbar_links': [
-            ("Salathe Group", "http://www.digitalepidemiologylab.org/", True),
+            ("Digital Epidemiology Lab",
+             "http://www.digitalepidemiologylab.org/", True),
             ('Modules', './py-modindex'),
             ('Index', './genindex')
         ],
@@ -163,11 +164,11 @@ if html_theme == 'bootstrap':
         'navbar_pagenav': True,
 
         # Tab name for the current pages TOC. (Default: "Page")
-        'navbar_pagenav_name': "Page",
+        'navbar_pagenav_name': "Go to",
 
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
-        'globaltoc_depth': -1,
+        'globaltoc_depth': 2,
 
         # Include hidden TOCs in Site navbar?
         #

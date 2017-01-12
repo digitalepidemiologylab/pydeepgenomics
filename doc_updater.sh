@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # build the docs
+cp ./requirements.txt ./docs/source/requirements.rst
 cd docs
 sphinx-apidoc -d 3 -f -e -o ./source ../pydeepgenomics/preprocess
 sphinx-apidoc -d 3 -f -e -o ./source ../pydeepgenomics/tools
