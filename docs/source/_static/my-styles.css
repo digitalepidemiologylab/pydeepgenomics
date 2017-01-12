@@ -87,3 +87,7 @@
     background-color: #c6c8cd;
   }
 }
+
+.strike {
+  text-decoration: line-through;
+}
