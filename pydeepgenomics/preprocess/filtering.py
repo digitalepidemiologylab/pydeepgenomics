@@ -24,254 +24,253 @@ except ImportError:
     from pydeepgenomics.tools import generaldecorators as gd
 
 
-def do_subsets(
-        path_data,
-        path_subsets):
+# def do_subsets(
+#         path_data,
+#         path_subsets):# 
 
-    list_chrom_dirs = gt.list_elements(path_data, type_="dir")
-    list_of_chroms = [os.path.basename(chrom) for chrom in list_chrom_dirs]
-    # Create the tree for the repartition of the dataset
-    if not os.path.isdir(os.path.join(path_subsets, "Subsets")):
-        os.mkdir(os.path.join(path_subsets, "Subsets"))
-        os.mkdir(os.path.join(path_subsets, "Subsets", "FULL"))
-        create_subsets_dirs(
-            os.path.join(path_subsets, "Subsets", "FULL"), list_of_chroms)
-        subprocess.call(
-            "cp -rf {0} {1}".format(
-                os.path.join(path_subsets, "Subsets", "FULL"),
-                os.path.join(path_subsets, "Subsets", "10_PERCENT")),
-            shell=True)
-        subprocess.call("cp -rf {0} {1}".format(
-                os.path.join(path_subsets, "Subsets", "FULL"),
-                os.path.join(path_subsets, "Subsets", "1_PERCENT")),
-            shell=True)
-    elif not os.path.isdir(os.path.join(path_subsets, "Subsets", "FULL")):
-        os.mkdir(os.path.join(path_subsets, "Subsets", "FULL"))
-        create_subsets_dirs(
-            os.path.join(path_subsets, "Subsets", "FULL"), list_of_chroms)
-        subprocess.call(
-            "rm -r {0}/10_PERCENT {0}/1_PERCENT".format(
-                os.path.join(path_subsets, "Subsets")),
-            shell=True)
-        subprocess.call(
-            "cp -rf {0} {1}".format(
-                os.path.join(path_subsets, "Subsets", "FULL"),
-                os.path.join(path_subsets, "Subsets", "10_PERCENT")),
-            shell=True)
-        subprocess.call(
-            "cp -rf {0} {1}".format(
-                os.path.join(path_subsets, "Subsets", "FULL"),
-                os.path.join(path_subsets, "Subsets", "1_PERCENT")),
-            shell=True)
-    else:
-        subprocess.call(
-            "rm -r {0} {1}".format(
-                os.path.join(path_subsets, "Subsets", "10_PERCENT"),
-                os.path.join(path_subsets, "Subsets", "1_PERCENT")),
-            shell=True)
-        os.mkdir(os.path.join(path_subsets, "Subsets", "10_PERCENT"))
-        create_subsets_dirs(
-            os.path.join(path_subsets, "Subsets", "10_PERCENT"), list_of_chroms)
-        subprocess.call("cp -rf {0} {1}".format(
-            os.path.join(path_subsets, "Subsets", "10_PERCENT"),
-            os.path.join(path_subsets, "Subsets", "1_PERCENT")),
-            shell=True)
-    # Reorganise the files
-    for chrom in list_chrom_dirs:
-        list_samples = gt.list_elements(chrom, extension=".txt.gz")
-        total_samples = len(list_samples)
-        for samples in range(int(math.floor(total_samples*proportions["test"]))):
-            pick = random.choice(list_samples)
-            if not os.path.isdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Test",
-                        os.path.basename(chrom))):
-                os.mkdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Test",
-                        os.path.basename(chrom)))
-            subprocess.call(
-                "mv {0} {1}".format(
-                    pick,
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Test",
-                        os.path.basename(chrom))),
-                shell=True)
-            list_samples.remove(pick)
+#     list_chrom_dirs = gt.list_elements(path_data, type_="dir")
+#     list_of_chroms = [os.path.basename(chrom) for chrom in list_chrom_dirs]
+#     # Create the tree for the repartition of the dataset
+#     if not os.path.isdir(os.path.join(path_subsets, "Subsets")):
+#         os.mkdir(os.path.join(path_subsets, "Subsets"))
+#         os.mkdir(os.path.join(path_subsets, "Subsets", "FULL"))
+#         create_subsets_dirs(
+#             os.path.join(path_subsets, "Subsets", "FULL"), list_of_chroms)
+#         subprocess.call(
+#             "cp -rf {0} {1}".format(
+#                 os.path.join(path_subsets, "Subsets", "FULL"),
+#                 os.path.join(path_subsets, "Subsets", "10_PERCENT")),
+#             shell=True)
+#         subprocess.call("cp -rf {0} {1}".format(
+#                 os.path.join(path_subsets, "Subsets", "FULL"),
+#                 os.path.join(path_subsets, "Subsets", "1_PERCENT")),
+#             shell=True)
+#     elif not os.path.isdir(os.path.join(path_subsets, "Subsets", "FULL")):
+#         os.mkdir(os.path.join(path_subsets, "Subsets", "FULL"))
+#         create_subsets_dirs(
+#             os.path.join(path_subsets, "Subsets", "FULL"), list_of_chroms)
+#         subprocess.call(
+#             "rm -r {0}/10_PERCENT {0}/1_PERCENT".format(
+#                 os.path.join(path_subsets, "Subsets")),
+#             shell=True)
+#         subprocess.call(
+#             "cp -rf {0} {1}".format(
+#                 os.path.join(path_subsets, "Subsets", "FULL"),
+#                 os.path.join(path_subsets, "Subsets", "10_PERCENT")),
+#             shell=True)
+#         subprocess.call(
+#             "cp -rf {0} {1}".format(
+#                 os.path.join(path_subsets, "Subsets", "FULL"),
+#                 os.path.join(path_subsets, "Subsets", "1_PERCENT")),
+#             shell=True)
+#     else:
+#         subprocess.call(
+#             "rm -r {0} {1}".format(
+#                 os.path.join(path_subsets, "Subsets", "10_PERCENT"),
+#                 os.path.join(path_subsets, "Subsets", "1_PERCENT")),
+#             shell=True)
+#         os.mkdir(os.path.join(path_subsets, "Subsets", "10_PERCENT"))
+#         create_subsets_dirs(
+#             os.path.join(path_subsets, "Subsets", "10_PERCENT"), list_of_chroms)
+#         subprocess.call("cp -rf {0} {1}".format(
+#             os.path.join(path_subsets, "Subsets", "10_PERCENT"),
+#             os.path.join(path_subsets, "Subsets", "1_PERCENT")),
+#             shell=True)
+#     # Reorganise the files
+#     for chrom in list_chrom_dirs:
+#         list_samples = gt.list_elements(chrom, extension=".txt.gz")
+#         total_samples = len(list_samples)
+#         for samples in range(int(math.floor(total_samples*proportions["test"]))):
+#             pick = random.choice(list_samples)
+#             if not os.path.isdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Test",
+#                         os.path.basename(chrom))):
+#                 os.mkdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Test",
+#                         os.path.basename(chrom)))
+#             subprocess.call(
+#                 "mv {0} {1}".format(
+#                     pick,
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Test",
+#                         os.path.basename(chrom))),
+#                 shell=True)
+#             list_samples.remove(pick)# 
 
-        for samples in range(int(math.floor(total_samples*settings.PROPVALID))):
-            pick = random.choice(list_samples)
-            if not os.path.isdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Valid",
-                        os.path.basename(chrom))):
-                os.mkdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Valid",
-                        os.path.basename(chrom)))
-            subprocess.call(
-                "mv {0} {1}".format(
-                    pick,
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Valid",
-                        os.path.basename(chrom))),
-                shell=True)
-            list_samples.remove(pick)
-        for samples in list_samples:
-            if not os.path.isdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Train",
-                        os.path.basename(chrom))):
-                os.mkdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Train",
-                        os.path.basename(chrom)))
-            subprocess.call(
-                "mv {0} {1}".format(
-                    samples,
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "FULL",
-                        "Train",
-                        os.path.basename(chrom))),
-                shell=True)
-    # Cut the files to get training examples of similar size
-    # Filter 90% of the positions
-    subsets = gt.list_elements(
-        os.path.join(path_subsets, "Subsets", "FULL"), type_="dir")
-    for sub in subsets:
-        for chrom in list_of_chroms:
-            cut_files(gt.list_elements(
-                os.path.join(sub, chrom),
-                extension=".txt.gz"),
-                settings.SIZEFRAGMENTS,
-                os.path.join(sub, chrom),
-                copy=False)
-        mask_data(
-            sub,
-            0.1,
-            path_output=os.path.join(
-                path_subsets, "Subsets", "10_PERCENT", os.path.basename(sub)))
-    # Filter 90% of the positions of the prefiltered dataset
-    subsets = gt.list_elements(
-        os.path.join(path_subsets, "Subsets", "10_PERCENT"), type_="dir")
-    for sub in subsets:
-        mask_data(
-            sub,
-            0.1,
-            path_output=os.path.join(
-                path_subsets, "Subsets", "1_PERCENT", os.path.basename(sub)),
-            prefix_subset="1PER_")
-    subsets = gt.list_elements(
-        os.path.join(path_subsets, "Subsets", "FULL", type_="dir"))
-    for sub in subsets:
-        if (
-            not os.path.isdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "10_PERCENT",
-                        os.path.basename(sub),
-                        "Firstgen"))
-            and not (os.path.isdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "10_PERCENT",
-                        os.path.basename(sub),
-                        "Secondgen")))):
-            os.mkdir(os.path.join(
-                path_subsets,
-                "Subsets",
-                "10_PERCENT",
-                os.path.basename(sub),
-                "Firstgen"))
-            os.mkdir(os.path.join(
-                path_subsets,
-                "Subsets",
-                "10_PERCENT",
-                os.path.basename(sub),
-                "Secondgen"))
-        mask_data(
-            sub,
-            0.1,
-            path_output=os.path.join(
-                path_subsets,
-                "Subsets",
-                "10_PERCENT",
-                os.path.basename(sub),
-                "Firstgen"))
-        mask_data(
-            sub,
-            0.1,
-            path_output=os.path.join(
-                path_subsets,
-                "Subsets",
-                "10_PERCENT",
-                os.path.basename(sub),
-                "Secondgen"))
-    subsets = gt.list_elements(
-        os.path.join(path_subsets, "Subsets", "10_PERCENT"),
-        type_="dir")
-    for sub in subsets:
-        sub_name = os.path.basename(sub)
-        generations = gt.list_elements(sub, type_="dir")
-        for gen in generations:
-            generation_name = os.path.basename(gen)
-            if not (os.path.isdir(os.path.join(
-                    path_subsets,
-                    "Subsets",
-                    "1_PERCENT",
-                    sub_name,
-                    generation_name))):
-                os.mkdir(
-                    os.path.join(
-                        path_subsets,
-                        "Subsets",
-                        "1_PERCENT",
-                        sub_name,
-                        generation_name))
-            mask_data(
-                os.path.join(sub, generation_name),
-                0.1,
-                path_output=os.path.join(
-                    path_subsets,
-                    "Subsets",
-                    "1_PERCENT",
-                    sub_name,
-                    generation_name),
-                prefix_subset="1PER_")
+#         for samples in range(int(math.floor(total_samples*settings.PROPVALID))):
+#             pick = random.choice(list_samples)
+#             if not os.path.isdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Valid",
+#                         os.path.basename(chrom))):
+#                 os.mkdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Valid",
+#                         os.path.basename(chrom)))
+#             subprocess.call(
+#                 "mv {0} {1}".format(
+#                     pick,
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Valid",
+#                         os.path.basename(chrom))),
+#                 shell=True)
+#             list_samples.remove(pick)
+#         for samples in list_samples:
+#             if not os.path.isdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Train",
+#                         os.path.basename(chrom))):
+#                 os.mkdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Train",
+#                         os.path.basename(chrom)))
+#             subprocess.call(
+#                 "mv {0} {1}".format(
+#                     samples,
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "FULL",
+#                         "Train",
+#                         os.path.basename(chrom))),
+#                 shell=True)
+#     # Cut the files to get training examples of similar size
+#     # Filter 90% of the positions
+#     subsets = gt.list_elements(
+#         os.path.join(path_subsets, "Subsets", "FULL"), type_="dir")
+#     for sub in subsets:
+#         for chrom in list_of_chroms:
+#             cut_files(gt.list_elements(
+#                 os.path.join(sub, chrom),
+#                 extension=".txt.gz"),
+#                 settings.SIZEFRAGMENTS,
+#                 os.path.join(sub, chrom),
+#                 copy=False)
+#         mask_data(
+#             sub,
+#             0.1,
+#             path_output=os.path.join(
+#                 path_subsets, "Subsets", "10_PERCENT", os.path.basename(sub)))
+#     # Filter 90% of the positions of the prefiltered dataset
+#     subsets = gt.list_elements(
+#         os.path.join(path_subsets, "Subsets", "10_PERCENT"), type_="dir")
+#     for sub in subsets:
+#         mask_data(
+#             sub,
+#             0.1,
+#             path_output=os.path.join(
+#                 path_subsets, "Subsets", "1_PERCENT", os.path.basename(sub)),
+#             prefix_subset="1PER_")
+#     subsets = gt.list_elements(
+#         os.path.join(path_subsets, "Subsets", "FULL", type_="dir"))
+#     for sub in subsets:
+#         if (
+#             not os.path.isdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "10_PERCENT",
+#                         os.path.basename(sub),
+#                         "Firstgen"))
+#             and not (os.path.isdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "10_PERCENT",
+#                         os.path.basename(sub),
+#                         "Secondgen")))):
+#             os.mkdir(os.path.join(
+#                 path_subsets,
+#                 "Subsets",
+#                 "10_PERCENT",
+#                 os.path.basename(sub),
+#                 "Firstgen"))
+#             os.mkdir(os.path.join(
+#                 path_subsets,
+#                 "Subsets",
+#                 "10_PERCENT",
+#                 os.path.basename(sub),
+#                 "Secondgen"))
+#         mask_data(
+#             sub,
+#             0.1,
+#             path_output=os.path.join(
+#                 path_subsets,
+#                 "Subsets",
+#                 "10_PERCENT",
+#                 os.path.basename(sub),
+#                 "Firstgen"))
+#         mask_data(
+#             sub,
+#             0.1,
+#             path_output=os.path.join(
+#                 path_subsets,
+#                 "Subsets",
+#                 "10_PERCENT",
+#                 os.path.basename(sub),
+#                 "Secondgen"))
+#     subsets = gt.list_elements(
+#         os.path.join(path_subsets, "Subsets", "10_PERCENT"),
+#         type_="dir")
+#     for sub in subsets:
+#         sub_name = os.path.basename(sub)
+#         generations = gt.list_elements(sub, type_="dir")
+#         for gen in generations:
+#             generation_name = os.path.basename(gen)
+#             if not (os.path.isdir(os.path.join(
+#                     path_subsets,
+#                     "Subsets",
+#                     "1_PERCENT",
+#                     sub_name,
+#                     generation_name))):
+#                 os.mkdir(
+#                     os.path.join(
+#                         path_subsets,
+#                         "Subsets",
+#                         "1_PERCENT",
+#                         sub_name,
+#                         generation_name))
+#             mask_data(
+#                 os.path.join(sub, generation_name),
+#                 0.1,
+#                 path_output=os.path.join(
+#                     path_subsets,
+#                     "Subsets",
+#                     "1_PERCENT",
+#                     sub_name,
+#                     generation_name),
+#                 prefix_subset="1PER_")
 
 
-def _build_output_tree_struct(path_in, path_out):
+def copy_output_tree_struct(path_in, path_out):
 
     for (sub_path, _, _) in os.walk(path_in):
-
         out = sub_path.replace(path_in, path_out)
         os.makedirs(out)
 
@@ -298,7 +297,7 @@ def mask_data(
     out_dir_name = prefix_subset + os.path.basename(path_data)
     if path_output is None:
         path_output = os.path.join(os.path.dirname(path_data), out_dir_name)
-    _build_output_tree_struct(path_data, path_output)
+    copy_output_tree_struct(path_data, path_output)
 
     i = 0
 

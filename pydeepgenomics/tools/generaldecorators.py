@@ -14,7 +14,7 @@ from functools import wraps
 
 
 def outdated(func):
-    """Mark a function as outdated and signals it to the user if the function
+    """Marks a function as outdated and signals it to the user if the function
     is called.
 
     Args:
@@ -45,7 +45,7 @@ def outdated(func):
 
 
 def accepts(*types):
-    """Compare the type of the arguments given to the function with some
+    """Compares the types of the arguments given to the function with some
     "reference" types specified to the decorator.
 
     Args:
@@ -105,7 +105,7 @@ def accepts(*types):
 
 
 def returns(rtype):
-    """Compare the type of the object returned by the wrapped function with
+    """Compares the type of the object returned by the wrapped function with
     a "reference" type specified to the decorator.
 
     Args:

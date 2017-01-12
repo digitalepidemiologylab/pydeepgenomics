@@ -55,12 +55,17 @@ information of all our samples for each human autosome (non-sexual chromosome).
 The VCF file format is a text format identifying the genetic variants between
 individuals. They contain
 
-deep-height
-___________
+| **deep-height**
 
 
-deep-imputation
-_______________
+
+| **deep-imputation**
+
+
+
+.. image:: Figure_imputation.png
+
+.. image:: Pipeline.png
 
 BUILD 37 http://www.internationalgenome.org/category/ncbi36/
 

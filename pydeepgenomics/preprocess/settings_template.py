@@ -37,15 +37,9 @@ LN = {
 # Encoding
 FILEBATCHSIZE = 10
 
-# Decoding
-
-nbtests = 1000
-nbfilesmax = 100
-
 # Subsets
 PROPTRAIN = 0.6
 PROPTEST = 0.2
 PROPVALID = 1 - PROPTRAIN - PROPTEST
 
-# filtering
-SIZEFRAGMENTS = 50000
+

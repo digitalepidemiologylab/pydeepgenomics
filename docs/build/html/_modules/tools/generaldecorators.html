@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -33,8 +34,6 @@
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="pydeepgenomics  documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -131,7 +130,7 @@
 
 
 <div class="viewcode-block" id="outdated"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.outdated">[docs]</a><span class="k">def</span> <span class="nf">outdated</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Mark a function as outdated and signals it to the user if the function</span>
+    <span class="sd">&quot;&quot;&quot;Marks a function as outdated and signals it to the user if the function</span>
 <span class="sd">    is called.</span>
 
 <span class="sd">    Args:</span>
@@ -162,7 +161,7 @@
 
 
 <div class="viewcode-block" id="accepts"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.accepts">[docs]</a><span class="k">def</span> <span class="nf">accepts</span><span class="p">(</span><span class="o">*</span><span class="n">types</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compare the type of the arguments given to the function with some</span>
+    <span class="sd">&quot;&quot;&quot;Compares the types of the arguments given to the function with some</span>
 <span class="sd">    &quot;reference&quot; types specified to the decorator.</span>
 
 <span class="sd">    Args:</span>
@@ -222,7 +221,7 @@
 
 
 <div class="viewcode-block" id="returns"><a class="viewcode-back" href="../../tools.generaldecorators.html#tools.generaldecorators.returns">[docs]</a><span class="k">def</span> <span class="nf">returns</span><span class="p">(</span><span class="n">rtype</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compare the type of the object returned by the wrapped function with</span>
+    <span class="sd">&quot;&quot;&quot;Compares the type of the object returned by the wrapped function with</span>
 <span class="sd">    a &quot;reference&quot; type specified to the decorator.</span>
 
 <span class="sd">    Args:</span>
@@ -284,7 +283,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Salathe group.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

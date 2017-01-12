@@ -36,6 +36,39 @@ eventually.
 Usage
 *****
 
+Modules structure:
+------------------
+
+::
+
+   .
+   ├── __init__.py
+   ├── preprocess
+   │   ├── cutting.py
+   │   ├── encoding.py
+   │   ├── examples
+   │   │   ├── 1_split_vcf_files.py
+   │   │   ├── 2_encode_genotypes.py
+   │   │   ├── 3_form_subsets.py
+   │   │   ├── 4_filter_and_split_files.py
+   │   │   ├── __init__.py
+   │   │   └── setup_ex_env.py
+   │   ├── filtering.py
+   │   ├── __init__.py
+   │   ├── settings.py
+   │   ├── settings_template.py
+   │   ├── subsets.py
+   │   ├── vcf
+   │   │   ├── __init__.py
+   │   │   ├── split.js
+   │   │   └── vcf.py
+   │   └── verifications.py
+   ├── requirements.txt
+   └── tools
+       ├── generaldecorators.py
+       ├── generaltools.py
+       └── __init__.py
+
 Limitations
 ***********
 

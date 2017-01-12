@@ -22,10 +22,6 @@ except ImportError:
 @gd.accepts(str, (list, tuple))
 def create_subsets_dirs(path_to_dirs, list_of_chrs):
 
-    # os.makedirs(os.path.join(path_to_dirs, "Train"))
-    # os.makedirs(os.path.join(path_to_dirs, "Test"))
-    # os.makedirs(os.path.join(path_to_dirs, "Valid"))
-
     for chrom in list_of_chrs:
         os.makedirs(os.path.join(path_to_dirs, "Train", chrom))
         os.makedirs(os.path.join(path_to_dirs, "Test", chrom))

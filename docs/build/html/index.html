@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -33,7 +34,6 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="pydeepgenomics  documentation" href="#" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -86,7 +86,10 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">1&nbsp;&nbsp;&nbsp;README</a><ul>
 <li><a class="reference internal" href="#brief-comment">1.1&nbsp;&nbsp;&nbsp;Brief comment</a></li>
-<li><a class="reference internal" href="#usage">1.2&nbsp;&nbsp;&nbsp;Usage</a></li>
+<li><a class="reference internal" href="#usage">1.2&nbsp;&nbsp;&nbsp;Usage</a><ul>
+<li><a class="reference internal" href="#modules-structure">1.2.1&nbsp;&nbsp;&nbsp;Modules structure:</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#limitations">1.3&nbsp;&nbsp;&nbsp;Limitations</a></li>
 <li><a class="reference internal" href="#requirements">1.4&nbsp;&nbsp;&nbsp;Requirements</a></li>
 </ul>
@@ -94,11 +97,7 @@
 <li><a class="reference internal" href="#what-s-in-here">2&nbsp;&nbsp;&nbsp;What&#8217;s in here ?</a><ul>
 <li><a class="reference internal" href="#preprocessing">2.1&nbsp;&nbsp;&nbsp;Preprocessing</a><ul>
 <li><a class="reference internal" href="#general-transformations">2.1.1&nbsp;&nbsp;&nbsp;General transformations:</a><ul>
-<li><a class="reference internal" href="#background">2.1.1.1&nbsp;&nbsp;&nbsp;Background</a><ul>
-<li><a class="reference internal" href="#deep-height">2.1.1.1.1&nbsp;&nbsp;&nbsp;deep-height</a></li>
-<li><a class="reference internal" href="#deep-imputation">2.1.1.1.2&nbsp;&nbsp;&nbsp;deep-imputation</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#background">2.1.1.1&nbsp;&nbsp;&nbsp;Background</a></li>
 <li><a class="reference internal" href="#what-do-we-actually-do">2.1.1.2&nbsp;&nbsp;&nbsp;What do we actually do</a></li>
 </ul>
 </li>
@@ -153,7 +152,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/index.txt"
+  <a href="_sources/index.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -177,7 +176,7 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="toctree-wrapper compound" id="contents">
+  <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="readme">
 <h1>1&nbsp;&nbsp;&nbsp;README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
@@ -211,6 +210,38 @@ eventually.</p>
 </div>
 <div class="section" id="usage">
 <h2>1.2&nbsp;&nbsp;&nbsp;Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modules-structure">
+<h3>1.2.1&nbsp;&nbsp;&nbsp;Modules structure:<a class="headerlink" href="#modules-structure" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>.
+├── __init__.py
+├── preprocess
+│   ├── cutting.py
+│   ├── encoding.py
+│   ├── examples
+│   │   ├── 1_split_vcf_files.py
+│   │   ├── 2_encode_genotypes.py
+│   │   ├── 3_form_subsets.py
+│   │   ├── 4_filter_and_split_files.py
+│   │   ├── __init__.py
+│   │   └── setup_ex_env.py
+│   ├── filtering.py
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── settings_template.py
+│   ├── subsets.py
+│   ├── vcf
+│   │   ├── __init__.py
+│   │   ├── split.js
+│   │   └── vcf.py
+│   └── verifications.py
+├── requirements.txt
+└── tools
+    ├── generaldecorators.py
+    ├── generaltools.py
+    └── __init__.py
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="limitations">
 <h2>1.3&nbsp;&nbsp;&nbsp;Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
@@ -282,13 +313,15 @@ information of all our samples for each human autosome (non-sexual chromosome).<
 </div>
 <p>The VCF file format is a text format identifying the genetic variants between
 individuals. They contain</p>
-<div class="section" id="deep-height">
-<h5>2.1.1.1.1&nbsp;&nbsp;&nbsp;deep-height<a class="headerlink" href="#deep-height" title="Permalink to this headline">¶</a></h5>
+<div class="line-block">
+<div class="line"><strong>deep-height</strong></div>
 </div>
-<div class="section" id="deep-imputation">
-<h5>2.1.1.1.2&nbsp;&nbsp;&nbsp;deep-imputation<a class="headerlink" href="#deep-imputation" title="Permalink to this headline">¶</a></h5>
+<div class="line-block">
+<div class="line"><strong>deep-imputation</strong></div>
+</div>
+<img alt="_images/Figure_imputation.png" src="_images/Figure_imputation.png" />
+<img alt="_images/Pipeline.png" src="_images/Pipeline.png" />
 <p>BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
-</div>
 </div>
 <div class="section" id="what-do-we-actually-do">
 <h4>2.1.1.2&nbsp;&nbsp;&nbsp;What do we actually do<a class="headerlink" href="#what-do-we-actually-do" title="Permalink to this headline">¶</a></h4>
@@ -429,6 +462,8 @@ computer...).</p>
 </li>
 <li><p class="first">Clean the function <code class="code docutils literal"><span class="pre">verify_decoding</span></code> to have smaller functional units and a code easier to read.</p>
 </li>
+<li><p class="first">Correct the hardcoded parts of the code so that it can handle other FIRST_ALLELE_BIT_POS</p>
+</li>
 </ul>
 </div>
 <div class="section" id="vcf">
@@ -538,7 +573,7 @@ arguments</li>
     </p>
     <p>
         &copy; Copyright 2016, Salathe group.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

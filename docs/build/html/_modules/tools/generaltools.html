@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -33,8 +34,6 @@
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="pydeepgenomics  documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -153,13 +152,13 @@
         <span class="n">sort</span><span class="o">=</span><span class="s2">&quot;natural&quot;</span><span class="p">,</span>
         <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;List the items in a given folder with a few filters.</span>
+    <span class="sd">&quot;&quot;&quot;Lists the items in a given folder with a few filters.</span>
 
-<span class="sd">    This function list all the elements in the folder given</span>
-<span class="sd">    You can chose to select only one type of object with :code:`type_`. It is</span>
+<span class="sd">    This function lists all the elements in the folder given.</span>
+<span class="sd">    You can choose to select only one type of object with :code:`type_`. It is</span>
 <span class="sd">    also possible to look only for the objects ending with a specific</span>
 <span class="sd">    string given to :code:`extension`.</span>
-<span class="sd">    The output is a list which can be sorted by alphanumerical or natural</span>
+<span class="sd">    The output is a list that can be sorted by alphanumerical or natural</span>
 <span class="sd">    order with :code:`sort`</span>
 <span class="sd">    VERBOSE makes the function print all the</span>
 <span class="sd">    files found in the specified path (by default VERBOSE=False), It is</span>
@@ -176,20 +175,20 @@
 <span class="sd">         behavior). When set to :code:`None`, the function does not care\</span>
 <span class="sd">         about the type and returns all items.</span>
 
-<span class="sd">        extension (:obj:`str`, optional): Add a filter to the function to\</span>
+<span class="sd">        extension (:obj:`str`, optional): Adds a filter to the function to\</span>
 <span class="sd">         only return the items whose name finish with the string given to\</span>
 <span class="sd">         extension. By default extension is an empty string.</span>
 
-<span class="sd">        sort (:obj:`str`, optional): Indicate how the output list is\</span>
+<span class="sd">        sort (:obj:`str`, optional): Indicates how the output list is\</span>
 <span class="sd">         sorted. By default, the output is sorted by natural order (\</span>
 <span class="sd">         :code:`sort=&quot;natural&quot;`). It can also be set to\</span>
-<span class="sd">         :code:`sort=&quot;alphanumeric&quot;.</span>
+<span class="sd">         :code:`sort=&quot;alphanumeric&quot;`.</span>
 
 <span class="sd">        exception (:obj:`list|tuple|None`, optional): List or tuple of\</span>
 <span class="sd">         specific items to ignore. None by default</span>
 
 <span class="sd">        verbose (:obj:`bool`, optional): Makes the function print more\</span>
-<span class="sd">         information. (False by default)</span>
+<span class="sd">         information (by default :code:`verbose=False`).</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        :obj:`list`:</span>
@@ -365,15 +364,15 @@
 
 <span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <div class="viewcode-block" id="get_nb_lines_file"><a class="viewcode-back" href="../../tools.generaltools.html#tools.generaltools.get_nb_lines_file">[docs]</a><span class="k">def</span> <span class="nf">get_nb_lines_file</span><span class="p">(</span><span class="n">infile</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Open an eventually zipped file and return its number of lines.</span>
+    <span class="sd">&quot;&quot;&quot;Opens a potentially zipped file and return its number of lines.</span>
 
-<span class="sd">    This function opens the file received as argument and open it depending</span>
+<span class="sd">    This function opens the file received as argument and opens it depending</span>
 <span class="sd">    on its extension (For the moment, only classic text files and gzipped</span>
 <span class="sd">    files can be opened.)</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        infile (:obj:`str`): Complete or relative path to the file you want\</span>
-<span class="sd">         to open you want to explore.</span>
+<span class="sd">         to open.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        :obj:`int`: The number of lines in the file.</span>
@@ -466,9 +465,9 @@
 
 <span class="nd">@gd</span><span class="o">.</span><span class="n">accepts</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 <div class="viewcode-block" id="time_between_two_calls"><a class="viewcode-back" href="../../tools.generaltools.html#tools.generaltools.time_between_two_calls">[docs]</a><span class="k">def</span> <span class="nf">time_between_two_calls</span><span class="p">(</span><span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A basic timer which returns the time spent since the last call.</span>
+    <span class="sd">&quot;&quot;&quot;A basic timer that returns the time spent since the last call.</span>
 
-<span class="sd">    Generator of time durations. The first call initialise the generator with</span>
+<span class="sd">    Generator of time durations. The first call initialises the generator with</span>
 <span class="sd">    the current time and yields 0. All further calls yield the time spent</span>
 <span class="sd">    since the precedent call.</span>
 
@@ -511,7 +510,7 @@
     <span class="sd">&quot;&quot;&quot;Shuffles the list and returns chunks.</span>
 
 <span class="sd">    This generator takes a list and the proportions in which you want to</span>
-<span class="sd">    subdivide this list and yields random subsets of this list.</span>
+<span class="sd">    subdivide it and yields random subsets of this list.</span>
 
 <span class="sd">        .. warning::</span>
 <span class="sd">           The sizes of the chunks is equal to the floored multiplication of</span>
@@ -519,7 +518,7 @@
 <span class="sd">           a rounding error might often happen and the size of the all the</span>
 <span class="sd">           chunks would not match the size of the original list. To correct</span>
 <span class="sd">           that, the remaining elements of the list are added to the last</span>
-<span class="sd">           chunk (corresponding to :code:`subset_proportions`[-1]). We let it</span>
+<span class="sd">           chunk (corresponding to :code:`subset_proportions[-1]`). We let it</span>
 <span class="sd">           that way as it didn&#39;t affect our work a lot but this behaviours</span>
 <span class="sd">           will probably change in further versions.</span>
 
@@ -531,7 +530,7 @@
 <span class="sd">        output_format (:obj:`type`, optional): type of output format. By\</span>
 <span class="sd">         default, chunks are returned in tuples (:code:`output_format=tuple`)\</span>
 <span class="sd">         but can also be list.</span>
-<span class="sd">        force (:obj:`bool`, optional): Ignore the *ValueError* raised when the\</span>
+<span class="sd">        force (:obj:`bool`, optional): Ignores the *ValueError* raised when the\</span>
 <span class="sd">         sum of the proportions is not equal to 1.</span>
 
 <span class="sd">    Yields:</span>
@@ -584,6 +583,16 @@
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="custom_output"><a class="viewcode-back" href="../../tools.generaltools.html#tools.generaltools.custom_output">[docs]</a><span class="k">def</span> <span class="nf">custom_output</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">print_parameters</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">print_parameters</span><span class="p">[</span><span class="s2">&quot;verbose&quot;</span><span class="p">]</span> <span class="ow">and</span>\
+            <span class="n">print_parameters</span><span class="p">[</span><span class="s2">&quot;printing&quot;</span><span class="p">]</span><span class="ow">and</span>\
+            <span class="n">print_parameters</span><span class="p">[</span><span class="s2">&quot;in_loop&quot;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">print_parameters</span><span class="p">[</span><span class="s2">&quot;verbose&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">print_parameters</span><span class="p">[</span><span class="s2">&quot;printing&quot;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
 </pre></div>
 
     </div>
@@ -598,7 +607,7 @@
     </p>
     <p>
         &copy; Copyright 2016, Salathe group.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

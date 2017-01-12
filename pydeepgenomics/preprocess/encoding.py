@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-import os
-import threading
 import math
+import os
 import random
 import sys
+import threading
 
 import pandas as pd
+
+from pydeepgenomics.tools.generaltools import custom_output
 
 cmd_subfolder = os.path.abspath(
     os.path.dirname(__file__)).split("pydeepgenomics")[0]
@@ -192,16 +194,6 @@ def _build_output_tree_structure(
             os.path.join(path_to_output, name_output_dir, chromosome_name))
 
 
-def _custom_output(text, print_parameters):
-
-    if print_parameters["verbose"] and\
-            print_parameters["printing"]and\
-            print_parameters["in_loop"]:
-        print(text, end="\r")
-    elif print_parameters["verbose"] and print_parameters["printing"]:
-        print(text)
-
-
 def encode_file_positions(
         chr_to_be_processed,
         path_to_data,
@@ -221,7 +213,7 @@ def encode_file_positions(
         "in_loop": False
     }
 
-    _custom_output(
+    custom_output(
         "Function {0} started at {1}".format(
             encode_file_positions.__name__,
             str(datetime.datetime.now())) +
@@ -276,7 +268,7 @@ def encode_file_positions(
             nb_processed_files += settings.FILEBATCHSIZE
 
             h, m, s = timer.__next__()
-            _custom_output(
+            custom_output(
                 "\r{0}/{1}".format(nb_processed_files, len(list_files)) +
                 " files processed after {0}h{1}m{2}s.".format(h, m, s) +
                 " Date: {}".format(str(datetime.datetime.now())),
@@ -285,7 +277,7 @@ def encode_file_positions(
     print_parameters["in_loop"] = False
     sys.stdout.write("\n")
     h, m, s = timer.__next__()
-    _custom_output(
+    custom_output(
         "Finished after {0}h{1}m{2}s.\n".format(h, m, s),
         print_parameters)
 
@@ -314,7 +306,7 @@ def verify_decoding(
     errors_prev_pos = []
     errors_next_pos = []
 
-    _custom_output(
+    custom_output(
         "Function {0} started at {1}".format(
             verify_decoding.__name__,
             str(datetime.datetime.now())) +
@@ -367,7 +359,7 @@ def verify_decoding(
                 errors_next_pos.append(
                     _meta.iloc[min(index + 1, _meta.shape[0]), 0])
 
-                _custom_output("{0}/{1} files tested. Date : {2}".format(
+                custom_output("{0}/{1} files tested. Date : {2}".format(
                     j+1,
                     min(max_nb_of_files_to_test, len(files)),
                     str(datetime.datetime.now())),
@@ -414,7 +406,7 @@ def verify_decoding(
                     _meta.iloc[min(index + 1, _meta.shape[0]), 0])
 
         h, m, s = timer.__next__()
-        _custom_output(
+        custom_output(
             "{0}/{1} files tested ".format(
                 j+1,
                 min(max_nb_of_files_to_test, len(files))) +
@@ -438,7 +430,7 @@ def verify_decoding(
             errors.loc[
                 (errors.Error_type == "Impossible to decode"), :].shape[0]
         total_error = errors.shape[0]
-        _custom_output(
+        custom_output(
             "\nAllele 1 errors: {}".format(errors_al_1) +
             "\nAllele 2 errors: {}".format(errors_al_2) +
             "\nPosition errors: {}".format(errors_pos) +
@@ -454,4 +446,4 @@ def verify_decoding(
         errors.to_csv(
             "Errors_found_in{}.csv".format(chromosome_verified), sep="\t")
     else:
-        _custom_output("\nNo error found !", print_parameters)
+        custom_output("\nNo error found !", print_parameters)

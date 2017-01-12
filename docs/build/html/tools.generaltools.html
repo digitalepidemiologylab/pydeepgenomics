@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -33,7 +34,6 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="pydeepgenomics  documentation" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -96,7 +96,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/tools.generaltools.txt"
+  <a href="_sources/tools.generaltools.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -126,17 +126,22 @@
 <p>The functions designed in this modules are not specific to the project and are
 used in a lot of the modules.</p>
 <dl class="function">
+<dt id="tools.generaltools.custom_output">
+<code class="descname">custom_output</code><span class="sig-paren">(</span><em>text</em>, <em>print_parameters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#custom_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.custom_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="tools.generaltools.get_nb_lines_file">
 <code class="descname">get_nb_lines_file</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#get_nb_lines_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.get_nb_lines_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Open an eventually zipped file and return its number of lines.</p>
-<p>This function opens the file received as argument and open it depending
+<dd><p>Opens a potentially zipped file and return its number of lines.</p>
+<p>This function opens the file received as argument and opens it depending
 on its extension (For the moment, only classic text files and gzipped
 files can be opened.)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>infile</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) &#8211; Complete or relative path to the file you want         to open you want to explore.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>infile</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) &#8211; Complete or relative path to the file you want         to open.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The number of lines in the file.</td>
 </tr>
@@ -151,12 +156,12 @@ files can be opened.)</p>
 <dl class="function">
 <dt id="tools.generaltools.list_elements">
 <code class="descname">list_elements</code><span class="sig-paren">(</span><em>path_to_folder</em>, <em>type_=None</em>, <em>extension=''</em>, <em>sort='natural'</em>, <em>exception=None</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#list_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.list_elements" title="Permalink to this definition">¶</a></dt>
-<dd><p>List the items in a given folder with a few filters.</p>
-<p>This function list all the elements in the folder given
-You can chose to select only one type of object with <code class="code docutils literal"><span class="pre">type_</span></code>. It is
+<dd><p>Lists the items in a given folder with a few filters.</p>
+<p>This function lists all the elements in the folder given.
+You can choose to select only one type of object with <code class="code docutils literal"><span class="pre">type_</span></code>. It is
 also possible to look only for the objects ending with a specific
 string given to <code class="code docutils literal"><span class="pre">extension</span></code>.
-The output is a list which can be sorted by alphanumerical or natural
+The output is a list that can be sorted by alphanumerical or natural
 order with <code class="code docutils literal"><span class="pre">sort</span></code>
 VERBOSE makes the function print all the
 files found in the specified path (by default VERBOSE=False), It is
@@ -170,10 +175,10 @@ order.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>path_to_folder</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) &#8211; Complete or relative path to the folder         you want to explore.</li>
 <li><strong>type</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str|None</span></code>, optional) &#8211; Type of items you want to list,         can be <code class="code docutils literal"><span class="pre">&quot;dir&quot;</span></code>, <code class="code docutils literal"><span class="pre">&quot;file&quot;</span></code> or <code class="code docutils literal"><span class="pre">None</span></code> (default         behavior). When set to <code class="code docutils literal"><span class="pre">None</span></code>, the function does not care         about the type and returns all items.</li>
-<li><strong>extension</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; Add a filter to the function to         only return the items whose name finish with the string given to         extension. By default extension is an empty string.</li>
-<li><strong>sort</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; Indicate how the output list is         sorted. By default, the output is sorted by natural order (         <code class="code docutils literal"><span class="pre">sort=&quot;natural&quot;</span></code>). It can also be set to         :code:<a href="#id1"><span class="problematic" id="id2">`</span></a>sort=&#8221;alphanumeric&#8221;.</li>
+<li><strong>extension</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; Adds a filter to the function to         only return the items whose name finish with the string given to         extension. By default extension is an empty string.</li>
+<li><strong>sort</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; Indicates how the output list is         sorted. By default, the output is sorted by natural order (         <code class="code docutils literal"><span class="pre">sort=&quot;natural&quot;</span></code>). It can also be set to         <code class="code docutils literal"><span class="pre">sort=&quot;alphanumeric&quot;</span></code>.</li>
 <li><strong>exception</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list|tuple|None</span></code>, optional) &#8211; List or tuple of         specific items to ignore. None by default</li>
-<li><strong>verbose</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Makes the function print more         information. (False by default)</li>
+<li><strong>verbose</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Makes the function print more         information (by default <code class="code docutils literal"><span class="pre">verbose=False</span></code>).</li>
 </ul>
 </td>
 </tr>
@@ -276,7 +281,7 @@ suffix).</p>
 <code class="descname">random_chunks</code><span class="sig-paren">(</span><em>l</em>, <em>subset_proportions</em>, <em>output_format=&lt;class 'tuple'&gt;</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#random_chunks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.random_chunks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shuffles the list and returns chunks.</p>
 <p>This generator takes a list and the proportions in which you want to
-subdivide this list and yields random subsets of this list.</p>
+subdivide it and yields random subsets of this list.</p>
 <blockquote>
 <div><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -285,7 +290,7 @@ the size of the original list by the given proportions. Thus,
 a rounding error might often happen and the size of the all the
 chunks would not match the size of the original list. To correct
 that, the remaining elements of the list are added to the last
-chunk (corresponding to :code:<a href="#id3"><span class="problematic" id="id4">`</span></a>subset_proportions`[-1]). We let it
+chunk (corresponding to <code class="code docutils literal"><span class="pre">subset_proportions[-1]</span></code>). We let it
 that way as it didn&#8217;t affect our work a lot but this behaviours
 will probably change in further versions.</p>
 </div>
@@ -298,7 +303,7 @@ will probably change in further versions.</p>
 <li><strong>l</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>) &#8211; original list</li>
 <li><strong>subset_proportions</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list|tuple</span></code>) &#8211; sizes of the chunks given as         proportions of the original list.</li>
 <li><strong>output_format</strong> (<code class="xref py py-obj docutils literal"><span class="pre">type</span></code>, optional) &#8211; type of output format. By         default, chunks are returned in tuples (<code class="code docutils literal"><span class="pre">output_format=tuple</span></code>)         but can also be list.</li>
-<li><strong>force</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Ignore the <em>ValueError</em> raised when the         sum of the proportions is not equal to 1.</li>
+<li><strong>force</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Ignores the <em>ValueError</em> raised when the         sum of the proportions is not equal to 1.</li>
 </ul>
 </td>
 </tr>
@@ -338,8 +343,8 @@ will probably change in further versions.</p>
 <dl class="function">
 <dt id="tools.generaltools.time_between_two_calls">
 <code class="descname">time_between_two_calls</code><span class="sig-paren">(</span><em>raw=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#time_between_two_calls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.time_between_two_calls" title="Permalink to this definition">¶</a></dt>
-<dd><p>A basic timer which returns the time spent since the last call.</p>
-<p>Generator of time durations. The first call initialise the generator with
+<dd><p>A basic timer that returns the time spent since the last call.</p>
+<p>Generator of time durations. The first call initialises the generator with
 the current time and yields 0. All further calls yield the time spent
 since the precedent call.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -447,7 +452,7 @@ since the first call.</p>
     </p>
     <p>
         &copy; Copyright 2016, Salathe group.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

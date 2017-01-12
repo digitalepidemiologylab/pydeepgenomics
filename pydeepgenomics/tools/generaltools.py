@@ -36,13 +36,13 @@ def list_elements(
         sort="natural",
         exception=None,
         verbose=False):
-    """List the items in a given folder with a few filters.
+    """Lists the items in a given folder with a few filters.
 
-    This function list all the elements in the folder given
-    You can chose to select only one type of object with :code:`type_`. It is
+    This function lists all the elements in the folder given.
+    You can choose to select only one type of object with :code:`type_`. It is
     also possible to look only for the objects ending with a specific
     string given to :code:`extension`.
-    The output is a list which can be sorted by alphanumerical or natural
+    The output is a list that can be sorted by alphanumerical or natural
     order with :code:`sort`
     VERBOSE makes the function print all the
     files found in the specified path (by default VERBOSE=False), It is
@@ -59,20 +59,20 @@ def list_elements(
          behavior). When set to :code:`None`, the function does not care\
          about the type and returns all items.
 
-        extension (:obj:`str`, optional): Add a filter to the function to\
+        extension (:obj:`str`, optional): Adds a filter to the function to\
          only return the items whose name finish with the string given to\
          extension. By default extension is an empty string.
 
-        sort (:obj:`str`, optional): Indicate how the output list is\
+        sort (:obj:`str`, optional): Indicates how the output list is\
          sorted. By default, the output is sorted by natural order (\
          :code:`sort="natural"`). It can also be set to\
-         :code:`sort="alphanumeric".
+         :code:`sort="alphanumeric"`.
 
         exception (:obj:`list|tuple|None`, optional): List or tuple of\
          specific items to ignore. None by default
 
         verbose (:obj:`bool`, optional): Makes the function print more\
-         information. (False by default)
+         information (by default :code:`verbose=False`).
 
     Returns:
         :obj:`list`:
@@ -248,15 +248,15 @@ def print_progress(
 
 @gd.accepts(str)
 def get_nb_lines_file(infile):
-    """Open an eventually zipped file and return its number of lines.
+    """Opens a potentially zipped file and return its number of lines.
 
-    This function opens the file received as argument and open it depending
+    This function opens the file received as argument and opens it depending
     on its extension (For the moment, only classic text files and gzipped
     files can be opened.)
 
     Args:
         infile (:obj:`str`): Complete or relative path to the file you want\
-         to open you want to explore.
+         to open.
 
     Returns:
         :obj:`int`: The number of lines in the file.
@@ -349,9 +349,9 @@ def time_since_first_call(raw=False):
 
 @gd.accepts(bool)
 def time_between_two_calls(raw=False):
-    """A basic timer which returns the time spent since the last call.
+    """A basic timer that returns the time spent since the last call.
 
-    Generator of time durations. The first call initialise the generator with
+    Generator of time durations. The first call initialises the generator with
     the current time and yields 0. All further calls yield the time spent
     since the precedent call.
 
@@ -394,7 +394,7 @@ def random_chunks(l, subset_proportions, output_format=tuple, force=False):
     """Shuffles the list and returns chunks.
 
     This generator takes a list and the proportions in which you want to
-    subdivide this list and yields random subsets of this list.
+    subdivide it and yields random subsets of this list.
 
         .. warning::
            The sizes of the chunks is equal to the floored multiplication of
@@ -402,7 +402,7 @@ def random_chunks(l, subset_proportions, output_format=tuple, force=False):
            a rounding error might often happen and the size of the all the
            chunks would not match the size of the original list. To correct
            that, the remaining elements of the list are added to the last
-           chunk (corresponding to :code:`subset_proportions`[-1]). We let it
+           chunk (corresponding to :code:`subset_proportions[-1]`). We let it
            that way as it didn't affect our work a lot but this behaviours
            will probably change in further versions.
 
@@ -414,7 +414,7 @@ def random_chunks(l, subset_proportions, output_format=tuple, force=False):
         output_format (:obj:`type`, optional): type of output format. By\
          default, chunks are returned in tuples (:code:`output_format=tuple`)\
          but can also be list.
-        force (:obj:`bool`, optional): Ignore the *ValueError* raised when the\
+        force (:obj:`bool`, optional): Ignores the *ValueError* raised when the\
          sum of the proportions is not equal to 1.
 
     Yields:
@@ -467,3 +467,13 @@ def random_chunks(l, subset_proportions, output_format=tuple, force=False):
 if __name__ == "__main__":
     doctest.testmod()
     print(__doc__)
+
+
+def custom_output(text, print_parameters):
+
+    if print_parameters["verbose"] and\
+            print_parameters["printing"]and\
+            print_parameters["in_loop"]:
+        print(text, end="\r")
+    elif print_parameters["verbose"] and print_parameters["printing"]:
+        print(text)
