@@ -29,6 +29,8 @@ certainly already exist for a few reasons:
 General transformations:
 ------------------------
 
+Background
+~~~~~~~~~~
 The datasets we received
 BUILD 37 http://www.internationalgenome.org/category/ncbi36/
 Explaination of the structure of a vcf file
@@ -52,7 +54,10 @@ Explaination of the structure of a vcf file
    22      16050115        rs587755077     G       A       100     PASS    .    GT      0/0     0/0
    22      16050213        rs587654921     C       T       100     PASS    .    GT      0/0     0/0
 
-Blabla
+
+What do we actually do
+~~~~~~~~~~~~~~~~~~~~~~
+
 
 Application specific transformations:
 -------------------------------------

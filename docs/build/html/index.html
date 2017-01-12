@@ -20,8 +20,7 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -33,6 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pydeepgenomics  documentation" href="#" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -92,7 +92,11 @@
 </li>
 <li><a class="reference internal" href="#what-s-in-here">2&nbsp;&nbsp;&nbsp;What&#8217;s in here ?</a><ul>
 <li><a class="reference internal" href="#preprocessing">2.1&nbsp;&nbsp;&nbsp;Preprocessing</a><ul>
-<li><a class="reference internal" href="#general-transformations">2.1.1&nbsp;&nbsp;&nbsp;General transformations:</a></li>
+<li><a class="reference internal" href="#general-transformations">2.1.1&nbsp;&nbsp;&nbsp;General transformations:</a><ul>
+<li><a class="reference internal" href="#background">2.1.1.1&nbsp;&nbsp;&nbsp;Background</a></li>
+<li><a class="reference internal" href="#what-do-we-actually-do">2.1.1.2&nbsp;&nbsp;&nbsp;What do we actually do</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#application-specific-transformations">2.1.2&nbsp;&nbsp;&nbsp;Application specific transformations:</a></li>
 </ul>
 </li>
@@ -144,7 +148,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/index.rst.txt"
+  <a href="_sources/index.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -168,7 +172,7 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="toctree-wrapper compound">
+  <div class="toctree-wrapper compound" id="contents">
 </div>
 <div class="section" id="readme">
 <h1>1&nbsp;&nbsp;&nbsp;README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
@@ -249,6 +253,8 @@ help us familiarize ourselves with this kind of dataset.</li>
 </ol>
 <div class="section" id="general-transformations">
 <h3>2.1.1&nbsp;&nbsp;&nbsp;General transformations:<a class="headerlink" href="#general-transformations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="background">
+<h4>2.1.1.1&nbsp;&nbsp;&nbsp;Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h4>
 <p>The datasets we received
 BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a>
 Explaination of the structure of a vcf file</p>
@@ -270,7 +276,10 @@ Explaination of the structure of a vcf file</p>
 <span class="mi">22</span>      <span class="mi">16050213</span>        <span class="n">rs587654921</span>     <span class="n">C</span>       <span class="n">T</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 </pre></div>
 </div>
-<p>Blabla</p>
+</div>
+<div class="section" id="what-do-we-actually-do">
+<h4>2.1.1.2&nbsp;&nbsp;&nbsp;What do we actually do<a class="headerlink" href="#what-do-we-actually-do" title="Permalink to this headline">¶</a></h4>
+</div>
 </div>
 <div class="section" id="application-specific-transformations">
 <h3>2.1.2&nbsp;&nbsp;&nbsp;Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h3>
@@ -349,20 +358,24 @@ Workflow</p>
 <h3>3.3.1&nbsp;&nbsp;&nbsp;Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="generaltools">
 <h4>3.3.1.1&nbsp;&nbsp;&nbsp;Generaltools<a class="headerlink" href="#generaltools" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
+<ul>
 <li><dl class="first docutils">
 <dt>Recode the function list_elements:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>It should be cleaner</li>
 <li>It should be able to handle a tuble of extensions</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</li>
-<li>Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</li>
-<li><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</li>
-<li>Add some filters <code class="code docutils literal"><span class="pre">get_nb_lines_file</span></code></li>
+<li><p class="first">Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</p>
+</li>
+<li><p class="first">Add options to the timers (<code class="code docutils literal"><span class="pre">time_since_first_call</span></code> and <code class="code docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and not systematically the formated time</p>
+</li>
+<li><p class="first"><code class="code docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options when logging is ready</p>
+</li>
+<li><p class="first">Add some filters <code class="code docutils literal"><span class="pre">get_nb_lines_file</span></code></p>
+</li>
 </ul>
 </div>
 <div class="section" id="generaldecorators">
@@ -504,7 +517,7 @@ Workflow</p>
     </p>
     <p>
         &copy; Copyright 2016, Salathe group.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
     </p>
   </div>
 </footer>
