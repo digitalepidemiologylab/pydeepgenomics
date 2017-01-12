@@ -6,7 +6,7 @@ Preprocessing
 
 The preprocessing can be separated in two main parts:
 
-#. The general transformation of the vcf text files (often used in
+#. The general transformation of the VCF text files (often used in
    bioinformatics applications) to a format simpler to use in our projects with
    decoupled meta information files and sample files.
 #. A more application specific part consisting for example in grouping all
@@ -31,10 +31,8 @@ General transformations:
 
 Background
 ~~~~~~~~~~
-The datasets we received
-BUILD 37 http://www.internationalgenome.org/category/ncbi36/
-Explaination of the structure of a vcf file
-
+The datasets we received consisted in 22 VCF files containing the genomic
+information of all our samples for each human autosome (non-sexual chromosome).
 ::
 
    ##fileformat=VCFv4.1
@@ -54,6 +52,17 @@ Explaination of the structure of a vcf file
    22      16050115        rs587755077     G       A       100     PASS    .    GT      0/0     0/0
    22      16050213        rs587654921     C       T       100     PASS    .    GT      0/0     0/0
 
+The VCF file format is a text format identifying the genetic variants between
+individuals. They contain
+
+deep-height
+___________
+
+
+deep-imputation
+_______________
+
+BUILD 37 http://www.internationalgenome.org/category/ncbi36/
 
 What do we actually do
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -64,5 +73,3 @@ Application specific transformations:
 
 Idea
 Workflow
-
-------------

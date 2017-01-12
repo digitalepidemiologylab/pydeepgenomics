@@ -11,17 +11,25 @@
 
 .. include:: ../../README.rst
 
+-----------------------------
+
 |
+
 .. include:: ./description.rst
 
+-----------------------------
+
 |
+
 .. include:: ../../TODO.rst
 
+-----------------------------
+
 |
+
 .. include:: ../../LICENSE.rst
 
-.. Indices and tables
-   ##################
+-----------------------------
 
 * :ref:`genindex`
 * :ref:`modindex`

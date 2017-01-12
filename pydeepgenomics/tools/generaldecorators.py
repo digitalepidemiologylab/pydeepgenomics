@@ -120,7 +120,6 @@ def returns(rtype):
          not of the types given to the wrapper.
 
     Examples:
-        Function which accepts only one argument of one specific type:
             >>> @returns(int)
             ... def func():
             ...     return 1

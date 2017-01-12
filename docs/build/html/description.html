@@ -87,7 +87,11 @@
 <li><a class="reference internal" href="#">What&#8217;s in here ?</a><ul>
 <li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
 <li><a class="reference internal" href="#general-transformations">General transformations:</a><ul>
-<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#background">Background</a><ul>
+<li><a class="reference internal" href="#deep-height">deep-height</a></li>
+<li><a class="reference internal" href="#deep-imputation">deep-imputation</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#what-do-we-actually-do">What do we actually do</a></li>
 </ul>
 </li>
@@ -137,7 +141,7 @@
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>The preprocessing can be separated in two main parts:</p>
 <ol class="arabic simple">
-<li>The general transformation of the vcf text files (often used in
+<li>The general transformation of the VCF text files (often used in
 bioinformatics applications) to a format simpler to use in our projects with
 decoupled meta information files and sample files.</li>
 <li>A more application specific part consisting for example in grouping all
@@ -161,9 +165,8 @@ help us familiarize ourselves with this kind of dataset.</li>
 <h3>General transformations:<a class="headerlink" href="#general-transformations" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="background">
 <h4>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h4>
-<p>The datasets we received
-BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a>
-Explaination of the structure of a vcf file</p>
+<p>The datasets we received consisted in 22 VCF files containing the genomic
+information of all our samples for each human autosome (non-sexual chromosome).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##fileformat=VCFv4.1</span>
 <span class="c1">##FILTER=&lt;ID=PASS,Description=&quot;All filters passed&quot;&gt;</span>
 <span class="c1">##fileDate=20150218</span>
@@ -182,6 +185,15 @@ Explaination of the structure of a vcf file</p>
 <span class="mi">22</span>      <span class="mi">16050213</span>        <span class="n">rs587654921</span>     <span class="n">C</span>       <span class="n">T</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 </pre></div>
 </div>
+<p>The VCF file format is a text format identifying the genetic variants between
+individuals. They contain</p>
+<div class="section" id="deep-height">
+<h5>deep-height<a class="headerlink" href="#deep-height" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="deep-imputation">
+<h5>deep-imputation<a class="headerlink" href="#deep-imputation" title="Permalink to this headline">¶</a></h5>
+<p>BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
+</div>
 </div>
 <div class="section" id="what-do-we-actually-do">
 <h4>What do we actually do<a class="headerlink" href="#what-do-we-actually-do" title="Permalink to this headline">¶</a></h4>
@@ -191,7 +203,6 @@ Explaination of the structure of a vcf file</p>
 <h3>Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h3>
 <p>Idea
 Workflow</p>
-<hr class="docutils" />
 </div>
 </div>
 </div>

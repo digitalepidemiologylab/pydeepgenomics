@@ -48,6 +48,3 @@ Requirements
 
 .. include:: ./requirements.rst
    :literal:
-
-------------
-

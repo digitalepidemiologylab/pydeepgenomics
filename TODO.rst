@@ -162,6 +162,3 @@ vcf
 * Do everything !
 * (But first the vcf module may be broken into smaller units so that unit testing has a sens ...)
 * Document the tests
-
-------------
-
