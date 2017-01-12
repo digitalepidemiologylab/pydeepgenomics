@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
@@ -121,20 +122,136 @@
       
   <div class="section" id="module-tools.generaldecorators">
 <span id="tools-generaldecorators-module"></span><h1>tools.generaldecorators module<a class="headerlink" href="#module-tools.generaldecorators" title="Permalink to this headline">¶</a></h1>
+<p>This module contains decorators used in some of the packages of this
+project and for development.</p>
+<p>The decorators designed in this modules are not specific to the project and
+can be used elsewhere. They offer some features to make the code look cleaner
+(<em>e.g.</em> control the types of the arguments given to a function) or to help
+development (<em>e.g.</em> label outdated functions still present in the code and
+some other tools coming in future versions)</p>
 <dl class="function">
 <dt id="tools.generaldecorators.accepts">
 <code class="descname">accepts</code><span class="sig-paren">(</span><em>*types</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaldecorators.html#accepts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaldecorators.accepts" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Compare the type of the arguments given to the function with some
+&#8220;reference&#8221; types specified to the decorator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>*types</strong> (<code class="xref py py-obj docutils literal"><span class="pre">type</span></code>) &#8211; &#8220;Reference&#8221; types which will be compared to the         ones given to the wrapped function.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">wrapped function</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">check_accepts (<code class="xref py py-obj docutils literal"><span class="pre">function</span></code>)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">AssertionError</span></code> &#8211; When the arguments given to the wrapped function are
+not of the types given to the wrapper or when too many arguments are
+given to the wrapped function.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<dl class="docutils">
+<dt>Function which accepts only one argument of one specific type:</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@accepts</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">func</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Incorrect type !&quot;</span><span class="p">)</span>
+<span class="go">Incorrect type !</span>
+</pre></div>
+</div>
+</dd>
+<dt>Function which accepts multiple :</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@accepts</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">func</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Incorrect type !&quot;</span><span class="p">)</span>
+<span class="go">Incorrect type !</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">func</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The order of the  parameters matters!&quot;</span><span class="p">)</span>
+<span class="go">The order of the  parameters matters!</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="tools.generaldecorators.outdated">
 <code class="descname">outdated</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaldecorators.html#outdated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaldecorators.outdated" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Mark a function as outdated and signals it to the user if the function
+is called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>func</strong> (<code class="xref py py-obj docutils literal"><span class="pre">function</span></code>) &#8211; function to be wrapped in this decorator</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">wrapped function</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">outdated_func (<code class="xref py py-obj docutils literal"><span class="pre">function</span></code>)</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@outdated</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">()</span>
+<span class="go">The function &quot;func&quot; has been called but is outdated.</span>
+<span class="go">Note that it might not function correctly.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="function">
 <dt id="tools.generaldecorators.returns">
 <code class="descname">returns</code><span class="sig-paren">(</span><em>rtype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaldecorators.html#returns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaldecorators.returns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Compare the type of the object returned by the wrapped function with
+a &#8220;reference&#8221; type specified to the decorator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rtype</strong> (<code class="xref py py-obj docutils literal"><span class="pre">type</span></code>) &#8211; &#8220;Reference&#8221; types which will be compared to the         ones given to the wrapped function.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">wrapped function</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">check_returns (<code class="xref py py-obj docutils literal"><span class="pre">function</span></code>)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">AssertionError</span></code> &#8211; When the arguments given to the wrapped function are
+not of the types given to the wrapper.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@returns</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">()</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@returns</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="s2">&quot;a&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">func</span><span class="p">()</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Incorrect return type !&quot;</span><span class="p">)</span>
+<span class="go">Incorrect return type !</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </div>
 
