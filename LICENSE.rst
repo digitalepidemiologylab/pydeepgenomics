@@ -1,6 +1,3 @@
-LICENSE
-#######
-
 MIT License
 
 Copyright (c) [2017] [Digital Epidemiology Lab]

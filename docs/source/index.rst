@@ -3,20 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+##############
+Pydeepgenomics
+##############
 
 
 .. toctree::
    :numbered:
    :maxdepth: 2
-   :caption: Contents:
 
    README
    description
+   Module Index <modules>
    TODO
+   LICENSE
 
-##############
-Pydeepgenomics
-##############
 
 .. include:: ../../README.rst
 
@@ -31,10 +32,6 @@ Pydeepgenomics
 
 -----------------------------
 
-
-.. include:: ../../LICENSE.rst
-
------------------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
