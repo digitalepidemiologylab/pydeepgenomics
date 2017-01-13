@@ -53,8 +53,9 @@ information of all our samples for each human autosome (non-sexual chromosome).
    22      16050213        rs587654921     C       T       100     PASS    .    GT      0/0     0/0
 
 The VCF file format is a text format identifying the genetic variants between
-individuals. They contain
-
+individuals (More information `here
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/>`_ and a lot more
+information `here <https://samtools.github.io/hts-specs/VCFv4.2.pdf>`_)
 
 BUILD 37 http://www.internationalgenome.org/category/ncbi36/
 
@@ -67,6 +68,10 @@ Application specific transformations:
 
 | **deep-height**
 
+We just had to concatenate the splitted files in order to get genome wide
+genotypes usable as training samples for later training.
+
+.. note:: More preprocessing has been done directly in https://github.com/salathegroup/deep-height
 
 | **deep-imputation**
 
@@ -117,3 +122,31 @@ Application specific transformations:
 
         # Add position
         dataframe.loc[:, "output" + liste_names[i]] += dataframe.POS
+
+*Part b*
+
+Reduction of input size while keeping enough context to make decent predictions.
+
+*Part c*
+
+Double uniform filtering to get a subset with 10% of the SNPs contained in
+the original 1000 genome project haplotypes and a subset keeping only 10% of
+the previous subset. Thus, the resulting two subsets would have respectively a
+few millions and a few hundred thousand SNPs, corresponding to the order of
+magnitude of what we can have with classical non-imputed and imputed datasets.
+Off course, the uniform filter is not representative of the real data but
+it's a simple approach for exploratory analysis. Moreover, it should be
+sufficient to make the neural network learn itself the structure of the
+reference data.
+
+Machine Learning
+****************
+
+Deep-height
+~~~~~~~~~~~
+
+Deep-imputation
+~~~~~~~~~~~~~~~
+
+We would like to implement a neural network similar to the one described `here
+<https://github.com/Tetrachrome/subpixel>`_ but working on genomic "images".

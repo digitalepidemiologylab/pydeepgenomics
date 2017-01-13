@@ -115,7 +115,7 @@
 <li><a class="reference internal" href="#generaldecorators">3.3.1.2&nbsp;&nbsp;&nbsp;Generaldecorators</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id1">3.3.2&nbsp;&nbsp;&nbsp;Preprocessing</a><ul>
+<li><a class="reference internal" href="#id2">3.3.2&nbsp;&nbsp;&nbsp;Preprocessing</a><ul>
 <li><a class="reference internal" href="#encoding">3.3.2.1&nbsp;&nbsp;&nbsp;Encoding</a></li>
 <li><a class="reference internal" href="#vcf">3.3.2.2&nbsp;&nbsp;&nbsp;vcf</a></li>
 <li><a class="reference internal" href="#subsets">3.3.2.3&nbsp;&nbsp;&nbsp;Subsets:</a></li>
@@ -127,13 +127,13 @@
 </li>
 <li><a class="reference internal" href="#tests">3.4&nbsp;&nbsp;&nbsp;Tests</a><ul>
 <li><a class="reference internal" href="#general">3.4.1&nbsp;&nbsp;&nbsp;General</a></li>
-<li><a class="reference internal" href="#id2">3.4.2&nbsp;&nbsp;&nbsp;Tools</a><ul>
+<li><a class="reference internal" href="#id3">3.4.2&nbsp;&nbsp;&nbsp;Tools</a><ul>
 <li><a class="reference internal" href="#general-tools">3.4.2.1&nbsp;&nbsp;&nbsp;General tools</a></li>
 <li><a class="reference internal" href="#general-decorators">3.4.2.2&nbsp;&nbsp;&nbsp;General decorators</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3">3.4.3&nbsp;&nbsp;&nbsp;VCF</a><ul>
-<li><a class="reference internal" href="#id4">3.4.3.1&nbsp;&nbsp;&nbsp;vcf</a></li>
+<li><a class="reference internal" href="#id4">3.4.3&nbsp;&nbsp;&nbsp;VCF</a><ul>
+<li><a class="reference internal" href="#id5">3.4.3.1&nbsp;&nbsp;&nbsp;vcf</a></li>
 </ul>
 </li>
 </ul>
@@ -180,7 +180,7 @@
 </div>
 <div class="section" id="readme">
 <h1>1&nbsp;&nbsp;&nbsp;README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 100.0px; height: 100.0px;" /></a>
 <p class="caption"><span class="caption-text">Still under constructions ....
 (<em>ref.</em> <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png">image of this beautiful plasmid</a>.)</span></p>
@@ -312,7 +312,8 @@ information of all our samples for each human autosome (non-sexual chromosome).<
 </pre></div>
 </div>
 <p>The VCF file format is a text format identifying the genetic variants between
-individuals. They contain</p>
+individuals (More information <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/">here</a> and a lot more
+information <a class="reference external" href="https://samtools.github.io/hts-specs/VCFv4.2.pdf">here</a>)</p>
 <p>BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
 </div>
 <div class="section" id="what-do-we-actually-do">
@@ -368,6 +369,8 @@ individuals. They contain</p>
 <span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">POS</span>
 </pre></div>
 </div>
+<p><em>Part b</em></p>
+<p><em>Part c</em></p>
 <hr class="docutils" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -471,8 +474,8 @@ process files, it might be cleaner to work with generators)</p>
 </ul>
 </div>
 </div>
-<div class="section" id="id1">
-<h3>3.3.2&nbsp;&nbsp;&nbsp;Preprocessing<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>3.3.2&nbsp;&nbsp;&nbsp;Preprocessing<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Try to organise in coherent modules</li>
 </ul>
@@ -553,8 +556,8 @@ sure that the extreme cases are taken into account.</li>
 to have everything in py.test or nose later.</li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3>3.4.2&nbsp;&nbsp;&nbsp;Tools<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>3.4.2&nbsp;&nbsp;&nbsp;Tools<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="general-tools">
 <h4>3.4.2.1&nbsp;&nbsp;&nbsp;General tools<a class="headerlink" href="#general-tools" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -572,10 +575,10 @@ arguments</li>
 </ul>
 </div>
 </div>
-<div class="section" id="id3">
-<h3>3.4.3&nbsp;&nbsp;&nbsp;VCF<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id4">
-<h4>3.4.3.1&nbsp;&nbsp;&nbsp;vcf<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h3>3.4.3&nbsp;&nbsp;&nbsp;VCF<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h4>3.4.3.1&nbsp;&nbsp;&nbsp;vcf<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Do everything !</li>
 <li>(But first the vcf module may be broken into smaller units so that unit testing has a sens ...)</li>
