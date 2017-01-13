@@ -94,6 +94,7 @@
 <li><a class="reference internal" href="#application-specific-transformations">Application specific transformations:</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#machine-learning">Machine Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -195,6 +196,12 @@ information <a class="reference external" href="https://samtools.github.io/hts-s
 <div class="line-block">
 <div class="line"><strong>deep-height</strong></div>
 </div>
+<p>We just had to concatenate the splitted files in order to get genome wide
+genotypes usable as training samples for later training.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">More preprocessing has been done directly in <a class="reference external" href="https://github.com/salathegroup/deep-height">https://github.com/salathegroup/deep-height</a></p>
+</div>
 <div class="line-block">
 <div class="line"><strong>deep-imputation</strong></div>
 </div>
@@ -240,8 +247,22 @@ information <a class="reference external" href="https://samtools.github.io/hts-s
 </pre></div>
 </div>
 <p><em>Part b</em></p>
+<p>Reduction of input size while keeping enough context to make decent predictions.</p>
 <p><em>Part c</em></p>
+<p>Double uniform filtering to get a subset with 10% of the SNPs contained in
+the original 1000 genome project haplotypes and a subset keeping only 10% of
+the previous subset. Thus, the resulting two subsets would have respectively a
+few millions and a few hundred thousand SNPs, corresponding to the order of
+magnitude of what we can have with classical non-imputed and imputed datasets.
+Off course, the uniform filter is not representative of the real data but
+it&#8217;s a simple approach for exploratory analysis. Moreover, it should be
+sufficient to make the neural network learn itself the structure of the
+reference data.</p>
 </div>
+</div>
+<div class="section" id="machine-learning">
+<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h2>
+<p>We would like to implement a neural network similar to the one described <a class="reference external" href="https://github.com/Tetrachrome/subpixel">here</a> but working on genomic &#8220;images&#8221;.</p>
 </div>
 </div>
 
