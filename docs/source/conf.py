@@ -92,8 +92,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'pydeepgenomics'
-copyright = '2016, Salathe group'
-author = 'Salathe group'
+copyright = '2016, Digital Epidemiology Lab'
+author = 'Theo Dupuis'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

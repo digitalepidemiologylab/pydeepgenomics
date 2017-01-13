@@ -63,7 +63,6 @@ Modules structure:
    │   │   ├── split.js
    │   │   └── vcf.py
    │   └── verifications.py
-   ├── requirements.txt
    └── tools
        ├── generaldecorators.py
        ├── generaltools.py

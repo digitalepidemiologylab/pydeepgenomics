@@ -47,8 +47,8 @@ def list_elements(
     VERBOSE makes the function print all the
     files found in the specified path (by default VERBOSE=False), It is
     possible to sort the list of files by natural order before it is
-    returned with :code:`sort="natural"` (activated by default) or alphanumerical
-    order.
+    returned with :code:`sort="natural"` (activated by default) or
+    alphanumerical order.
 
     Args:
         path_to_folder (:obj:`str`): Complete or relative path to the folder\
@@ -82,21 +82,46 @@ def list_elements(
 
     Examples:
         To get the list of the python files in the current directory:
-            >>> elements = list_elements(".", extension=".py")
+            >>> path_to_root_repo = os.path.abspath(os.path.join(
+            ...                             os.path.dirname(__file__),
+            ...                             "..",
+            ...                             ".."))
+            >>> path_ = os.path.join(
+            ...         path_to_root_repo,
+            ...         "alltests",
+            ...         "sim_data",
+            ...         "vcf_files")
+            >>> elements = list_elements(path_, extension=".vcf.gz")
             >>> expected_out = [
-            ... os.path.join('.', '__init__.py'), os.path.join('.',
-            ... 'generaldecorators.py'), os.path.join('.', 'generaltools.py')]
-            >>> elements == expected_out
+            ...     os.path.join(path_, '1.vcf.gz'),
+            ...     os.path.join(path_, '2.vcf.gz'),
+            ...     os.path.join(path_, '3.vcf.gz')]
+            >>> for file, expected_file in zip(elements, expected_out):
+            ...     file == expected_file
+            True
+            True
             True
 
-        Similarly, with absolute paths:
-            >>> elements = list_elements(os.path.abspath("."), extension=".py")
+        Similarly, with relative paths:
+            >>> cwd = os.getcwd()
+            >>> os.chdir(os.path.dirname(__file__))
+            >>> path_to_root_repo = os.path.join("..", "..")
+            >>> path_ = os.path.join(
+            ...         path_to_root_repo,
+            ...         "alltests",
+            ...         "sim_data",
+            ...         "vcf_files")
+            >>> elements = list_elements(path_, extension=".vcf.gz")
             >>> expected_out = [
-            ... os.path.join(os.path.abspath('.'), '__init__.py'), os.path.join(
-            ... os.path.abspath('.'), 'generaldecorators.py'), os.path.join(
-            ... os.path.abspath('.'), 'generaltools.py')]
-            >>> elements == expected_out
+            ...     os.path.join(path_, '1.vcf.gz'),
+            ...     os.path.join(path_, '2.vcf.gz'),
+            ...     os.path.join(path_, '3.vcf.gz')]
+            >>> for file, expected_file in zip(elements, expected_out)  :
+            ...     file == expected_file
             True
+            True
+            True
+            >>> os.chdir(cwd)
 
     Todo:
         * Make it cleaner and easier to read :

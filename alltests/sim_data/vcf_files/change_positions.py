@@ -49,9 +49,6 @@ if __name__ == "__main__":
                 pattern_out_line = str(index_f + 1) + "\t" + str(position) + "\t" + "QTL"
 
                 out_line = line.replace(pattern_in_line, pattern_out_line)
-                print(line, "\n", out_line, "\n", "\n", pattern_in_line, "\n", "#" * 50)
                 out_file.write(out_line.encode())
 
-
-        print(mean_distance)
-
+    os.remove(file)
