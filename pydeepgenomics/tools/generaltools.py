@@ -4,6 +4,8 @@
 
 The functions designed in this modules are not specific to the project and are
 used in a lot of the modules.
+
+.. moduleauthor:: Theo Dupuis
 """
 import doctest
 import glob
@@ -81,7 +83,8 @@ def list_elements(
         AssertError: Raised when the types of the arguments are not respected.
 
     Examples:
-        To get the list of the python files in the current directory:
+        To get the list of the vcf files in the current directory:
+            >>> # Indicate path to example data (depends on the repo structure)
             >>> path_to_root_repo = os.path.abspath(os.path.join(
             ...                             os.path.dirname(__file__),
             ...                             "..",
@@ -91,20 +94,20 @@ def list_elements(
             ...         "alltests",
             ...         "sim_data",
             ...         "vcf_files")
+            >>> # List the files of interest
             >>> elements = list_elements(path_, extension=".vcf.gz")
             >>> expected_out = [
             ...     os.path.join(path_, '1.vcf.gz'),
             ...     os.path.join(path_, '2.vcf.gz'),
             ...     os.path.join(path_, '3.vcf.gz')]
-            >>> for file, expected_file in zip(elements, expected_out):
-            ...     file == expected_file
-            True
-            True
+            >>> elements == expected_out
             True
 
         Similarly, with relative paths:
+            >>> # Save the current path and go to the folder containg the module
             >>> cwd = os.getcwd()
             >>> os.chdir(os.path.dirname(__file__))
+            >>> # Indicate path to example data (depends on the repo structure)
             >>> path_to_root_repo = os.path.join("..", "..")
             >>> path_ = os.path.join(
             ...         path_to_root_repo,
@@ -116,11 +119,9 @@ def list_elements(
             ...     os.path.join(path_, '1.vcf.gz'),
             ...     os.path.join(path_, '2.vcf.gz'),
             ...     os.path.join(path_, '3.vcf.gz')]
-            >>> for file, expected_file in zip(elements, expected_out)  :
-            ...     file == expected_file
+            >>> elements == expected_out
             True
-            True
-            True
+            >>> # Return to previous directory
             >>> os.chdir(cwd)
 
     Todo:

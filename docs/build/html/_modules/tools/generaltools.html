@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>tools.generaltools &#8212; pydeepgenomics  documentation</title>
+    <title>tools.generaltools &#8212; pydeepgenomics 0.1 pre pre alpha documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '',
+        VERSION:     '0.1 pre pre alpha',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,7 @@
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="pydeepgenomics  documentation" href="../../index.html" />
+    <link rel="top" title="pydeepgenomics 0.1 pre pre alpha documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -73,7 +73,29 @@
      href="../../index.html">Pydeepgenomics <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"></ul>
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">1. README</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#brief-comment">1.1. Brief comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#usage">1.2. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#limitations">1.3. Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#requirements">1.4. Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../description.html">2. What&#8217;s in here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../description.html#preprocessing">2.1. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../description.html#machine-learning">2.2. Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../TODO.html">3. TODO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../TODO.html#general-things-to-change-do">3.1. General things to change/do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../TODO.html#documentation">3.2. Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../TODO.html#library">3.3. Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../TODO.html#tests">3.4. Tests</a></li>
+</ul>
+</li>
+</ul>
+</ul>
 </li>
               
                 <li class="dropdown">
@@ -121,6 +143,8 @@
 
 <span class="sd">The functions designed in this modules are not specific to the project and are</span>
 <span class="sd">used in a lot of the modules.</span>
+
+<span class="sd">.. moduleauthor:: Theo Dupuis</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">doctest</span>
 <span class="kn">import</span> <span class="nn">glob</span>
@@ -164,8 +188,8 @@
 <span class="sd">    VERBOSE makes the function print all the</span>
 <span class="sd">    files found in the specified path (by default VERBOSE=False), It is</span>
 <span class="sd">    possible to sort the list of files by natural order before it is</span>
-<span class="sd">    returned with :code:`sort=&quot;natural&quot;` (activated by default) or alphanumerical</span>
-<span class="sd">    order.</span>
+<span class="sd">    returned with :code:`sort=&quot;natural&quot;` (activated by default) or</span>
+<span class="sd">    alphanumerical order.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        path_to_folder (:obj:`str`): Complete or relative path to the folder\</span>
@@ -198,22 +222,46 @@
 <span class="sd">        AssertError: Raised when the types of the arguments are not respected.</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        To get the list of the python files in the current directory:</span>
-<span class="sd">            &gt;&gt;&gt; elements = list_elements(&quot;.&quot;, extension=&quot;.py&quot;)</span>
+<span class="sd">        To get the list of the vcf files in the current directory:</span>
+<span class="sd">            &gt;&gt;&gt; # Indicate path to example data (depends on the repo structure)</span>
+<span class="sd">            &gt;&gt;&gt; path_to_root_repo = os.path.abspath(os.path.join(</span>
+<span class="sd">            ...                             os.path.dirname(__file__),</span>
+<span class="sd">            ...                             &quot;..&quot;,</span>
+<span class="sd">            ...                             &quot;..&quot;))</span>
+<span class="sd">            &gt;&gt;&gt; path_ = os.path.join(</span>
+<span class="sd">            ...         path_to_root_repo,</span>
+<span class="sd">            ...         &quot;alltests&quot;,</span>
+<span class="sd">            ...         &quot;sim_data&quot;,</span>
+<span class="sd">            ...         &quot;vcf_files&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; # List the files of interest</span>
+<span class="sd">            &gt;&gt;&gt; elements = list_elements(path_, extension=&quot;.vcf.gz&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; expected_out = [</span>
-<span class="sd">            ... os.path.join(&#39;.&#39;, &#39;__init__.py&#39;), os.path.join(&#39;.&#39;,</span>
-<span class="sd">            ... &#39;generaldecorators.py&#39;), os.path.join(&#39;.&#39;, &#39;generaltools.py&#39;)]</span>
+<span class="sd">            ...     os.path.join(path_, &#39;1.vcf.gz&#39;),</span>
+<span class="sd">            ...     os.path.join(path_, &#39;2.vcf.gz&#39;),</span>
+<span class="sd">            ...     os.path.join(path_, &#39;3.vcf.gz&#39;)]</span>
 <span class="sd">            &gt;&gt;&gt; elements == expected_out</span>
 <span class="sd">            True</span>
 
-<span class="sd">        Similarly, with absolute paths:</span>
-<span class="sd">            &gt;&gt;&gt; elements = list_elements(os.path.abspath(&quot;.&quot;), extension=&quot;.py&quot;)</span>
+<span class="sd">        Similarly, with relative paths:</span>
+<span class="sd">            &gt;&gt;&gt; # Save the current path and go to the folder containg the module</span>
+<span class="sd">            &gt;&gt;&gt; cwd = os.getcwd()</span>
+<span class="sd">            &gt;&gt;&gt; os.chdir(os.path.dirname(__file__))</span>
+<span class="sd">            &gt;&gt;&gt; # Indicate path to example data (depends on the repo structure)</span>
+<span class="sd">            &gt;&gt;&gt; path_to_root_repo = os.path.join(&quot;..&quot;, &quot;..&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; path_ = os.path.join(</span>
+<span class="sd">            ...         path_to_root_repo,</span>
+<span class="sd">            ...         &quot;alltests&quot;,</span>
+<span class="sd">            ...         &quot;sim_data&quot;,</span>
+<span class="sd">            ...         &quot;vcf_files&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; elements = list_elements(path_, extension=&quot;.vcf.gz&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; expected_out = [</span>
-<span class="sd">            ... os.path.join(os.path.abspath(&#39;.&#39;), &#39;__init__.py&#39;), os.path.join(</span>
-<span class="sd">            ... os.path.abspath(&#39;.&#39;), &#39;generaldecorators.py&#39;), os.path.join(</span>
-<span class="sd">            ... os.path.abspath(&#39;.&#39;), &#39;generaltools.py&#39;)]</span>
+<span class="sd">            ...     os.path.join(path_, &#39;1.vcf.gz&#39;),</span>
+<span class="sd">            ...     os.path.join(path_, &#39;2.vcf.gz&#39;),</span>
+<span class="sd">            ...     os.path.join(path_, &#39;3.vcf.gz&#39;)]</span>
 <span class="sd">            &gt;&gt;&gt; elements == expected_out</span>
 <span class="sd">            True</span>
+<span class="sd">            &gt;&gt;&gt; # Return to previous directory</span>
+<span class="sd">            &gt;&gt;&gt; os.chdir(cwd)</span>
 
 <span class="sd">    Todo:</span>
 <span class="sd">        * Make it cleaner and easier to read :</span>
@@ -607,7 +655,7 @@
       
     </p>
     <p>
-        &copy; Copyright 2016, Digital Epidemiology Lab.<br/>
+        &copy; Copyright 2017, Digital Epidemiology Lab.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
     </p>
   </div>

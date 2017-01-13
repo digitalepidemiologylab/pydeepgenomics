@@ -143,10 +143,10 @@ Machine Learning
 ****************
 
 Deep-height
-~~~~~~~~~~~
+-----------
 
 Deep-imputation
-~~~~~~~~~~~~~~~
+---------------
 
 We would like to implement a neural network similar to the one described `here
 <https://github.com/Tetrachrome/subpixel>`_ but working on genomic "images".

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1   README &#8212; pydeepgenomics  documentation</title>
+    <title>Pydeepgenomics &#8212; pydeepgenomics 0.1 pre pre alpha documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '',
+        VERSION:     '0.1 pre pre alpha',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,8 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="pydeepgenomics  documentation" href="#" />
+    <link rel="top" title="pydeepgenomics 0.1 pre pre alpha documentation" href="#" />
+    <link rel="next" title="1. README" href="README.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -72,7 +73,29 @@
      href="#">Pydeepgenomics <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"></ul>
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">1. README</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#brief-comment">1.1. Brief comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#usage">1.2. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#limitations">1.3. Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">3. TODO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#general-things-to-change-do">3.1. General things to change/do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#documentation">3.2. Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#library">3.3. Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#tests">3.4. Tests</a></li>
+</ul>
+</li>
+</ul>
+</ul>
 </li>
               
                 <li class="dropdown">
@@ -84,64 +107,71 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">1&nbsp;&nbsp;&nbsp;README</a><ul>
-<li><a class="reference internal" href="#brief-comment">1.1&nbsp;&nbsp;&nbsp;Brief comment</a></li>
-<li><a class="reference internal" href="#usage">1.2&nbsp;&nbsp;&nbsp;Usage</a><ul>
-<li><a class="reference internal" href="#modules-structure">1.2.1&nbsp;&nbsp;&nbsp;Modules structure:</a></li>
+<li><a class="reference internal" href="#">Pydeepgenomics</a><ul>
+<li><a class="reference internal" href="#readme">README</a><ul>
+<li><a class="reference internal" href="#brief-comment">Brief comment</a></li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#modules-structure">Modules structure:</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#limitations">1.3&nbsp;&nbsp;&nbsp;Limitations</a></li>
-<li><a class="reference internal" href="#requirements">1.4&nbsp;&nbsp;&nbsp;Requirements</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#what-s-in-here">2&nbsp;&nbsp;&nbsp;What&#8217;s in here ?</a><ul>
-<li><a class="reference internal" href="#preprocessing">2.1&nbsp;&nbsp;&nbsp;Preprocessing</a><ul>
-<li><a class="reference internal" href="#general-transformations">2.1.1&nbsp;&nbsp;&nbsp;General transformations:</a><ul>
-<li><a class="reference internal" href="#background">2.1.1.1&nbsp;&nbsp;&nbsp;Background</a></li>
-<li><a class="reference internal" href="#what-do-we-actually-do">2.1.1.2&nbsp;&nbsp;&nbsp;What do we actually do</a></li>
+<li><a class="reference internal" href="#what-s-in-here">What&#8217;s in here ?</a><ul>
+<li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
+<li><a class="reference internal" href="#general-transformations">General transformations:</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#what-do-we-actually-do">What do we actually do</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#application-specific-transformations">2.1.2&nbsp;&nbsp;&nbsp;Application specific transformations:</a></li>
+<li><a class="reference internal" href="#application-specific-transformations">Application specific transformations:</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#machine-learning">2.2&nbsp;&nbsp;&nbsp;Machine Learning</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#todo">3&nbsp;&nbsp;&nbsp;TODO</a><ul>
-<li><a class="reference internal" href="#general-things-to-change-do">3.1&nbsp;&nbsp;&nbsp;General things to change/do</a></li>
-<li><a class="reference internal" href="#documentation">3.2&nbsp;&nbsp;&nbsp;Documentation</a></li>
-<li><a class="reference internal" href="#library">3.3&nbsp;&nbsp;&nbsp;Library</a><ul>
-<li><a class="reference internal" href="#tools">3.3.1&nbsp;&nbsp;&nbsp;Tools</a><ul>
-<li><a class="reference internal" href="#generaltools">3.3.1.1&nbsp;&nbsp;&nbsp;Generaltools</a></li>
-<li><a class="reference internal" href="#generaldecorators">3.3.1.2&nbsp;&nbsp;&nbsp;Generaldecorators</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id3">3.3.2&nbsp;&nbsp;&nbsp;Preprocessing</a><ul>
-<li><a class="reference internal" href="#encoding">3.3.2.1&nbsp;&nbsp;&nbsp;Encoding</a></li>
-<li><a class="reference internal" href="#vcf">3.3.2.2&nbsp;&nbsp;&nbsp;vcf</a></li>
-<li><a class="reference internal" href="#subsets">3.3.2.3&nbsp;&nbsp;&nbsp;Subsets:</a></li>
-<li><a class="reference internal" href="#cutting">3.3.2.4&nbsp;&nbsp;&nbsp;cutting:</a></li>
-<li><a class="reference internal" href="#examples">3.3.2.5&nbsp;&nbsp;&nbsp;Examples:</a></li>
+<li><a class="reference internal" href="#machine-learning">Machine Learning</a><ul>
+<li><a class="reference internal" href="#deep-height">Deep-height</a></li>
+<li><a class="reference internal" href="#deep-imputation">Deep-imputation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#tests">3.4&nbsp;&nbsp;&nbsp;Tests</a><ul>
-<li><a class="reference internal" href="#general">3.4.1&nbsp;&nbsp;&nbsp;General</a></li>
-<li><a class="reference internal" href="#id4">3.4.2&nbsp;&nbsp;&nbsp;Tools</a><ul>
-<li><a class="reference internal" href="#general-tools">3.4.2.1&nbsp;&nbsp;&nbsp;General tools</a></li>
-<li><a class="reference internal" href="#general-decorators">3.4.2.2&nbsp;&nbsp;&nbsp;General decorators</a></li>
+<li><a class="reference internal" href="#todo">TODO</a><ul>
+<li><a class="reference internal" href="#general-things-to-change-do">General things to change/do</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#library">Library</a><ul>
+<li><a class="reference internal" href="#tools">Tools</a><ul>
+<li><a class="reference internal" href="#generaltools">Generaltools</a></li>
+<li><a class="reference internal" href="#generaldecorators">Generaldecorators</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">3.4.3&nbsp;&nbsp;&nbsp;VCF</a><ul>
-<li><a class="reference internal" href="#id6">3.4.3.1&nbsp;&nbsp;&nbsp;vcf</a></li>
+<li><a class="reference internal" href="#id3">Preprocessing</a><ul>
+<li><a class="reference internal" href="#encoding">Encoding</a></li>
+<li><a class="reference internal" href="#vcf">vcf</a></li>
+<li><a class="reference internal" href="#subsets">Subsets:</a></li>
+<li><a class="reference internal" href="#cutting">cutting:</a></li>
+<li><a class="reference internal" href="#examples">Examples:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tests">Tests</a><ul>
+<li><a class="reference internal" href="#general">General</a></li>
+<li><a class="reference internal" href="#id4">Tools</a><ul>
+<li><a class="reference internal" href="#general-tools">General tools</a></li>
+<li><a class="reference internal" href="#general-decorators">General decorators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">VCF</a><ul>
+<li><a class="reference internal" href="#id6">vcf</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#license">4&nbsp;&nbsp;&nbsp;LICENSE</a></li>
+<li><a class="reference internal" href="#license">LICENSE</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -178,9 +208,33 @@
     <div class="col-md-12 content">
       
   <div class="toctree-wrapper compound" id="contents">
+<p class="caption"><span class="caption-text">Contents:</span><a class="headerlink" href="#contents" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">1. README</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#brief-comment">1.1. Brief comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#usage">1.2. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#limitations">1.3. Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">3. TODO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#general-things-to-change-do">3.1. General things to change/do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#documentation">3.2. Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#library">3.3. Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#tests">3.4. Tests</a></li>
+</ul>
+</li>
+</ul>
 </div>
+<div class="section" id="pydeepgenomics">
+<h1>Pydeepgenomics<a class="headerlink" href="#pydeepgenomics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="readme">
-<h1>1&nbsp;&nbsp;&nbsp;README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
+<h2>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 100.0px; height: 100.0px;" /></a>
 <p class="caption"><span class="caption-text">Still under constructions ....
@@ -199,7 +253,7 @@
 </div>
 </div>
 <div class="section" id="brief-comment">
-<h2>1.1&nbsp;&nbsp;&nbsp;Brief comment<a class="headerlink" href="#brief-comment" title="Permalink to this headline">¶</a></h2>
+<h3>Brief comment<a class="headerlink" href="#brief-comment" title="Permalink to this headline">¶</a></h3>
 <p>The idea behind this project is to give a few tools to work with deep neural
 networks on genomic data. This library regroups features which were
 originally designed for two distinct projects currently in progress in the
@@ -210,9 +264,9 @@ contains only the part on preprocessing but other packages might arrive
 eventually.</p>
 </div>
 <div class="section" id="usage">
-<h2>1.2&nbsp;&nbsp;&nbsp;Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="modules-structure">
-<h3>1.2.1&nbsp;&nbsp;&nbsp;Modules structure:<a class="headerlink" href="#modules-structure" title="Permalink to this headline">¶</a></h3>
+<h4>Modules structure:<a class="headerlink" href="#modules-structure" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>pydeepgenomics
 ├── __init__.py
 ├── preprocess
@@ -244,27 +298,24 @@ eventually.</p>
 </div>
 </div>
 <div class="section" id="limitations">
-<h2>1.3&nbsp;&nbsp;&nbsp;Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">For the moment, it only works with text (<em>.vcf</em>) files.</div>
 </div>
 </div>
 <div class="section" id="requirements">
-<h2>1.4&nbsp;&nbsp;&nbsp;Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">==</span><span class="mf">0.19</span><span class="o">.</span><span class="mi">1</span>
 <span class="n">Naked</span><span class="o">==</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">31</span>
 </pre></div>
 </div>
+</div>
+</div>
 <hr class="docutils" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-</div>
 <div class="section" id="what-s-in-here">
-<h1>2&nbsp;&nbsp;&nbsp;What&#8217;s in here ?<a class="headerlink" href="#what-s-in-here" title="Permalink to this headline">¶</a></h1>
+<h2>What&#8217;s in here ?<a class="headerlink" href="#what-s-in-here" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="preprocessing">
-<h2>2.1&nbsp;&nbsp;&nbsp;Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
 <p>The preprocessing can be separated in two main parts:</p>
 <ol class="arabic simple">
 <li>The general transformation of the VCF text files (often used in
@@ -288,9 +339,9 @@ nor how it was structured. Thus, making the preprocessing ourselves could
 help us familiarize ourselves with this kind of dataset.</li>
 </ol>
 <div class="section" id="general-transformations">
-<h3>2.1.1&nbsp;&nbsp;&nbsp;General transformations:<a class="headerlink" href="#general-transformations" title="Permalink to this headline">¶</a></h3>
+<h4>General transformations:<a class="headerlink" href="#general-transformations" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="background">
-<h4>2.1.1.1&nbsp;&nbsp;&nbsp;Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h4>
+<h5>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h5>
 <p>The datasets we received consisted in 22 VCF files containing the genomic
 information of all our samples for each human autosome (non-sexual chromosome).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##fileformat=VCFv4.1</span>
@@ -317,11 +368,11 @@ information <a class="reference external" href="https://samtools.github.io/hts-s
 <p>BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
 </div>
 <div class="section" id="what-do-we-actually-do">
-<h4>2.1.1.2&nbsp;&nbsp;&nbsp;What do we actually do<a class="headerlink" href="#what-do-we-actually-do" title="Permalink to this headline">¶</a></h4>
+<h5>What do we actually do<a class="headerlink" href="#what-do-we-actually-do" title="Permalink to this headline">¶</a></h5>
 </div>
 </div>
 <div class="section" id="application-specific-transformations">
-<h3>2.1.2&nbsp;&nbsp;&nbsp;Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h3>
+<h4>Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><strong>deep-height</strong></div>
 </div>
@@ -390,18 +441,21 @@ reference data.</p>
 </div>
 </div>
 <div class="section" id="machine-learning">
-<h2>2.2&nbsp;&nbsp;&nbsp;Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h2>
+<h3>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="deep-height">
+<h4>Deep-height<a class="headerlink" href="#deep-height" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="deep-imputation">
+<h4>Deep-imputation<a class="headerlink" href="#deep-imputation" title="Permalink to this headline">¶</a></h4>
 <p>We would like to implement a neural network similar to the one described <a class="reference external" href="https://github.com/Tetrachrome/subpixel">here</a> but working on genomic &#8220;images&#8221;.</p>
+</div>
+</div>
+</div>
 <hr class="docutils" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-</div>
 <div class="section" id="todo">
-<h1>3&nbsp;&nbsp;&nbsp;TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h1>
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="general-things-to-change-do">
-<h2>3.1&nbsp;&nbsp;&nbsp;General things to change/do<a class="headerlink" href="#general-things-to-change-do" title="Permalink to this headline">¶</a></h2>
+<h3>General things to change/do<a class="headerlink" href="#general-things-to-change-do" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">recode the bash scripts in python</p>
 </li>
@@ -458,17 +512,17 @@ process files, it might be cleaner to work with generators)</p>
 </ul>
 </div>
 <div class="section" id="documentation">
-<h2>3.2&nbsp;&nbsp;&nbsp;Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>Almost every modules still need to be documented ...</strong></li>
 </ul>
 </div>
 <div class="section" id="library">
-<h2>3.3&nbsp;&nbsp;&nbsp;Library<a class="headerlink" href="#library" title="Permalink to this headline">¶</a></h2>
+<h3>Library<a class="headerlink" href="#library" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="tools">
-<h3>3.3.1&nbsp;&nbsp;&nbsp;Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
+<h4>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="generaltools">
-<h4>3.3.1.1&nbsp;&nbsp;&nbsp;Generaltools<a class="headerlink" href="#generaltools" title="Permalink to this headline">¶</a></h4>
+<h5>Generaltools<a class="headerlink" href="#generaltools" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>Recode the function list_elements:</dt>
@@ -488,19 +542,19 @@ process files, it might be cleaner to work with generators)</p>
 </ul>
 </div>
 <div class="section" id="generaldecorators">
-<h4>3.3.1.2&nbsp;&nbsp;&nbsp;Generaldecorators<a class="headerlink" href="#generaldecorators" title="Permalink to this headline">¶</a></h4>
+<h5>Generaldecorators<a class="headerlink" href="#generaldecorators" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>RAS for the moment</li>
 </ul>
 </div>
 </div>
 <div class="section" id="id3">
-<h3>3.3.2&nbsp;&nbsp;&nbsp;Preprocessing<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h4>Preprocessing<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Try to organise in coherent modules</li>
 </ul>
 <div class="section" id="encoding">
-<h4>3.3.2.1&nbsp;&nbsp;&nbsp;Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">¶</a></h4>
+<h5>Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">¶</a></h5>
 <ul>
 <li><p class="first">Try to remove code duplication</p>
 </li>
@@ -529,7 +583,7 @@ computer...).</p>
 </ul>
 </div>
 <div class="section" id="vcf">
-<h4>3.3.2.2&nbsp;&nbsp;&nbsp;vcf<a class="headerlink" href="#vcf" title="Permalink to this headline">¶</a></h4>
+<h5>vcf<a class="headerlink" href="#vcf" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>rewrite split.js in python and/or at least in a more portable version.</li>
 <li>add tests</li>
@@ -540,7 +594,7 @@ the case used in the function &#8220;lines&#8221; ?</li>
 </ul>
 </div>
 <div class="section" id="subsets">
-<h4>3.3.2.3&nbsp;&nbsp;&nbsp;Subsets:<a class="headerlink" href="#subsets" title="Permalink to this headline">¶</a></h4>
+<h5>Subsets:<a class="headerlink" href="#subsets" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>Use the os, sys and shutil libraries instead of the os calls</li>
 <li>Use a generator instead of doing some action on a list of files in a loop and
@@ -548,13 +602,13 @@ removing the last element processed after each round of the loop.</li>
 </ul>
 </div>
 <div class="section" id="cutting">
-<h4>3.3.2.4&nbsp;&nbsp;&nbsp;cutting:<a class="headerlink" href="#cutting" title="Permalink to this headline">¶</a></h4>
+<h5>cutting:<a class="headerlink" href="#cutting" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>Finish this part and code of the corresponding example</li>
 </ul>
 </div>
 <div class="section" id="examples">
-<h4>3.3.2.5&nbsp;&nbsp;&nbsp;Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<h5>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>Check size of the vcf files folder before making a copy</li>
 <li>Clean playground when script is over ?</li>
@@ -565,9 +619,9 @@ removing the last element processed after each round of the loop.</li>
 </div>
 </div>
 <div class="section" id="tests">
-<h2>3.4&nbsp;&nbsp;&nbsp;Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="general">
-<h3>3.4.1&nbsp;&nbsp;&nbsp;General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<h4>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Note: the tests were added a few months after the beginning of the project, thus their sparsity and the difficulty to test some functions</li>
 <li>In general, add new cases to be tested for the different test sets to be
@@ -577,9 +631,9 @@ to have everything in py.test or nose later.</li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h3>3.4.2&nbsp;&nbsp;&nbsp;Tools<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h4>Tools<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="general-tools">
-<h4>3.4.2.1&nbsp;&nbsp;&nbsp;General tools<a class="headerlink" href="#general-tools" title="Permalink to this headline">¶</a></h4>
+<h5>General tools<a class="headerlink" href="#general-tools" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>Document the tests ?</li>
 <li>Add tests to be sure the functions which manage files handle both relative and absolute paths</li>
@@ -588,7 +642,7 @@ arguments</li>
 </ul>
 </div>
 <div class="section" id="general-decorators">
-<h4>3.4.2.2&nbsp;&nbsp;&nbsp;General decorators<a class="headerlink" href="#general-decorators" title="Permalink to this headline">¶</a></h4>
+<h5>General decorators<a class="headerlink" href="#general-decorators" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>Prepare tests for the</li>
 <li>Document the tests</li>
@@ -596,30 +650,45 @@ arguments</li>
 </div>
 </div>
 <div class="section" id="id5">
-<h3>3.4.3&nbsp;&nbsp;&nbsp;VCF<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h4>VCF<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="id6">
-<h4>3.4.3.1&nbsp;&nbsp;&nbsp;vcf<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<h5>vcf<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>Do everything !</li>
 <li>(But first the vcf module may be broken into smaller units so that unit testing has a sens ...)</li>
 <li>Document the tests</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 <hr class="docutils" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="section" id="license">
-<h1>4&nbsp;&nbsp;&nbsp;LICENSE<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
+<h2>LICENSE<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>MIT License</p>
+<p>Copyright (c) [2017] [Digital Epidemiology Lab]</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &#8220;Software&#8221;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
 <hr class="docutils" />
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
+</div>
 </div>
 
 
@@ -634,7 +703,7 @@ arguments</li>
       
     </p>
     <p>
-        &copy; Copyright 2016, Digital Epidemiology Lab.<br/>
+        &copy; Copyright 2017, Digital Epidemiology Lab.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
     </p>
   </div>
