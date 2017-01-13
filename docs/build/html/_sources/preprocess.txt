@@ -17,7 +17,6 @@ Submodules
    preprocess.cutting
    preprocess.encoding
    preprocess.filtering
-   preprocess.settings
    preprocess.settings_template
    preprocess.subsets
    preprocess.verifications
