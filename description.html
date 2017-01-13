@@ -94,6 +94,7 @@
 <li><a class="reference internal" href="#application-specific-transformations">Application specific transformations:</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#machine-learning">Machine Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -182,7 +183,8 @@ information of all our samples for each human autosome (non-sexual chromosome).<
 </pre></div>
 </div>
 <p>The VCF file format is a text format identifying the genetic variants between
-individuals. They contain</p>
+individuals (More information <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/">here</a> and a lot more
+information <a class="reference external" href="https://samtools.github.io/hts-specs/VCFv4.2.pdf">here</a>)</p>
 <p>BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
 </div>
 <div class="section" id="what-do-we-actually-do">
@@ -193,6 +195,12 @@ individuals. They contain</p>
 <h3>Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><strong>deep-height</strong></div>
+</div>
+<p>We just had to concatenate the splitted files in order to get genome wide
+genotypes usable as training samples for later training.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">More preprocessing has been done directly in <a class="reference external" href="https://github.com/salathegroup/deep-height">https://github.com/salathegroup/deep-height</a></p>
 </div>
 <div class="line-block">
 <div class="line"><strong>deep-imputation</strong></div>
@@ -238,7 +246,23 @@ individuals. They contain</p>
 <span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">POS</span>
 </pre></div>
 </div>
+<p><em>Part b</em></p>
+<p>Reduction of input size while keeping enough context to make decent predictions.</p>
+<p><em>Part c</em></p>
+<p>Double uniform filtering to get a subset with 10% of the SNPs contained in
+the original 1000 genome project haplotypes and a subset keeping only 10% of
+the previous subset. Thus, the resulting two subsets would have respectively a
+few millions and a few hundred thousand SNPs, corresponding to the order of
+magnitude of what we can have with classical non-imputed and imputed datasets.
+Off course, the uniform filter is not representative of the real data but
+it&#8217;s a simple approach for exploratory analysis. Moreover, it should be
+sufficient to make the neural network learn itself the structure of the
+reference data.</p>
 </div>
+</div>
+<div class="section" id="machine-learning">
+<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h2>
+<p>We would like to implement a neural network similar to the one described <a class="reference external" href="https://github.com/Tetrachrome/subpixel">here</a> but working on genomic &#8220;images&#8221;.</p>
 </div>
 </div>
 
