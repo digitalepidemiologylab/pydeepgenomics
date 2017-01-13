@@ -87,11 +87,7 @@
 <li><a class="reference internal" href="#">What&#8217;s in here ?</a><ul>
 <li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
 <li><a class="reference internal" href="#general-transformations">General transformations:</a><ul>
-<li><a class="reference internal" href="#background">Background</a><ul>
-<li><a class="reference internal" href="#deep-height">deep-height</a></li>
-<li><a class="reference internal" href="#deep-imputation">deep-imputation</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#background">Background</a></li>
 <li><a class="reference internal" href="#what-do-we-actually-do">What do we actually do</a></li>
 </ul>
 </li>
@@ -187,13 +183,7 @@ information of all our samples for each human autosome (non-sexual chromosome).<
 </div>
 <p>The VCF file format is a text format identifying the genetic variants between
 individuals. They contain</p>
-<div class="section" id="deep-height">
-<h5>deep-height<a class="headerlink" href="#deep-height" title="Permalink to this headline">¶</a></h5>
-</div>
-<div class="section" id="deep-imputation">
-<h5>deep-imputation<a class="headerlink" href="#deep-imputation" title="Permalink to this headline">¶</a></h5>
 <p>BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
-</div>
 </div>
 <div class="section" id="what-do-we-actually-do">
 <h4>What do we actually do<a class="headerlink" href="#what-do-we-actually-do" title="Permalink to this headline">¶</a></h4>
@@ -201,8 +191,53 @@ individuals. They contain</p>
 </div>
 <div class="section" id="application-specific-transformations">
 <h3>Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h3>
-<p>Idea
-Workflow</p>
+<div class="line-block">
+<div class="line"><strong>deep-height</strong></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>deep-imputation</strong></div>
+</div>
+<img alt="_images/Figure_imputation.png" src="_images/Figure_imputation.png" />
+<img alt="_images/Pipeline.png" src="_images/Pipeline.png" />
+<p><em>Part a</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="c1"># FIRST_ALLELE_BIT_POS</span>
+<span class="n">FBP</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>  <span class="c1"># --&gt; 268435456</span>
+<span class="c1"># NUCLEOTIDE_LABELS</span>
+<span class="n">NL</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>  <span class="c1"># --&gt; 1</span>
+    <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>  <span class="c1"># --&gt; 2</span>
+    <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>  <span class="c1"># --&gt; 4</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))}</span>  <span class="c1"># --&gt; 8</span>
+
+<span class="c1"># SNPS_VALUES_ENCODED --&gt; A-C 1st allele and then A-C 2nd allele</span>
+<span class="n">SVE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 268435456</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 536870912</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 1073741824</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 4294967296</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>  <span class="c1"># --&gt; 8589934592</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>  <span class="c1"># --&gt; 17179869184</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>  <span class="c1"># --&gt; 34359738368</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))]</span>  <span class="c1"># --&gt; 137438953472</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># First allele encoding</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">REF</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">ALT</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># Second allele encoding</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">REF</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">ALT</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># Add position</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">POS</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
