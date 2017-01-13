@@ -41,7 +41,7 @@ Modules structure:
 
 ::
 
-   .
+   pydeepgenomics
    ├── __init__.py
    ├── preprocess
    │   ├── cutting.py

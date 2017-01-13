@@ -81,6 +81,7 @@ Preprocessing
 
 Encoding
 ~~~~~~~~
+* Try to remove code duplication
 * When iter in batch of elements use generator with this kind of solutions:
 
     .. code-block:: python
