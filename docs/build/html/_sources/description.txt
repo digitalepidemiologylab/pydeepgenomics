@@ -11,8 +11,10 @@ these research is that deep learning can model non linear relations between
 a very high dimension input and the output whereas standard techniques
 in population genomic usually find the linear correlations between them.
 
-We have data from `openSNP<https://opensnp.org/>`_ and from the `Swiss HIV
-Cohort Study<http://www.shcs.ch/>`_. We know the heights, ethnicity and sex
+We have data from `openSNP
+<https://opensnp.org/>`_ and from the `Swiss HIV
+Cohort Study
+<http://www.shcs.ch/>`_. We know the heights, ethnicity and sex
 of each sample.
 
 deep-imputation
