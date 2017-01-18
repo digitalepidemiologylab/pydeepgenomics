@@ -1,4 +1,3 @@
 {
-  "alltests/test_preprocess/test_encoding.py": true,
   "pydeepgenomics/preprocess/examples/4_filter_and_split_files.py": true
 }

@@ -1,5 +1,6 @@
 *.pyc
 *__pycache__
+*settings.py
 *playground
 .idea
 ./docs/build

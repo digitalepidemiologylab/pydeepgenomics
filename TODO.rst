@@ -130,8 +130,8 @@ Encoding
 * Clean the function :code:`verify_decoding` to have smaller functional units and a code easier to read.
 * Correct the hardcoded parts of the code so that it can handle other FIRST_ALLELE_BIT_POS
 
-vcf
-~~~
+vcf:
+~~~~
 
 * rewrite split.js in python and/or at least in a more portable version.
 * add tests

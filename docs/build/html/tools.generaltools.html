@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tools.generaltools module &#8212; pydeepgenomics  documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Pydeepgenomics</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://www.digitalepidemiologylab.org/">Digital Epidemiology Lab</a></li>
+                <li><a href="./py-modindex.html">Modules</a></li>
+                <li><a href="./genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Pydeepgenomics <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">1. README</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#brief-comment">1.1. Brief comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#usage">1.2. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#limitations">1.3. Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">3. Module Index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="alltests.html">3.1. alltests package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">4. TODO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#general-things-to-change-do">4.1. General things to change/do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#documentation">4.2. Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#library">4.3. Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#tests">4.4. Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">5. LICENSE</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Go to <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">tools.generaltools module</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/tools.generaltools.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-tools.generaltools">
+<span id="tools-generaltools-module"></span><h1>tools.generaltools module<a class="headerlink" href="#module-tools.generaltools" title="Permalink to this headline">¶</a></h1>
+<p>This module contains functions used in most of the packages of this project.</p>
+<p>The functions designed in this modules are not specific to the project and are
+used in a lot of the modules.</p>
+<p><em>Module author: Theo Dupuis</em></p>
+<dl class="function">
+<dt id="tools.generaltools.custom_output">
+<code class="descname">custom_output</code><span class="sig-paren">(</span><em>text</em>, <em>verbose</em>, <em>printing</em>, <em>logging</em>, <em>in_loop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#custom_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.custom_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shuffles the list and returns chunks.</p>
+<p>This generator takes a list and the proportions in which you want to
+subdivide it and yields random subsets of this list.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The sizes of the chunks is equal to the floored multiplication of
+the size of the original list by the given proportions. Thus,
+a rounding error might often happen and the size of the all the
+chunks would not match the size of the original list. To correct
+that, the remaining elements of the list are added to the last
+chunk (corresponding to <code class="code docutils literal"><span class="pre">subset_proportions[-1]</span></code>). We let it
+that way as it didn&#8217;t affect our work a lot but this behaviours
+will probably change in further versions.</p>
+</div>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>l</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>) &#8211; original list</li>
+<li><strong>subset_proportions</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list|tuple</span></code>) &#8211; sizes of the chunks given as         proportions of the original list.</li>
+<li><strong>output_format</strong> (<code class="xref py py-obj docutils literal"><span class="pre">type</span></code>, optional) &#8211; type of output format. By         default, chunks are returned in tuples (<code class="code docutils literal"><span class="pre">output_format=tuple</span></code>)         but can also be list.</li>
+<li><strong>force</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Ignores the <em>ValueError</em> raised when the         sum of the proportions is not equal to 1.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first"><code class="xref py py-obj docutils literal"><span class="pre">tuple|list</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; Raised when the sum of the proportions (rounded at         <span class="math">\(10^{-9}\)</span>)is different than 1.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">20</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">50</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="mi">30</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;class &#39;tuple&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">list_</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value not in list !&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">list_</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tools.generaltools.get_nb_lines_file">
+<code class="descname">get_nb_lines_file</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#get_nb_lines_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.get_nb_lines_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a potentially zipped file and return its number of lines.</p>
+<p>This function opens the file received as argument and opens it depending
+on its extension (For the moment, only classic text files and gzipped
+files can be opened.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>infile</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) &#8211; Complete or relative path to the file you want         to open.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The number of lines in the file.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tools.generaltools.list_elements">
+<code class="descname">list_elements</code><span class="sig-paren">(</span><em>path_to_folder</em>, <em>type_=None</em>, <em>extension=''</em>, <em>sort='natural'</em>, <em>exception=None</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#list_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.list_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the items in a given folder with a few filters.</p>
+<p>This function lists all the elements in the folder given.
+You can choose to select only one type of object with <code class="code docutils literal"><span class="pre">type_</span></code>. It is
+also possible to look only for the objects ending with a specific
+string given to <code class="code docutils literal"><span class="pre">extension</span></code>.
+The output is a list that can be sorted by alphanumerical or natural
+order with <code class="code docutils literal"><span class="pre">sort</span></code>
+VERBOSE makes the function print all the
+files found in the specified path (by default VERBOSE=False), It is
+possible to sort the list of files by natural order before it is
+returned with <code class="code docutils literal"><span class="pre">sort=&quot;natural&quot;</span></code> (activated by default) or
+alphanumerical order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path_to_folder</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) &#8211; Complete or relative path to the folder         you want to explore.</li>
+<li><strong>type</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str|None</span></code>, optional) &#8211; Type of items you want to list,         can be <code class="code docutils literal"><span class="pre">&quot;dir&quot;</span></code>, <code class="code docutils literal"><span class="pre">&quot;file&quot;</span></code> or <code class="code docutils literal"><span class="pre">None</span></code> (default         behavior). When set to <code class="code docutils literal"><span class="pre">None</span></code>, the function does not care         about the type and returns all items.</li>
+<li><strong>extension</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; Adds a filter to the function to         only return the items whose name finish with the string given to         extension. By default extension is an empty string.</li>
+<li><strong>sort</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; Indicates how the output list is         sorted. By default, the output is sorted by natural order (         <code class="code docutils literal"><span class="pre">sort=&quot;natural&quot;</span></code>). It can also be set to         <code class="code docutils literal"><span class="pre">sort=&quot;alphanumeric&quot;</span></code>.</li>
+<li><strong>exception</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list|tuple|None</span></code>, optional) &#8211; List or tuple of         specific items to ignore. None by default</li>
+<li><strong>verbose</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Makes the function print more         information (by default <code class="code docutils literal"><span class="pre">verbose=False</span></code>).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<dl class="docutils">
+<dt>To get the list of the vcf files in the current directory:</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Indicate path to example data (depends on the repo structure)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path_to_root_repo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>                            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span>
+<span class="gp">... </span>                            <span class="s2">&quot;..&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                            <span class="s2">&quot;..&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">path_to_root_repo</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;alltests&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;sim_data&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;vcf_files&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List the files of interest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elements</span> <span class="o">=</span> <span class="n">list_elements</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_out</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="s1">&#39;1.vcf.gz&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="s1">&#39;2.vcf.gz&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="s1">&#39;3.vcf.gz&#39;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elements</span> <span class="o">==</span> <span class="n">expected_out</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd>
+<dt>Similarly, with relative paths:</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Save the current path and go to the folder containg the module</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Indicate path to example data (depends on the repo structure)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path_to_root_repo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">path_to_root_repo</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;alltests&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;sim_data&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;vcf_files&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elements</span> <span class="o">=</span> <span class="n">list_elements</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_out</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="s1">&#39;1.vcf.gz&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="s1">&#39;2.vcf.gz&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="s1">&#39;3.vcf.gz&#39;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elements</span> <span class="o">==</span> <span class="n">expected_out</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return to previous directory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>Make it cleaner and easier to read :</dt>
+<dd><ul class="first last">
+<li>Reduce redundancy</li>
+<li>Outsource the prints to <code class="code docutils literal"><span class="pre">custom_output</span></code> when this
+function is moved to the current module.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>add some modularity ?</li>
+<li>Raise exceptions when incorrect parameters are given (Wrong
+string, inconsitent value etc.)</li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tools.generaltools.print_progress">
+<code class="descname">print_progress</code><span class="sig-paren">(</span><em>iteration</em>, <em>total</em>, <em>prefix=''</em>, <em>suffix=''</em>, <em>decimals=1</em>, <em>bar_length=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#print_progress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.print_progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>A nice way to show that your code is still running.</p>
+<p>This function prints a progress bar corresponding to the ratio between
+the number of iterations and the expected total number of iterations.
+The percentage is also shown in a numeric form.
+It can also display some custom information in two fields (prefix and
+suffix).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>iteration</strong> (<code class="xref py py-obj docutils literal"><span class="pre">int</span></code>) &#8211; the number of iterations already past</li>
+<li><strong>total</strong> (<code class="xref py py-obj docutils literal"><span class="pre">int</span></code>) &#8211; the expected total number of iterations</li>
+<li><strong>prefix</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; field to display custom information (         default is <code class="docutils literal"><span class="pre">''</span></code>).</li>
+<li><strong>suffix</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>, optional) &#8211; field to display custom information (         default is <code class="docutils literal"><span class="pre">''</span></code>).</li>
+<li><strong>decimals</strong> (<code class="xref py py-obj docutils literal"><span class="pre">int</span></code>, optional) &#8211; number of decimals to show.</li>
+<li><strong>bar_length</strong> (<code class="xref py py-obj docutils literal"><span class="pre">int</span></code>, optional) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">None</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Disable the &#8220;fancy bar&#8221; by default (use simple # or = instead)</li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tools.generaltools.random_chunks">
+<code class="descname">random_chunks</code><span class="sig-paren">(</span><em>l</em>, <em>subset_proportions</em>, <em>output_format=&lt;class 'tuple'&gt;</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#random_chunks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.random_chunks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shuffles the list and returns chunks.</p>
+<p>This generator takes a list and the proportions in which you want to
+subdivide it and yields random subsets of this list.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The sizes of the chunks is equal to the floored multiplication of
+the size of the original list by the given proportions. Thus,
+a rounding error might often happen and the size of the all the
+chunks would not match the size of the original list. To correct
+that, the remaining elements of the list are added to the last
+chunk (corresponding to <code class="code docutils literal"><span class="pre">subset_proportions[-1]</span></code>). We let it
+that way as it didn&#8217;t affect our work a lot but this behaviours
+will probably change in further versions.</p>
+</div>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>l</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>) &#8211; original list</li>
+<li><strong>subset_proportions</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list|tuple</span></code>) &#8211; sizes of the chunks given as         proportions of the original list.</li>
+<li><strong>output_format</strong> (<code class="xref py py-obj docutils literal"><span class="pre">type</span></code>, optional) &#8211; type of output format. By         default, chunks are returned in tuples (<code class="code docutils literal"><span class="pre">output_format=tuple</span></code>)         but can also be list.</li>
+<li><strong>force</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Ignores the <em>ValueError</em> raised when the         sum of the proportions is not equal to 1.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first"><code class="xref py py-obj docutils literal"><span class="pre">tuple|list</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; Raised when the sum of the proportions (rounded at         <span class="math">\(10^{-9}\)</span>)is different than 1.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">20</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">50</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="mi">30</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;class &#39;tuple&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">list_</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value not in list !&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">list_</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tools.generaltools.time_between_two_calls">
+<code class="descname">time_between_two_calls</code><span class="sig-paren">(</span><em>raw=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#time_between_two_calls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.time_between_two_calls" title="Permalink to this definition">¶</a></dt>
+<dd><p>A basic timer that returns the time spent since the last call.</p>
+<p>Generator of time durations. The first call initialises the generator with
+the current time and yields 0. All further calls yield the time spent
+since the precedent call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>raw</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Indicate if the time yielded is         formatted (<code class="code docutils literal"><span class="pre">raw=False</span></code>, by default) or not.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">tuple|float</span></code> &#8211; Depending on <code class="code docutils literal"><span class="pre">raw</span></code> yields a tuple of         integers <em>(h, min, s)</em> or a float.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">time_between_two_calls</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tools.generaltools.time_points_to_time_length_in_h_min_sec">
+<code class="descname">time_points_to_time_length_in_h_min_sec</code><span class="sig-paren">(</span><em>begin_time</em>, <em>end_time</em>, <em>to_int=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#time_points_to_time_length_in_h_min_sec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.time_points_to_time_length_in_h_min_sec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes to time points in second and returns the difference in h, min, s.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>begin_time</strong> (<code class="xref py py-obj docutils literal"><span class="pre">float|int</span></code>) &#8211; First time point in seconds (<em>e.g.</em>         given by <code class="code docutils literal"><span class="pre">time.time()</span></code>)</li>
+<li><strong>end_time</strong> (<code class="xref py py-obj docutils literal"><span class="pre">float|int</span></code>) &#8211; Second time point in seconds (<em>e.g.</em>         given by <code class="code docutils literal"><span class="pre">time.time()</span></code>)</li>
+<li><strong>to_int</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>) &#8211; Forces the output to be a tuple of integers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>Tuple containing the result in the form (h, min,         s) where h, min and s are integers or floats depending on</dt>
+<dd><p class="first last"><code class="code docutils literal"><span class="pre">to_int</span></code></p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tools.generaltools.time_since_first_call">
+<code class="descname">time_since_first_call</code><span class="sig-paren">(</span><em>raw=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#time_since_first_call"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.time_since_first_call" title="Permalink to this definition">¶</a></dt>
+<dd><p>A basic timer which returns the time spent since the first call.</p>
+<p>Generator of time durations. The first call initialise the generator with
+the current time and yields 0. All further calls yield the time spent
+since the first call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>raw</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Indicate if the time yielded is         formatted (<code class="code docutils literal"><span class="pre">raw=False</span></code>, by default) or not.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">tuple|float</span></code> &#8211; Depending on <code class="code docutils literal"><span class="pre">raw</span></code> yields a tuple of         integers <em>(h, min, s)</em> or a float.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">time_since_first_call</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Digital Epidemiology Lab.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -99,7 +99,7 @@ class TestDecodePosition(unittest.TestCase):
         expected_allele_1 = random.pick(["A", "T", "G", "C"])
         expected_allele_2 = random.pick(["A", "T", "G", "C"])
 
-        to_test = SVE[]
+        #to_test = SVE[]
         allele_1, allele_2, position = encoding.decode_position(
             to_test,
             LN,

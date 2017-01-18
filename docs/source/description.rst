@@ -1,37 +1,55 @@
-What's in here ?
-################
+What is here ?
+##############
+
+Presentation of the projects
+****************************
+deep-height
+-----------
+In this project we are trying to find how deep neural networks could help
+predict a polygenic quantitative trait like height. The intuition behind
+these research is that deep learning can model non linear relations between
+a very high dimension input and the output whereas standard techniques
+in population genomic usually find the linear correlations between them.
+
+We have data from `openSNP<https://opensnp.org/>`_ and from the `Swiss HIV
+Cohort Study<http://www.shcs.ch/>`_. We know the heights, ethnicity and sex
+of each sample.
+
+deep-imputation
+---------------
+This project aims at creating a deep neural network `"knowing`" the
+genotypes of a reference dataset and able to impute SNPs on genotypes
+from a classic GWAS study.
 
 Preprocessing
 *************
 
-The preprocessing can be separated in two main parts:
+The preprocessing can be separated into two main parts:
 
-#. The general transformation of the VCF text files (often used in
-   bioinformatics applications) to a format simpler to use in our projects with
-   decoupled meta information files and sample files.
+#. The general transformation of the VCF text files (a classic file format
+   often used in bioinformatics applications) to a format simpler to use in
+   our projects with decoupled meta-information files and sample files.
 #. A more application specific part consisting for example in grouping all
-   the information on each sample of a GWAS to train a model on genome wide
-   information.
+   the information for each sample of a GWAS before training a model on files
+   on these files containing genome wide information.
 
 We chose to do these steps with homemade custom solutions although some tools
 certainly already exist for a few reasons:
 
 #. We had no good knowledge of these tools nor someone with a real expertise
    within easy reach. We had a try with GATK, bcf tools or PLINK and we still
-   use them for some purpose but they are quite heavy to manipulate when your
+   use them for some purpose but they are quite heavy to manipulate when one is
    not used to it. Moreover, some features to keep the files shaped according
    to the "classic" bioinformatics standards were not necessary for our
-   exploratory analysis and slow down the whole process.
+   exploratory analysis and did slow down the whole process.
 #. We had little prior knowledge of the conventions in genomic data formating
    nor how it was structured. Thus, making the preprocessing ourselves could
-   help us familiarize ourselves with this kind of dataset.
-
-General transformations:
-------------------------
+   help us familiarize with this kind of dataset.
 
 Background
-~~~~~~~~~~
-The datasets we received consisted in 22 VCF files containing the genomic
+----------
+
+The datasets we received consisted each in 22 VCF files containing the genomic
 information of all our samples for each human autosome (non-sexual chromosome).
 ::
 
@@ -53,29 +71,30 @@ information of all our samples for each human autosome (non-sexual chromosome).
    22      16050213        rs587654921     C       T       100     PASS    .    GT      0/0     0/0
 
 The VCF file format is a text format identifying the genetic variants between
-individuals (More information `here
+individuals.
+(More information `here
 <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/>`_ and a lot more
 information `here <https://samtools.github.io/hts-specs/VCFv4.2.pdf>`_)
 
 Positions indicated in files from 1000 genome correspond to the build 37 of
 the human genome http://www.internationalgenome.org/category/ncbi36/
 
-What do we actually do
-~~~~~~~~~~~~~~~~~~~~~~
 
+Transformations
+---------------
 
-Application specific transformations:
--------------------------------------
+deep-height
+~~~~~~~~~~~
 
-| **deep-height**
-
-We just had to concatenate the splitted files in order to get genome wide
-genotypes usable as training samples for later training.
+For this project, we just wanted to have the data distributed in individual
+files containing the totality of the variants of each individual.
 
 .. note:: More preprocessing has been done directly in https://github.com/salathegroup/deep-height
 
-| **deep-imputation**
+deep-imputation
+~~~~~~~~~~~~~~~
 
+.. Usually imputation uses a reference haplotype
 
 .. image:: Figure_imputation.png
 
