@@ -35,7 +35,7 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="pydeepgenomics  documentation" href="index.html" />
     <link rel="next" title="5. LICENSE" href="LICENSE.html" />
-    <link rel="prev" title="3.1.1.1.1.2. alltests.test_tools.test_generaltools module" href="alltests.test_tools.test_generaltools.html" />
+    <link rel="prev" title="3.1.1.2.1.2. alltests.test_tools.test_generaltools module" href="alltests.test_tools.test_generaltools.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -82,9 +82,10 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What is here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#presentation-of-the-projects">2.1. Presentation of the projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.2. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.3. Machine Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">3. Module Index</a><ul>
@@ -123,7 +124,7 @@
 </li>
 <li><a class="reference internal" href="#preprocessing">4.3.2. Preprocessing</a><ul>
 <li><a class="reference internal" href="#encoding">4.3.2.1. Encoding</a></li>
-<li><a class="reference internal" href="#vcf">4.3.2.2. vcf</a></li>
+<li><a class="reference internal" href="#vcf">4.3.2.2. vcf:</a></li>
 <li><a class="reference internal" href="#subsets">4.3.2.3. Subsets:</a></li>
 <li><a class="reference internal" href="#cutting">4.3.2.4. cutting:</a></li>
 <li><a class="reference internal" href="#examples">4.3.2.5. Examples:</a></li>
@@ -238,6 +239,38 @@ process files, it might be cleaner to work with generators)</p>
 </li>
 <li><p class="first">Make the whole thing quiet instead of having prints everywhere !</p>
 </li>
+<li><p class="first">Use dictionary and unpacking when passing tons of argument from functions
+to functions (<a class="reference external" href="http://sametmax.com/operateur-splat-ou-etoile-en-python/">http://sametmax.com/operateur-splat-ou-etoile-en-python/</a>):</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">afficher_trois_elements</span><span class="p">(</span><span class="n">elem1</span><span class="p">,</span> <span class="n">elem2</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">elem3</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">elem1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">elem2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">elem3</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elements</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;elem1&quot;</span><span class="p">:</span> <span class="s2">&quot;eau&quot;</span><span class="p">,</span> <span class="s2">&quot;elem2&quot;</span><span class="p">:</span> <span class="s2">&quot;feu&quot;</span><span class="p">,</span> <span class="s2">&quot;elem3&quot;</span><span class="p">:</span> <span class="s2">&quot;air&quot;</span><span class="p">}</span>
+<span class="go"> # les clés ont le bon nom</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">afficher_trois_elements</span><span class="p">(</span><span class="o">**</span><span class="n">elements</span><span class="p">)</span>
+<span class="go">eau</span>
+<span class="go">feu</span>
+<span class="go">air</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Use <code class="code docutils literal"><span class="pre">reduce(function,</span> <span class="pre">iterable[,</span> <span class="pre">initializer])</span></code> when possible
+and useful. (Also try to use <code class="code docutils literal"><span class="pre">map()</span></code> or <cite>filter()</cite>)</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">multiply_by_two</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<span class="n">list_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="nb">reduce</span><span class="p">(</span><span class="n">multiply_by_two</span><span class="p">,</span> <span class="n">list_</span><span class="p">)</span>  <span class="c1"># With long lists do that instead of</span>
+
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">list_</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">multiply_by_two</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </div>
 <div class="section" id="documentation">
@@ -312,7 +345,7 @@ computer...).</p>
 </ul>
 </div>
 <div class="section" id="vcf">
-<h4>4.3.2.2. vcf<a class="headerlink" href="#vcf" title="Permalink to this headline">¶</a></h4>
+<h4>4.3.2.2. vcf:<a class="headerlink" href="#vcf" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>rewrite split.js in python and/or at least in a more portable version.</li>
 <li>add tests</li>

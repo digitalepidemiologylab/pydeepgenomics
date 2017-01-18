@@ -34,7 +34,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="pydeepgenomics  documentation" href="index.html" />
-    <link rel="next" title="2. What’s in here ?" href="description.html" />
+    <link rel="next" title="2. What is here ?" href="description.html" />
     <link rel="prev" title="Pydeepgenomics" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -82,9 +82,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#requirements">1.4. Requirements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What is here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#presentation-of-the-projects">2.1. Presentation of the projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.2. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.3. Machine Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">3. Module Index</a><ul>
@@ -160,19 +161,18 @@
   <div class="section" id="readme">
 <h1>1. README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 100.0px; height: 100.0px;" /></a>
-<p class="caption"><span class="caption-text">Still under constructions ....
-(<em>ref.</em> <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png">image of this beautiful plasmid</a>.)</span></p>
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 60.0px; height: 60.0px;" /></a>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png">Image reference</a>.)</span></p>
 </div>
 <div class="line-block">
-<div class="line"><strong>General notes:</strong></div>
-<div class="line">Documentation on: <a class="reference external" href="https://odissea.github.io/pydeepgenomics">https://odissea.github.io/pydeepgenomics</a></div>
-<div class="line">Code on: <a class="reference external" href="https://github.com/Odissea/pydeepgenomics">https://github.com/Odissea/pydeepgenomics</a></div>
+<div class="line"><strong>Note</strong>:</div>
+<div class="line">Documentation on: <a class="reference external" href="https://salathegroup.github.io/pydeepgenomics/">https://salathegroup.github.io/pydeepgenomics/</a></div>
+<div class="line">Code on: <a class="reference external" href="https://github.com/salathegroup/pydeepgenomics">https://github.com/salathegroup/pydeepgenomics</a></div>
 </div>
 <div class="admonition attention">
 <p class="first admonition-title">Attention</p>
 <div class="last line-block">
-<div class="line">Not retrocompatible with python 2.*</div>
+<div class="line">Not yet retrocompatible with python 2.*</div>
 <div class="line">Requires Node.js v6.9.4</div>
 </div>
 </div>
@@ -184,15 +184,14 @@ originally designed for two distinct projects currently in progress in the
 digital epidemiology lab: the first one on <a class="reference external" href="https://github.com/salathegroup/deep-height">predictions of a
 quantitative trait</a>
 and the second one on genotype imputation. For the moment, this library
-contains only the part on preprocessing but other packages might arrive
-eventually.</p>
+contains only the part on preprocessing but other packages (including the
+Deep Learning part) will be included when ready.</p>
 </div>
 <div class="section" id="usage">
 <h2>1.2. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="modules-structure">
 <h3>1.2.1. Modules structure:<a class="headerlink" href="#modules-structure" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>pydeepgenomics
-├── __init__.py
 ├── preprocess
 │   ├── cutting.py
 │   ├── encoding.py
@@ -201,40 +200,35 @@ eventually.</p>
 │   │   ├── 2_encode_genotypes.py
 │   │   ├── 3_form_subsets.py
 │   │   ├── 4_filter_and_split_files.py
-│   │   ├── __init__.py
 │   │   └── setup_ex_env.py
 │   ├── filtering.py
-│   ├── __init__.py
-│   ├── settings.py
 │   ├── settings_template.py
 │   ├── subsets.py
 │   ├── vcf
-│   │   ├── __init__.py
 │   │   ├── split.js
 │   │   └── vcf.py
 │   └── verifications.py
 └── tools
     ├── generaldecorators.py
-    ├── generaltools.py
-    └── __init__.py
+    └── generaltools.py
 </pre></div>
 </div>
+<p>The library contains a few examples on how to use the tools present here.</p>
 </div>
 </div>
 <div class="section" id="limitations">
 <h2>1.3. Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
-<div class="line">For the moment, it only works with text (<em>.vcf</em>) files.</div>
+<div class="line">For the moment, only preprocessing is present</div>
+<div class="line">Works exclusively with text (<em>.vcf</em>) files.</div>
 </div>
 </div>
 <div class="section" id="requirements">
 <h2>1.4. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">==</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span>
-<span class="n">numpy</span><span class="o">==</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">2</span>
 <span class="n">pandas</span><span class="o">==</span><span class="mf">0.19</span><span class="o">.</span><span class="mi">1</span>
 <span class="n">sphinx_bootstrap_theme</span><span class="o">==</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">13</span>
 <span class="n">Naked</span><span class="o">==</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">31</span>
-<span class="n">params</span><span class="o">==</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>

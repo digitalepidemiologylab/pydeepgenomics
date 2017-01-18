@@ -81,9 +81,10 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What is here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#presentation-of-the-projects">2.1. Presentation of the projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.2. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.3. Machine Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">3. Module Index</a><ul>
@@ -122,53 +123,24 @@
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#what-s-in-here">What&#8217;s in here ?</a><ul>
-<li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
-<li><a class="reference internal" href="#general-transformations">General transformations:</a><ul>
-<li><a class="reference internal" href="#background">Background</a></li>
-<li><a class="reference internal" href="#what-do-we-actually-do">What do we actually do</a></li>
+<li><a class="reference internal" href="#what-is-here">What is here ?</a><ul>
+<li><a class="reference internal" href="#presentation-of-the-projects">Presentation of the projects</a><ul>
+<li><a class="reference internal" href="#deep-height">deep-height</a></li>
+<li><a class="reference internal" href="#deep-imputation">deep-imputation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#application-specific-transformations">Application specific transformations:</a></li>
+<li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#transformations">Transformations</a><ul>
+<li><a class="reference internal" href="#id2">deep-height</a></li>
+<li><a class="reference internal" href="#id3">deep-imputation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#machine-learning">Machine Learning</a><ul>
-<li><a class="reference internal" href="#deep-height">Deep-height</a></li>
-<li><a class="reference internal" href="#deep-imputation">Deep-imputation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#todo">TODO</a><ul>
-<li><a class="reference internal" href="#general-things-to-change-do">General things to change/do</a></li>
-<li><a class="reference internal" href="#documentation">Documentation</a></li>
-<li><a class="reference internal" href="#library">Library</a><ul>
-<li><a class="reference internal" href="#tools">Tools</a><ul>
-<li><a class="reference internal" href="#generaltools">Generaltools</a></li>
-<li><a class="reference internal" href="#generaldecorators">Generaldecorators</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id3">Preprocessing</a><ul>
-<li><a class="reference internal" href="#encoding">Encoding</a></li>
-<li><a class="reference internal" href="#vcf">vcf</a></li>
-<li><a class="reference internal" href="#subsets">Subsets:</a></li>
-<li><a class="reference internal" href="#cutting">cutting:</a></li>
-<li><a class="reference internal" href="#examples">Examples:</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#tests">Tests</a><ul>
-<li><a class="reference internal" href="#general">General</a></li>
-<li><a class="reference internal" href="#id4">Tools</a><ul>
-<li><a class="reference internal" href="#general-tools">General tools</a></li>
-<li><a class="reference internal" href="#general-decorators">General decorators</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id5">VCF</a><ul>
-<li><a class="reference internal" href="#id6">vcf</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#id4">Deep-height</a></li>
+<li><a class="reference internal" href="#id5">Deep-imputation</a></li>
 </ul>
 </li>
 </ul>
@@ -221,9 +193,10 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What is here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#presentation-of-the-projects">2.1. Presentation of the projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.2. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.3. Machine Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">3. Module Index</a><ul>
@@ -243,19 +216,18 @@
 <div class="section" id="readme">
 <h2>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id7">
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 100.0px; height: 100.0px;" /></a>
-<p class="caption"><span class="caption-text">Still under constructions ....
-(<em>ref.</em> <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png">image of this beautiful plasmid</a>.)</span></p>
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png" style="width: 60.0px; height: 60.0px;" /></a>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Plasmid_with_insert.svg/2000px-Plasmid_with_insert.svg.png">Image reference</a>.)</span></p>
 </div>
 <div class="line-block">
-<div class="line"><strong>General notes:</strong></div>
-<div class="line">Documentation on: <a class="reference external" href="https://odissea.github.io/pydeepgenomics">https://odissea.github.io/pydeepgenomics</a></div>
-<div class="line">Code on: <a class="reference external" href="https://github.com/Odissea/pydeepgenomics">https://github.com/Odissea/pydeepgenomics</a></div>
+<div class="line"><strong>Note</strong>:</div>
+<div class="line">Documentation on: <a class="reference external" href="https://salathegroup.github.io/pydeepgenomics/">https://salathegroup.github.io/pydeepgenomics/</a></div>
+<div class="line">Code on: <a class="reference external" href="https://github.com/salathegroup/pydeepgenomics">https://github.com/salathegroup/pydeepgenomics</a></div>
 </div>
 <div class="admonition attention">
 <p class="first admonition-title">Attention</p>
 <div class="last line-block">
-<div class="line">Not retrocompatible with python 2.*</div>
+<div class="line">Not yet retrocompatible with python 2.*</div>
 <div class="line">Requires Node.js v6.9.4</div>
 </div>
 </div>
@@ -267,15 +239,14 @@ originally designed for two distinct projects currently in progress in the
 digital epidemiology lab: the first one on <a class="reference external" href="https://github.com/salathegroup/deep-height">predictions of a
 quantitative trait</a>
 and the second one on genotype imputation. For the moment, this library
-contains only the part on preprocessing but other packages might arrive
-eventually.</p>
+contains only the part on preprocessing but other packages (including the
+Deep Learning part) will be included when ready.</p>
 </div>
 <div class="section" id="usage">
 <h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="modules-structure">
 <h4>Modules structure:<a class="headerlink" href="#modules-structure" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>pydeepgenomics
-├── __init__.py
 ├── preprocess
 │   ├── cutting.py
 │   ├── encoding.py
@@ -284,76 +255,89 @@ eventually.</p>
 │   │   ├── 2_encode_genotypes.py
 │   │   ├── 3_form_subsets.py
 │   │   ├── 4_filter_and_split_files.py
-│   │   ├── __init__.py
 │   │   └── setup_ex_env.py
 │   ├── filtering.py
-│   ├── __init__.py
-│   ├── settings.py
 │   ├── settings_template.py
 │   ├── subsets.py
 │   ├── vcf
-│   │   ├── __init__.py
 │   │   ├── split.js
 │   │   └── vcf.py
 │   └── verifications.py
 └── tools
     ├── generaldecorators.py
-    ├── generaltools.py
-    └── __init__.py
+    └── generaltools.py
 </pre></div>
 </div>
+<p>The library contains a few examples on how to use the tools present here.</p>
 </div>
 </div>
 <div class="section" id="limitations">
 <h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line">For the moment, it only works with text (<em>.vcf</em>) files.</div>
+<div class="line">For the moment, only preprocessing is present</div>
+<div class="line">Works exclusively with text (<em>.vcf</em>) files.</div>
 </div>
 </div>
 <div class="section" id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">==</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">3</span>
-<span class="n">numpy</span><span class="o">==</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">2</span>
 <span class="n">pandas</span><span class="o">==</span><span class="mf">0.19</span><span class="o">.</span><span class="mi">1</span>
 <span class="n">sphinx_bootstrap_theme</span><span class="o">==</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">13</span>
 <span class="n">Naked</span><span class="o">==</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">31</span>
-<span class="n">params</span><span class="o">==</span><span class="mf">0.2</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="what-s-in-here">
-<h2>What&#8217;s in here ?<a class="headerlink" href="#what-s-in-here" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-here">
+<h2>What is here ?<a class="headerlink" href="#what-is-here" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="presentation-of-the-projects">
+<h3>Presentation of the projects<a class="headerlink" href="#presentation-of-the-projects" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="deep-height">
+<h4>deep-height<a class="headerlink" href="#deep-height" title="Permalink to this headline">¶</a></h4>
+<p>In this project we are trying to find how deep neural networks could help
+predict a polygenic quantitative trait like height. The intuition behind
+these research is that deep learning can model non linear relations between
+a very high dimension input and the output whereas standard techniques
+in population genomic usually find the linear correlations between them.</p>
+<p>We have data from <a href="#id8"><span class="problematic" id="id9">`openSNP&lt;https://opensnp.org/&gt;`_</span></a> and from the <a href="#id10"><span class="problematic" id="id11">`Swiss HIV
+Cohort Study&lt;http://www.shcs.ch/&gt;`_</span></a>. We know the heights, ethnicity and sex
+of each sample.</p>
+</div>
+<div class="section" id="deep-imputation">
+<h4>deep-imputation<a class="headerlink" href="#deep-imputation" title="Permalink to this headline">¶</a></h4>
+<p>This project aims at creating a deep neural network <cite>&#8220;knowing</cite>&#8221; the
+genotypes of a reference dataset and able to impute SNPs on genotypes
+from a classic GWAS study.</p>
+</div>
+</div>
 <div class="section" id="preprocessing">
 <h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
-<p>The preprocessing can be separated in two main parts:</p>
+<p>The preprocessing can be separated into two main parts:</p>
 <ol class="arabic simple">
-<li>The general transformation of the VCF text files (often used in
-bioinformatics applications) to a format simpler to use in our projects with
-decoupled meta information files and sample files.</li>
+<li>The general transformation of the VCF text files (a classic file format
+often used in bioinformatics applications) to a format simpler to use in
+our projects with decoupled meta-information files and sample files.</li>
 <li>A more application specific part consisting for example in grouping all
-the information on each sample of a GWAS to train a model on genome wide
-information.</li>
+the information for each sample of a GWAS before training a model on files
+on these files containing genome wide information.</li>
 </ol>
 <p>We chose to do these steps with homemade custom solutions although some tools
 certainly already exist for a few reasons:</p>
 <ol class="arabic simple">
 <li>We had no good knowledge of these tools nor someone with a real expertise
 within easy reach. We had a try with GATK, bcf tools or PLINK and we still
-use them for some purpose but they are quite heavy to manipulate when your
+use them for some purpose but they are quite heavy to manipulate when one is
 not used to it. Moreover, some features to keep the files shaped according
-to the standards classic standard were not necessary for our exploratory
-analysis and slow down the whole process.</li>
+to the &#8220;classic&#8221; bioinformatics standards were not necessary for our
+exploratory analysis and did slow down the whole process.</li>
 <li>We had little prior knowledge of the conventions in genomic data formating
 nor how it was structured. Thus, making the preprocessing ourselves could
-help us familiarize ourselves with this kind of dataset.</li>
+help us familiarize with this kind of dataset.</li>
 </ol>
-<div class="section" id="general-transformations">
-<h4>General transformations:<a class="headerlink" href="#general-transformations" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="background">
-<h5>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h5>
-<p>The datasets we received consisted in 22 VCF files containing the genomic
+<h4>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h4>
+<p>The datasets we received consisted each in 22 VCF files containing the genomic
 information of all our samples for each human autosome (non-sexual chromosome).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##fileformat=VCFv4.1</span>
 <span class="c1">##FILTER=&lt;ID=PASS,Description=&quot;All filters passed&quot;&gt;</span>
@@ -374,28 +358,25 @@ information of all our samples for each human autosome (non-sexual chromosome).<
 </pre></div>
 </div>
 <p>The VCF file format is a text format identifying the genetic variants between
-individuals (More information <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/">here</a> and a lot more
+individuals.
+(More information <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/">here</a> and a lot more
 information <a class="reference external" href="https://samtools.github.io/hts-specs/VCFv4.2.pdf">here</a>)</p>
-<p>BUILD 37 <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
+<p>Positions indicated in files from 1000 genome correspond to the build 37 of
+the human genome <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
 </div>
-<div class="section" id="what-do-we-actually-do">
-<h5>What do we actually do<a class="headerlink" href="#what-do-we-actually-do" title="Permalink to this headline">¶</a></h5>
-</div>
-</div>
-<div class="section" id="application-specific-transformations">
-<h4>Application specific transformations:<a class="headerlink" href="#application-specific-transformations" title="Permalink to this headline">¶</a></h4>
-<div class="line-block">
-<div class="line"><strong>deep-height</strong></div>
-</div>
-<p>We just had to concatenate the splitted files in order to get genome wide
-genotypes usable as training samples for later training.</p>
+<div class="section" id="transformations">
+<h4>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h5>deep-height<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<p>For this project, we just wanted to have the data distributed in individual
+files containing the totality of the variants of each individual.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">More preprocessing has been done directly in <a class="reference external" href="https://github.com/salathegroup/deep-height">https://github.com/salathegroup/deep-height</a></p>
 </div>
-<div class="line-block">
-<div class="line"><strong>deep-imputation</strong></div>
 </div>
+<div class="section" id="id3">
+<h5>deep-imputation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
 <img alt="_images/Figure_imputation.png" src="_images/Figure_imputation.png" />
 <img alt="_images/Pipeline.png" src="_images/Pipeline.png" />
 <p><em>Part a</em></p>
@@ -451,231 +432,21 @@ sufficient to make the neural network learn itself the structure of the
 reference data.</p>
 </div>
 </div>
+</div>
 <div class="section" id="machine-learning">
 <h3>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="deep-height">
-<h4>Deep-height<a class="headerlink" href="#deep-height" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="deep-imputation">
-<h4>Deep-imputation<a class="headerlink" href="#deep-imputation" title="Permalink to this headline">¶</a></h4>
-<p>We would like to implement a neural network similar to the one described <a class="reference external" href="https://github.com/Tetrachrome/subpixel">here</a> but working on genomic &#8220;images&#8221;.</p>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="todo">
-<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="general-things-to-change-do">
-<h3>General things to change/do<a class="headerlink" href="#general-things-to-change-do" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">recode the bash scripts in python</p>
-</li>
-<li><p class="first">assemble the scripts to have some small scripts who use the library and will serve as examples of how to use it</p>
-</li>
-<li><p class="first">write tests (everywhere !)</p>
-</li>
-<li><p class="first">decompose into smaller units</p>
-</li>
-<li><p class="first">Complete the documentation (docstring (<strong>google style standard</strong>) +
-README + description s+ TODO (Yes, it&#8217;s here))</p>
-</li>
-<li><p class="first">replace the way the paths are written: use os.path.join, os.path.sep
-instead of writing everything manually (Already started but not corrected
-everywhere yet)</p>
-</li>
-<li><p class="first">add proper logging with the logging library instead of printing everything</p>
-</li>
-<li><p class="first">specify</p>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1">#-*- coding: utf-8 -*-</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>at the top of every files instead of forcing where to find python (more
-portable)</p>
-</li>
-<li><p class="first">Don&#8217;t be lazy on exceptions raising (<em>Errors should never pass silently</em> !)</p>
-</li>
-<li><p class="first">Use a library to get the time spent in different functions, the number time they are called etc.</p>
-</li>
-<li><p class="first">Change the file <code class="code docutils literal"><span class="pre">settings_template.py</span></code> file to read only ?</p>
-</li>
-<li><p class="first">Move the requirement.txt building in a setup.py (And write the whole setup.py)</p>
-</li>
-<li><p class="first">Avoid trying to correct the name of the files to make them easier to read
-(<em>e.g.</em> transforming <code class="code docutils literal"><span class="pre">name_name.txt</span></code> into <code class="code docutils literal"><span class="pre">name.txt</span></code>) &#8211;&gt; Some
-places of the code still try to do that and it can add unwanted side
-effects (it used to be clean on my specific work but it is not portable).
-Plus it is the responsibility of the user to give clean files.</p>
-</li>
-<li><p class="first">Hide the complexity of some processes behind generators (Example: when we
-process files, it might be cleaner to work with generators)</p>
-</li>
-<li><p class="first">Find a way to keep consistent file naming and tree structure conventions all over the project</p>
-</li>
-<li><p class="first">If we want to be more flexible on the file naming and tree structure, it might be interesting to give a file where the user can specify custom name patterns etc</p>
-</li>
-<li><p class="first">Clean old code commented and still present</p>
-</li>
-<li><p class="first">Make the whole thing quiet instead of having prints everywhere !</p>
-</li>
-</ul>
-</div>
-<div class="section" id="documentation">
-<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><strong>Almost every modules still need to be documented ...</strong></li>
-</ul>
-</div>
-<div class="section" id="library">
-<h3>Library<a class="headerlink" href="#library" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="tools">
-<h4>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="generaltools">
-<h5>Generaltools<a class="headerlink" href="#generaltools" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt>Recode the function list_elements:</dt>
-<dd><ul class="first last">
-<li>It should be cleaner</li>
-<li>It should be able to handle a tuple, a list of extensions</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li>Add Exceptions (Incorrect path to list_elements, not a list of strings to _natural_sort ...)</li>
-<li>Add options to the timers (<code class="docutils literal"><span class="pre">time_since_first_call</span></code> and
-<code class="docutils literal"><span class="pre">time_since_last_call</span></code>) so that they can give the raw time and notsystematically the formatted time</li>
-<li><code class="docutils literal"><span class="pre">_custom_output</span></code> should take care of the other possible options whenlogging is ready</li>
-<li>Add some filters <code class="docutils literal"><span class="pre">get_nb_lines_file</span></code></li>
-<li>Recode <code class="docutils literal"><span class="pre">_custom_output</span></code> so that it is complete and can handle logging</li>
-</ul>
-</div>
-<div class="section" id="generaldecorators">
-<h5>Generaldecorators<a class="headerlink" href="#generaldecorators" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>RAS for the moment</li>
-</ul>
-</div>
-</div>
-<div class="section" id="id3">
-<h4>Preprocessing<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>Try to organise in coherent modules</li>
-</ul>
-<div class="section" id="encoding">
-<h5>Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">¶</a></h5>
-<ul>
-<li><p class="first">Try to remove code duplication</p>
-</li>
-<li><p class="first">When iter in batch of elements use generator with this kind of solutions:</p>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">islice</span>
-
-<span class="k">def</span> <span class="nf">morceaux</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">taille</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="nb">tuple</span><span class="p">):</span>
-    <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">format</span><span class="p">(</span><span class="n">chain</span><span class="p">((</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">),),</span> <span class="n">islice</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">taille</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p class="first">Give the task of logging/printing information to a _function to lighten the code from unnecessary information (also calculation of the time points ...)</p>
-</li>
-<li><p class="first">Change the way the decoding of each position is done .......... It&#8217;s really
-too slow (For the moment, 50000 position decoding require &gt; 2 minutes on my
-computer...).</p>
-</li>
-<li><p class="first">Clean the function <code class="code docutils literal"><span class="pre">verify_decoding</span></code> to have smaller functional units and a code easier to read.</p>
-</li>
-<li><p class="first">Correct the hardcoded parts of the code so that it can handle other FIRST_ALLELE_BIT_POS</p>
-</li>
-</ul>
-</div>
-<div class="section" id="vcf">
-<h5>vcf<a class="headerlink" href="#vcf" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>rewrite split.js in python and/or at least in a more portable version.</li>
-<li>add tests</li>
-<li>Change the name of this module to avoid confusion with the module name</li>
-<li>Break into smaller functional units</li>
-<li>Create a more general &#8220;get_nb_lines&#8221; in generaltool able to handle
-the case used in the function &#8220;lines&#8221; ?</li>
-</ul>
-</div>
-<div class="section" id="subsets">
-<h5>Subsets:<a class="headerlink" href="#subsets" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>Use the os, sys and shutil libraries instead of the os calls</li>
-<li>Use a generator instead of doing some action on a list of files in a loop and
-removing the last element processed after each round of the loop.</li>
-</ul>
-</div>
-<div class="section" id="cutting">
-<h5>cutting:<a class="headerlink" href="#cutting" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>Finish this part and code of the corresponding example</li>
-</ul>
-</div>
-<div class="section" id="examples">
-<h5>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>Check size of the vcf files folder before making a copy</li>
-<li>Clean playground when script is over ?</li>
-<li>verify which version of node is needed</li>
-<li>Add the second part of example 4</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="section" id="tests">
-<h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="general">
-<h4>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>Note: the tests were added a few months after the beginning of the project, thus their sparsity and the difficulty to test some functions</li>
-<li>In general, add new cases to be tested for the different test sets to be
-sure that the extreme cases are taken into account.</li>
-<li>I used unittest to familiarize myself with unit testing but it would be better
-to have everything in py.test or nose later.</li>
-</ul>
-</div>
 <div class="section" id="id4">
-<h4>Tools<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="general-tools">
-<h5>General tools<a class="headerlink" href="#general-tools" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>Document the tests ?</li>
-<li>Add tests to be sure the functions which manage files handle both relative and absolute paths</li>
-<li>Check that all functions raise the correct errors when given the wrong
-arguments</li>
-</ul>
-</div>
-<div class="section" id="general-decorators">
-<h5>General decorators<a class="headerlink" href="#general-decorators" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>Prepare tests for the</li>
-<li>Document the tests</li>
-</ul>
-</div>
+<h4>Deep-height<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 </div>
 <div class="section" id="id5">
-<h4>VCF<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="id6">
-<h5>vcf<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li>Do everything !</li>
-<li>(But first the vcf module may be broken into smaller units so that unit testing has a sens ...)</li>
-<li>Document the tests</li>
-</ul>
+<h4>Deep-imputation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>We would like to implement a neural network similar to the one described <a class="reference external" href="https://github.com/Tetrachrome/subpixel">here</a> but working on genomic &#8220;images&#8221;.</p>
 <hr class="docutils" />
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
-</div>
 </div>
 </div>
 </div>

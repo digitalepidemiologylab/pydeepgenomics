@@ -80,9 +80,10 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="description.html">2. What&#8217;s in here ?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.1. Preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.2. Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description.html">2. What is here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#presentation-of-the-projects">2.1. Presentation of the projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#preprocessing">2.2. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#machine-learning">2.3. Machine Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">3. Module Index</a><ul>
@@ -154,8 +155,67 @@ used in a lot of the modules.</p>
 <p><em>Module author: Theo Dupuis</em></p>
 <dl class="function">
 <dt id="tools.generaltools.custom_output">
-<code class="descname">custom_output</code><span class="sig-paren">(</span><em>text</em>, <em>print_parameters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#custom_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.custom_output" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">custom_output</code><span class="sig-paren">(</span><em>text</em>, <em>verbose</em>, <em>printing</em>, <em>logging</em>, <em>in_loop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tools/generaltools.html#custom_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.generaltools.custom_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shuffles the list and returns chunks.</p>
+<p>This generator takes a list and the proportions in which you want to
+subdivide it and yields random subsets of this list.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The sizes of the chunks is equal to the floored multiplication of
+the size of the original list by the given proportions. Thus,
+a rounding error might often happen and the size of the all the
+chunks would not match the size of the original list. To correct
+that, the remaining elements of the list are added to the last
+chunk (corresponding to <code class="code docutils literal"><span class="pre">subset_proportions[-1]</span></code>). We let it
+that way as it didn&#8217;t affect our work a lot but this behaviours
+will probably change in further versions.</p>
+</div>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>l</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>) &#8211; original list</li>
+<li><strong>subset_proportions</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list|tuple</span></code>) &#8211; sizes of the chunks given as         proportions of the original list.</li>
+<li><strong>output_format</strong> (<code class="xref py py-obj docutils literal"><span class="pre">type</span></code>, optional) &#8211; type of output format. By         default, chunks are returned in tuples (<code class="code docutils literal"><span class="pre">output_format=tuple</span></code>)         but can also be list.</li>
+<li><strong>force</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bool</span></code>, optional) &#8211; Ignores the <em>ValueError</em> raised when the         sum of the proportions is not equal to 1.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first"><code class="xref py py-obj docutils literal"><span class="pre">tuple|list</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">AssertError</span></code> &#8211; Raised when the types of the arguments are not respected.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; Raised when the sum of the proportions (rounded at         <span class="math">\(10^{-9}\)</span>)is different than 1.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">random_chunks</span><span class="p">(</span><span class="n">list_</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">20</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">50</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="mi">30</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;class &#39;tuple&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">list_</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value not in list !&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">list_</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="function">
 <dt id="tools.generaltools.get_nb_lines_file">
@@ -414,9 +474,9 @@ since the precedent call.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">time_between_two_calls</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
@@ -479,9 +539,9 @@ since the first call.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">time_since_first_call</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
