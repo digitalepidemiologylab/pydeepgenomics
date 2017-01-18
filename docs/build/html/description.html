@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. What is here ? &#8212; pydeepgenomics  documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="pydeepgenomics  documentation" href="index.html" />
+    <link rel="next" title="3. alltests" href="modules.html" />
+    <link rel="prev" title="1. README" href="README.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Pydeepgenomics</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://www.digitalepidemiologylab.org/">Digital Epidemiology Lab</a></li>
+                <li><a href="./py-modindex.html">Modules</a></li>
+                <li><a href="./genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Pydeepgenomics <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">1. README</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#brief-comment">1.1. Brief comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#usage">1.2. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#limitations">1.3. Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#requirements">1.4. Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. What is here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#presentation-of-the-projects">2.1. Presentation of the projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preprocessing">2.2. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#machine-learning">2.3. Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">3. Module Index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="alltests.html">3.1. alltests package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">4. TODO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#general-things-to-change-do">4.1. General things to change/do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#documentation">4.2. Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#library">4.3. Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#tests">4.4. Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">5. LICENSE</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Go to <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">2. What is here ?</a><ul>
+<li><a class="reference internal" href="#presentation-of-the-projects">2.1. Presentation of the projects</a><ul>
+<li><a class="reference internal" href="#deep-height">2.1.1. deep-height</a></li>
+<li><a class="reference internal" href="#deep-imputation">2.1.2. deep-imputation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#preprocessing">2.2. Preprocessing</a><ul>
+<li><a class="reference internal" href="#background">2.2.1. Background</a></li>
+<li><a class="reference internal" href="#transformations">2.2.2. Transformations</a><ul>
+<li><a class="reference internal" href="#id2">2.2.2.1. deep-height</a></li>
+<li><a class="reference internal" href="#id3">2.2.2.2. deep-imputation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#machine-learning">2.3. Machine Learning</a><ul>
+<li><a class="reference internal" href="#id4">2.3.1. Deep-height</a></li>
+<li><a class="reference internal" href="#id5">2.3.2. Deep-imputation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/description.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="what-is-here">
+<h1>2. What is here ?<a class="headerlink" href="#what-is-here" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="presentation-of-the-projects">
+<h2>2.1. Presentation of the projects<a class="headerlink" href="#presentation-of-the-projects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="deep-height">
+<h3>2.1.1. deep-height<a class="headerlink" href="#deep-height" title="Permalink to this headline">¶</a></h3>
+<p>In this project we are trying to find how deep neural networks could help
+predict a polygenic quantitative trait like height. The intuition behind
+these research is that deep learning can model non linear relations between
+a very high dimension input and the output whereas standard techniques
+in population genomic usually find the linear correlations between them.</p>
+<p>We have data from <a href="#id7"><span class="problematic" id="id8">`openSNP&lt;https://opensnp.org/&gt;`_</span></a> and from the <a href="#id9"><span class="problematic" id="id10">`Swiss HIV
+Cohort Study&lt;http://www.shcs.ch/&gt;`_</span></a>. We know the heights, ethnicity and sex
+of each sample.</p>
+</div>
+<div class="section" id="deep-imputation">
+<h3>2.1.2. deep-imputation<a class="headerlink" href="#deep-imputation" title="Permalink to this headline">¶</a></h3>
+<p>This project aims at creating a deep neural network <cite>&#8220;knowing</cite>&#8221; the
+genotypes of a reference dataset and able to impute SNPs on genotypes
+from a classic GWAS study.</p>
+</div>
+</div>
+<div class="section" id="preprocessing">
+<h2>2.2. Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>The preprocessing can be separated into two main parts:</p>
+<ol class="arabic simple">
+<li>The general transformation of the VCF text files (a classic file format
+often used in bioinformatics applications) to a format simpler to use in
+our projects with decoupled meta-information files and sample files.</li>
+<li>A more application specific part consisting for example in grouping all
+the information for each sample of a GWAS before training a model on files
+on these files containing genome wide information.</li>
+</ol>
+<p>We chose to do these steps with homemade custom solutions although some tools
+certainly already exist for a few reasons:</p>
+<ol class="arabic simple">
+<li>We had no good knowledge of these tools nor someone with a real expertise
+within easy reach. We had a try with GATK, bcf tools or PLINK and we still
+use them for some purpose but they are quite heavy to manipulate when one is
+not used to it. Moreover, some features to keep the files shaped according
+to the &#8220;classic&#8221; bioinformatics standards were not necessary for our
+exploratory analysis and did slow down the whole process.</li>
+<li>We had little prior knowledge of the conventions in genomic data formating
+nor how it was structured. Thus, making the preprocessing ourselves could
+help us familiarize with this kind of dataset.</li>
+</ol>
+<div class="section" id="background">
+<h3>2.2.1. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<p>The datasets we received consisted each in 22 VCF files containing the genomic
+information of all our samples for each human autosome (non-sexual chromosome).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##fileformat=VCFv4.1</span>
+<span class="c1">##FILTER=&lt;ID=PASS,Description=&quot;All filters passed&quot;&gt;</span>
+<span class="c1">##fileDate=20150218</span>
+<span class="c1">##reference=ftp://ftp.1000genomes.ebi.ac.uk//vol1/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz</span>
+<span class="c1">##source=1000GenomesPhase3Pipeline</span>
+<span class="c1">##contig=&lt;ID=1,assembly=b37,length=249250621&gt;</span>
+<span class="c1">##contig=&lt;ID=2,assembly=b37,length=243199373&gt;</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="c1">##INFO=&lt;ID=VT,Number=.,Type=String,Description=&quot;indicates what type of variant the line represents&quot;&gt;</span>
+<span class="c1">##INFO=&lt;ID=EX_TARGET,Number=0,Type=Flag,Description=&quot;indicates whether a variant is within the exon pull down target boundaries&quot;&gt;</span>
+<span class="c1">##INFO=&lt;ID=MULTI_ALLELIC,Number=0,Type=Flag,Description=&quot;indicates whether a site is multi-allelic&quot;&gt;</span>
+<span class="c1">#CHROM  POS             ID              REF     ALT     QUAL    FILTER  INFO FORMAT  HG00096 HG00097</span>
+<span class="mi">22</span>      <span class="mi">16050075</span>        <span class="n">rs587697622</span>     <span class="n">A</span>       <span class="n">G</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+<span class="mi">22</span>      <span class="mi">16050115</span>        <span class="n">rs587755077</span>     <span class="n">G</span>       <span class="n">A</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+<span class="mi">22</span>      <span class="mi">16050213</span>        <span class="n">rs587654921</span>     <span class="n">C</span>       <span class="n">T</span>       <span class="mi">100</span>     <span class="n">PASS</span>    <span class="o">.</span>    <span class="n">GT</span>      <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>     <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>The VCF file format is a text format identifying the genetic variants between
+individuals.
+(More information <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/">here</a> and a lot more
+information <a class="reference external" href="https://samtools.github.io/hts-specs/VCFv4.2.pdf">here</a>)</p>
+<p>Positions indicated in files from 1000 genome correspond to the build 37 of
+the human genome <a class="reference external" href="http://www.internationalgenome.org/category/ncbi36/">http://www.internationalgenome.org/category/ncbi36/</a></p>
+</div>
+<div class="section" id="transformations">
+<h3>2.2.2. Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>2.2.2.1. deep-height<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>For this project, we just wanted to have the data distributed in individual
+files containing the totality of the variants of each individual.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">More preprocessing has been done directly in <a class="reference external" href="https://github.com/salathegroup/deep-height">https://github.com/salathegroup/deep-height</a></p>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>2.2.2.2. deep-imputation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/Figure_imputation.png" src="_images/Figure_imputation.png" />
+<img alt="_images/Pipeline.png" src="_images/Pipeline.png" />
+<p><em>Part a</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="c1"># FIRST_ALLELE_BIT_POS</span>
+<span class="n">FBP</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>  <span class="c1"># --&gt; 268435456</span>
+<span class="c1"># NUCLEOTIDE_LABELS</span>
+<span class="n">NL</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>  <span class="c1"># --&gt; 1</span>
+    <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>  <span class="c1"># --&gt; 2</span>
+    <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>  <span class="c1"># --&gt; 4</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))}</span>  <span class="c1"># --&gt; 8</span>
+
+<span class="c1"># SNPS_VALUES_ENCODED --&gt; A-C 1st allele and then A-C 2nd allele</span>
+<span class="n">SVE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 268435456</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 536870912</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 1073741824</span>
+    <span class="n">NL</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">FBP</span><span class="p">,</span>  <span class="c1"># --&gt; 4294967296</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>  <span class="c1"># --&gt; 8589934592</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>  <span class="c1"># --&gt; 17179869184</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>  <span class="c1"># --&gt; 34359738368</span>
+    <span class="p">(</span><span class="n">NL</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">FBP</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))]</span>  <span class="c1"># --&gt; 137438953472</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># First allele encoding</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">REF</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">ALT</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># Second allele encoding</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">REF</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">ALT</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">)),</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">sve</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># Add position</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;output&quot;</span> <span class="o">+</span> <span class="n">liste_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">POS</span>
+</pre></div>
+</div>
+<p><em>Part b</em></p>
+<p>Reduction of input size while keeping enough context to make decent predictions.</p>
+<p><em>Part c</em></p>
+<p>Double uniform filtering to get a subset with 10% of the SNPs contained in
+the original 1000 genome project haplotypes and a subset keeping only 10% of
+the previous subset. Thus, the resulting two subsets would have respectively a
+few millions and a few hundred thousand SNPs, corresponding to the order of
+magnitude of what we can have with classical non-imputed and imputed datasets.
+Off course, the uniform filter is not representative of the real data but
+it&#8217;s a simple approach for exploratory analysis. Moreover, it should be
+sufficient to make the neural network learn itself the structure of the
+reference data.</p>
+</div>
+</div>
+</div>
+<div class="section" id="machine-learning">
+<h2>2.3. Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>2.3.1. Deep-height<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3>2.3.2. Deep-imputation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>We would like to implement a neural network similar to the one described <a class="reference external" href="https://github.com/Tetrachrome/subpixel">here</a> but working on genomic &#8220;images&#8221;.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Digital Epidemiology Lab.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

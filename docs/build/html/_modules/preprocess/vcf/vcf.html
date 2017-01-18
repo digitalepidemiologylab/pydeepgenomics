@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>preprocess.vcf.vcf &#8212; pydeepgenomics  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="pydeepgenomics  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          Pydeepgenomics</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://www.digitalepidemiologylab.org/">Digital Epidemiology Lab</a></li>
+                <li><a href="../../.././py-modindex.html">Modules</a></li>
+                <li><a href="../../.././genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Pydeepgenomics <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">1. README</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../README.html#brief-comment">1.1. Brief comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../README.html#usage">1.2. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../README.html#limitations">1.3. Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../README.html#requirements">1.4. Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../description.html">2. What is here ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../description.html#presentation-of-the-projects">2.1. Presentation of the projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../description.html#preprocessing">2.2. Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../description.html#machine-learning">2.3. Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">3. Module Index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../alltests.html">3.1. alltests package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TODO.html">4. TODO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../TODO.html#general-things-to-change-do">4.1. General things to change/do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../TODO.html#documentation">4.2. Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../TODO.html#library">4.3. Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../TODO.html#tests">4.4. Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../LICENSE.html">5. LICENSE</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Go to <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for preprocess.vcf.vcf</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;This module contains some functions to work on vcf files.</span>
+
+<span class="sd">Adaptation and adding a few functions from</span>
+<span class="sd">https://gist.github.com/slowkow/6215557</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">Naked.toolshed.shell</span> <span class="k">import</span> <span class="n">execute_js</span><span class="p">,</span> <span class="n">muterun_js</span>
+    <span class="n">success_import_naked</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="n">success_import_naked</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pydeepgenomics</span>
+    <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaltools</span> <span class="k">as</span> <span class="n">gt</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">cmd_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;alltests&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">cmd_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd_dir</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">pydeepgenomics</span>
+    <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaltools</span> <span class="k">as</span> <span class="n">gt</span>
+
+<span class="n">VCF_HEADER</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CHROM&#39;</span><span class="p">,</span> <span class="s1">&#39;POS&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;REF&#39;</span><span class="p">,</span> <span class="s1">&#39;ALT&#39;</span><span class="p">,</span> <span class="s1">&#39;QUAL&#39;</span><span class="p">,</span> <span class="s1">&#39;FILTER&#39;</span><span class="p">,</span> <span class="s1">&#39;INFO&#39;</span><span class="p">]</span>
+
+<span class="c1"># Modified version of the one from vcf.py, allow to load a complete file into</span>
+<span class="c1"># a dataframe.</span>
+<span class="c1"># /!\ Don&#39;t load unfiltered vcf files with this function !</span>
+
+
+<div class="viewcode-block" id="dataframe"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.dataframe">[docs]</a><span class="k">def</span> <span class="nf">dataframe</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">large</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">large</span><span class="p">:</span>
+        <span class="c1"># Set the proper argument if the file is compressed.</span>
+        <span class="n">comp</span> <span class="o">=</span> <span class="s1">&#39;gzip&#39;</span> <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.gz&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="c1"># Count how many comment lines should be skipped.</span>
+        <span class="n">comments</span> <span class="o">=</span> <span class="n">_count_comments</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="c1"># Return a simple DataFrame without splitting the INFO column.</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span>
+            <span class="n">filename</span><span class="p">,</span>
+            <span class="n">compression</span><span class="o">=</span><span class="n">comp</span><span class="p">,</span>
+            <span class="n">skiprows</span><span class="o">=</span><span class="n">comments</span><span class="p">,</span>
+            <span class="n">names</span><span class="o">=</span><span class="n">VCF_HEADER</span><span class="p">,</span>
+            <span class="n">usecols</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+
+    <span class="c1"># Each column is a list stored as a value in this dict. The keys for this</span>
+    <span class="c1"># dict are the VCF column names and the keys in the INFO column.</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="c1"># Parse each line in the VCF file into a dict.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">(</span><span class="n">filename</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="c1"># This key has not been seen yet, so set it to None for all</span>
+            <span class="c1"># previous lines.</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="c1"># Ensure this row has some value for each column.</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="lines"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.lines">[docs]</a><span class="k">def</span> <span class="nf">lines</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Open an optionally gzipped VCF file and generate an OrderedDict for</span>
+<span class="sd">each line.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">fn_open</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span> <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.gz&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="nb">open</span>
+
+    <span class="k">with</span> <span class="n">fn_open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f_in</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">parse</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="parse"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.parse">[docs]</a><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse a single VCF line and return an OrderedDict.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Read the values in the first seven columns.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">VCF_HEADER</span><span class="p">[:</span><span class="mi">7</span><span class="p">]):</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">_get_value</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="c1"># INFO field consists of &quot;key1=value;key2=value;...&quot;.</span>
+    <span class="n">infos</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">infos</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># info should be &quot;key=value&quot;.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="c1"># But sometimes it is just &quot;value&quot;, so we&#39;ll make our own key.</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;INFO</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">info</span>
+        <span class="c1"># Set the value to None if there is no value.</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_get_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span></div>
+
+<span class="c1"># Look at all the files in the list vcffiles and see if any snp in the refsnp</span>
+<span class="c1"># dataframe is present</span>
+
+
+<div class="viewcode-block" id="find_matches"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.find_matches">[docs]</a><span class="k">def</span> <span class="nf">find_matches</span><span class="p">(</span>
+        <span class="n">path_to_vcf_files</span><span class="p">,</span>
+        <span class="n">refsnps</span><span class="p">,</span>
+        <span class="n">prefix_to_chr_nb_in_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_to_chr_nb_in_name</span><span class="o">=</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">prefix_to_chr_nb_in_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">prefix_to_chr_nb_in_name</span> <span class="o">=</span> <span class="n">path_to_vcf_files</span>
+
+    <span class="n">matching_references</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">matching_positions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">path_to_vcf_files</span><span class="p">:</span>
+        <span class="c1"># Filter by chromosome to avoid testing all references on all files</span>
+        <span class="c1"># + prevent from picking the same position for different chromosomes</span>
+        <span class="n">chrnb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+            <span class="n">prefix_to_chr_nb_in_name</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">suffix_to_chr_nb_in_name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="p">)))</span>
+
+        <span class="n">filtered_ref_snps</span> <span class="o">=</span> <span class="n">refsnps</span><span class="p">[</span><span class="n">refsnps</span><span class="o">.</span><span class="n">Chr</span> <span class="o">==</span> <span class="n">chrnb</span><span class="p">]</span>
+        <span class="n">ref_ids</span> <span class="o">=</span> <span class="n">filtered_ref_snps</span><span class="p">[</span><span class="s2">&quot;SNP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">ref_positions</span> <span class="o">=</span> <span class="n">filtered_ref_snps</span><span class="p">[</span><span class="s2">&quot;Position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading file </span><span class="si">{}</span><span class="s2"> in a dataframe ...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+        <span class="n">chromosome_file</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;ALT&quot;</span><span class="p">,</span> <span class="s2">&quot;REF&quot;</span><span class="p">,</span> <span class="s2">&quot;QUAL&quot;</span><span class="p">,</span> <span class="s2">&quot;FILTER&quot;</span><span class="p">,</span> <span class="s2">&quot;INFO&quot;</span><span class="p">],</span>
+            <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Number of lines to shift to make dataframe index correspond with</span>
+        <span class="c1"># lines in actual vcf file (comments + 1 (dataframe index starts at 0))</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="n">_count_comments</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">chromosome_file</span><span class="p">[</span><span class="s2">&quot;Corresponding row in vcf file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span>
+            <span class="n">skip</span><span class="p">,</span>
+            <span class="n">chromosome_file</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">skip</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Searching for matches with the reference dataframes...&quot;</span><span class="p">)</span>
+        <span class="n">new_matching_references</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">matching_references</span><span class="p">,</span> <span class="n">chromosome_file</span><span class="p">[</span>
+            <span class="n">chromosome_file</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ref_ids</span><span class="p">)]))</span>
+        <span class="n">new_matching_positions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">matching_positions</span><span class="p">,</span> <span class="n">chromosome_file</span><span class="p">[</span>
+            <span class="n">chromosome_file</span><span class="p">[</span><span class="s2">&quot;POS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ref_positions</span><span class="p">)]))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> ref matching and </span><span class="si">{1}</span><span class="s2"> positions matching in </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">new_matching_references</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">matching_references</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">new_matching_positions</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">matching_positions</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">file</span><span class="p">))</span>
+
+        <span class="n">matching_references</span> <span class="o">=</span> <span class="n">new_matching_references</span>
+        <span class="n">matching_positions</span> <span class="o">=</span> <span class="n">new_matching_positions</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found </span><span class="si">{}</span><span class="s2"> matching ref of snps.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">matching_references</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found </span><span class="si">{}</span><span class="s2"> matching positions of snps.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">matching_positions</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">matching_references</span><span class="p">,</span> <span class="n">matching_positions</span></div>
+
+
+<span class="k">def</span> <span class="nf">_get_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Interpret null values and return ``None``. Return a list if the value</span>
+<span class="sd">contains a comma.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="s1">&#39;,&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">_count_comments</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Count comment lines (those that start with &quot;#&quot;) in an optionally</span>
+<span class="sd">gzipped file.</span>
+<span class="sd">:param filename:  An optionally gzipped file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">comments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fn_open</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span> <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.gz&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="nb">open</span>
+    <span class="k">with</span> <span class="n">fn_open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f_in</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">is_comment</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="n">is_comment</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_comment</span><span class="p">:</span>
+                <span class="n">comments</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">comments</span>
+
+
+<div class="viewcode-block" id="split_vcf_files"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.split_vcf_files">[docs]</a><span class="k">def</span> <span class="nf">split_vcf_files</span><span class="p">(</span><span class="n">path_to_data</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">current_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">pydeepgenomics</span><span class="o">.</span><span class="n">__file__</span><span class="p">),</span>
+        <span class="s2">&quot;preprocess&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vcf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;split.js&quot;</span><span class="p">),</span> <span class="n">path_to_data</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path_to_data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">success_import_naked</span><span class="p">:</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="n">execute_js</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_data</span><span class="p">,</span> <span class="s2">&quot;split&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;split.js did not ended correctly !&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+                    <span class="s2">&quot;node </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_data</span><span class="p">,</span> <span class="s2">&quot;split&quot;</span><span class="p">)),</span>
+                    <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">stdout</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">success_import_naked</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">muterun_js</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_data</span><span class="p">,</span> <span class="s2">&quot;split&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">exitcode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;split.js did not ended correctly !&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+                    <span class="s2">&quot;node </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_data</span><span class="p">,</span> <span class="s2">&quot;split&quot;</span><span class="p">)),</span>
+                    <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">stdout</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_data</span><span class="p">,</span> <span class="s2">&quot;split.js&quot;</span><span class="p">))</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">current_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sort_chr_files_by_sample"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.sort_chr_files_by_sample">[docs]</a><span class="k">def</span> <span class="nf">sort_chr_files_by_sample</span><span class="p">(</span>
+        <span class="n">path_to_data_by_chr</span><span class="p">,</span>
+        <span class="n">make_copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="n">path_to_data_by_chr</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;split_by_chr&quot;</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="ow">not</span> <span class="n">path_to_data_by_chr</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;split_by_chr&quot;</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="ow">not</span> <span class="n">force</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Directory name not recognized, directory name should be&quot;</span> <span class="o">+</span>
+            <span class="s2">&quot;split_by_chr&quot;</span><span class="p">)</span>
+    <span class="n">path_to_data_by_sample</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span>
+        <span class="n">path_to_data_by_chr</span><span class="p">),</span>
+        <span class="s2">&quot;split_by_sample&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path_to_data_by_sample</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path_to_data_by_sample</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path_to_data_by_sample</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path_to_data_by_sample</span><span class="p">)</span>
+    <span class="n">chromosomes_dirs</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">list_elements</span><span class="p">(</span><span class="n">path_to_data_by_chr</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;dir&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">chromosomes_dirs</span><span class="p">:</span>
+        <span class="n">dir_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">list_elements</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">destination</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">path_to_data_by_sample</span><span class="p">,</span>
+                <span class="n">file_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">destination</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+            <span class="n">new_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="s2">&quot;chr&quot;</span><span class="o">+</span><span class="n">dir_name</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">file_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">make_copy</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">make_copy</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path_to_data_by_chr</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_concat_meta</span><span class="p">(</span><span class="n">path_in</span><span class="p">,</span> <span class="n">path_out</span><span class="p">):</span>
+    <span class="n">meta_files</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">list_elements</span><span class="p">(</span><span class="n">path_in</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.txt.gz&quot;</span><span class="p">)</span>
+    <span class="n">header_written</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_out</span><span class="p">,</span> <span class="s2">&quot;_meta.txt.gz&quot;</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">meta_files</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">in_file</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">in_file</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">is_comment</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                            <span class="n">is_comment</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_comment</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">header_written</span><span class="p">:</span>
+                            <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                            <span class="n">header_written</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">_copy_comment</span><span class="p">(</span><span class="n">path_in</span><span class="p">,</span> <span class="n">path_out</span><span class="p">):</span>
+    <span class="n">comment_files</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">list_elements</span><span class="p">(</span><span class="n">path_in</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.txt&quot;</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_in</span><span class="p">,</span> <span class="n">comment_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_out</span><span class="p">,</span> <span class="s2">&quot;_comments.txt&quot;</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="concatenate_split_files"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.concatenate_split_files">[docs]</a><span class="k">def</span> <span class="nf">concatenate_split_files</span><span class="p">(</span>
+        <span class="n">path_to_input</span><span class="p">,</span>
+        <span class="n">tree_structure</span><span class="o">=</span><span class="s2">&quot;by_sample&quot;</span><span class="p">,</span>
+        <span class="n">make_copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="p">(</span>
+                <span class="ow">not</span> <span class="n">path_to_input</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;split_by_chr&quot;</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="ow">not</span> <span class="n">path_to_input</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;split_by_chr&quot;</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="n">tree_structure</span> <span class="o">==</span> <span class="s2">&quot;by_chr&quot;</span><span class="p">)</span> <span class="ow">or</span>
+            <span class="p">(</span>
+                <span class="ow">not</span> <span class="n">path_to_input</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;split_by_sample&quot;</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="ow">not</span> <span class="n">path_to_input</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;split_by_sample&quot;</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="n">tree_structure</span> <span class="o">==</span> <span class="s2">&quot;by_sample&quot;</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Inconsistent combination of path and tree structure.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                <span class="s2">&quot;Received </span><span class="si">{0}</span><span class="s2"> and </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">,</span> <span class="n">tree_structure</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">tree_structure</span> <span class="o">!=</span> <span class="s2">&quot;by_sample&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">tree_structure</span> <span class="o">!=</span> <span class="s2">&quot;by_chr&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is not managed by this function&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tree_structure</span><span class="p">))</span>
+
+    <span class="n">path_to_concat_data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span>
+        <span class="n">path_to_input</span><span class="p">),</span>
+        <span class="s2">&quot;split_and_concat_data&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path_to_concat_data</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path_to_concat_data</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path_to_concat_data</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path_to_concat_data</span><span class="p">)</span>
+
+    <span class="n">list_users</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">list_elements</span><span class="p">(</span>
+        <span class="n">path_to_input</span><span class="p">,</span>
+        <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+        <span class="n">exception</span><span class="o">=</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">path_to_input</span><span class="p">,</span> <span class="s2">&quot;_meta&quot;</span><span class="p">),</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">,</span> <span class="s2">&quot;_comments&quot;</span><span class="p">)])</span>
+
+    <span class="n">_concat_meta</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">,</span> <span class="s2">&quot;_meta&quot;</span><span class="p">),</span>
+        <span class="n">path_to_concat_data</span><span class="p">)</span>
+
+    <span class="n">_copy_comment</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">,</span> <span class="s2">&quot;_comments&quot;</span><span class="p">),</span>
+        <span class="n">path_to_concat_data</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">list_users</span><span class="p">:</span>
+
+        <span class="n">split_files</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">list_elements</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.txt.gz&quot;</span><span class="p">)</span>
+        <span class="n">name_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">split_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">name_user</span> <span class="o">=</span> <span class="n">name_user</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[^a-z\d]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^[^_]*&quot;</span><span class="p">,</span> <span class="n">name_user</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+            <span class="s2">&quot;allchr&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_concat_data</span><span class="p">,</span> <span class="n">name_user</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">split_files</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+                    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">infile</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="n">nb_lines_out</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">get_nb_lines_file</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_concat_data</span><span class="p">,</span> <span class="n">name_user</span><span class="p">))</span>
+        <span class="n">nb_lines_in</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">split_files</span><span class="p">:</span>
+            <span class="n">nb_lines_in</span> <span class="o">+=</span> <span class="n">gt</span><span class="o">.</span><span class="n">get_nb_lines_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nb_lines_in</span> <span class="o">!=</span> <span class="n">nb_lines_out</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="s2">&quot;Number of lines between original files and the</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                <span class="s2">&quot;concatenated file does not match.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                <span class="s2">&quot;Origin: </span><span class="si">{0}</span><span class="s2">, Concat: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nb_lines_in</span><span class="p">,</span> <span class="n">nb_lines_out</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">make_copy</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">make_copy</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="extract_snps_from_file"><a class="viewcode-back" href="../../../preprocess.vcf.vcf.html#preprocess.vcf.vcf.extract_snps_from_file">[docs]</a><span class="k">def</span> <span class="nf">extract_snps_from_file</span><span class="p">(</span>
+        <span class="n">path_to_vcf_files</span><span class="p">,</span>
+        <span class="n">ref_snps_file</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span>
+        <span class="n">chr_nb_prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">chr_nb_suffix</span><span class="o">=</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load list of snp in a dataframe</span>
+<span class="sd">    (column1 = snp ref name, column2 = chr, column3 = position)</span>
+<span class="sd">    Also convert snpref to strings</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Clean previous results</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+        <span class="s2">&quot;rm -rf &quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_vcf_files</span><span class="p">,</span> <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">),</span>
+        <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">ref_snps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ref_snps_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">)</span>
+
+    <span class="c1"># Looking at the files present in the directory before working on them</span>
+    <span class="n">vcf_files</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">list_elements</span><span class="p">(</span>
+        <span class="n">path_to_vcf_files</span><span class="p">,</span>
+        <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
+        <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Find the reference SNPs in the actual vcf files</span>
+    <span class="n">matching_references</span><span class="p">,</span> <span class="n">matching_positions</span> <span class="o">=</span> <span class="n">find_matches</span><span class="p">(</span><span class="n">vcf_files</span><span class="p">,</span> <span class="n">ref_snps</span><span class="p">)</span>
+
+    <span class="c1"># Save the list of SNPs found</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_vcf_files</span><span class="p">,</span> <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">)):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_vcf_files</span><span class="p">,</span> <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">))</span>
+    <span class="n">matching_positions</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+        <span class="n">path_or_buf</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">path_to_vcf_files</span><span class="p">,</span>
+            <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MatchingPositions.csv&quot;</span><span class="p">),</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">matching_references</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+        <span class="n">path_or_buf</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">path_to_vcf_files</span><span class="p">,</span>
+            <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MatchingReferences.csv&quot;</span><span class="p">),</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">vcf_files</span><span class="p">:</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting to process file : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">files</span><span class="p">))</span>
+        <span class="n">chrnb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+            <span class="n">chr_nb_prefix</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">chr_nb_suffix</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">files</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">path_to_vcf_files</span><span class="p">,</span> <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">)):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_vcf_files</span><span class="p">,</span> <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">path_to_vcf_files</span><span class="p">,</span> <span class="s2">&quot;/SelectionofSNPs&quot;</span><span class="p">,</span> <span class="s2">&quot;POS&quot;</span><span class="p">)):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_vcf_files</span><span class="p">,</span> <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">,</span> <span class="s2">&quot;POS&quot;</span><span class="p">))</span>
+
+        <span class="n">output_file_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">path_to_vcf_files</span><span class="p">,</span>
+            <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ID&quot;</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">chrnb</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_subset_ID.vcf&quot;</span><span class="p">)</span>
+        <span class="n">output_file_pos</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">path_to_vcf_files</span><span class="p">,</span>
+            <span class="s2">&quot;SelectionofSNPs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;POS&quot;</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">chrnb</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_subset_POS.vcf&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Copy header and column labels in a subset file</span>
+        <span class="c1"># (&lt;chrnb&gt;.subset_&lt;type of selction criteria&gt;.vcf) in</span>
+        <span class="c1"># PATH/SelectionofSNPs</span>
+
+        <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fi</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file_id</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fo</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fi</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                        <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">break</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+            <span class="s2">&quot;cp </span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_file_id</span><span class="p">,</span> <span class="n">output_file_pos</span><span class="p">),</span>
+            <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Filter dataframe to have only snps corresponding to the file</span>
+
+        <span class="n">filtered_match_pos</span> <span class="o">=</span> <span class="n">matching_positions</span><span class="p">[</span>
+            <span class="n">matching_positions</span><span class="p">[</span><span class="n">VCF_HEADER</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">==</span> <span class="n">chrnb</span><span class="p">]</span>
+        <span class="n">filtered_match_ref</span> <span class="o">=</span> <span class="n">matching_references</span><span class="p">[</span>
+            <span class="n">matching_references</span><span class="p">[</span><span class="n">VCF_HEADER</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">==</span> <span class="n">chrnb</span><span class="p">]</span>
+
+        <span class="n">lines_from_origin_vcf</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="n">out_pos</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file_pos</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+        <span class="n">out_id</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file_id</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+        <span class="n">it_positions</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">it_ids</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extract corresponding positions&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line_nb</span> <span class="ow">in</span> <span class="n">filtered_match_pos</span><span class="p">[</span><span class="s2">&quot;Corresponding row in vcf file&quot;</span><span class="p">]:</span>
+
+            <span class="n">out_pos</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">lines_from_origin_vcf</span><span class="p">[</span><span class="n">line_nb</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">it_positions</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Information on </span><span class="si">{0}</span><span class="s2">/</span><span class="si">{1}</span><span class="s2"> matching positions copied&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">it_positions</span><span class="p">,</span>
+                <span class="n">matching_positions</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extract corresponding references&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line_nb</span> <span class="ow">in</span> <span class="n">filtered_match_ref</span><span class="p">[</span><span class="s2">&quot;Corresponding row in vcf file&quot;</span><span class="p">]:</span>
+            <span class="n">out_id</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">lines_from_origin_vcf</span><span class="p">[</span><span class="n">line_nb</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">it_ids</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Information on </span><span class="si">{0}</span><span class="s2">/</span><span class="si">{1}</span><span class="s2"> matching references copied&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">it_ids</span><span class="p">,</span>
+                <span class="n">matching_references</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+        <span class="n">out_pos</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">out_id</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">lines_from_origin_vcf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># compress the output file to .gz</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;gzip </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_file_pos</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;gzip </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_file_id</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Digital Epidemiology Lab.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
