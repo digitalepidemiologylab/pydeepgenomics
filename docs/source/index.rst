@@ -28,10 +28,6 @@ Pydeepgenomics
 -----------------------------
 
 
-.. .. include:: ../../TODO.rst
- -----------------------------
-
-
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
