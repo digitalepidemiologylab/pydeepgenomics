@@ -20,8 +20,8 @@ certainly already exist for a few reasons:
    within easy reach. We had a try with GATK, bcf tools or PLINK and we still
    use them for some purpose but they are quite heavy to manipulate when your
    not used to it. Moreover, some features to keep the files shaped according
-   to the standards classic standard were not necessary for our exploratory
-   analysis and slow down the whole process.
+   to the "classic" bioinformatics standards were not necessary for our
+   exploratory analysis and slow down the whole process.
 #. We had little prior knowledge of the conventions in genomic data formating
    nor how it was structured. Thus, making the preprocessing ourselves could
    help us familiarize ourselves with this kind of dataset.
@@ -57,7 +57,8 @@ individuals (More information `here
 <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137218/>`_ and a lot more
 information `here <https://samtools.github.io/hts-specs/VCFv4.2.pdf>`_)
 
-BUILD 37 http://www.internationalgenome.org/category/ncbi36/
+Positions indicated in files from 1000 genome correspond to the build 37 of
+the human genome http://www.internationalgenome.org/category/ncbi36/
 
 What do we actually do
 ~~~~~~~~~~~~~~~~~~~~~~

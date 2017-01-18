@@ -9,7 +9,6 @@ import threading
 
 import pandas as pd
 
-from pydeepgenomics.tools.generaltools import custom_output
 
 cmd_subfolder = os.path.abspath(
     os.path.dirname(__file__)).split("pydeepgenomics")[0]
@@ -133,10 +132,10 @@ def write_encoded_output(
             name_dir=namedir)
 
 
-def decode_position(to_test, ln):
-    fbp = math.pow(2, 28)
+def decode_position(to_test, ln=settings.LN, fbp=settings.FBP):
+
     enc_al1 = fbp
-    enc_al2 = math.pow(2, 31)
+    enc_al2 = fbp * math.pow(2, 4)
     position = 0
     _iter = 20
     al1 = al2 = "N"
@@ -205,7 +204,7 @@ def encode_file_positions(
 
     # Start timer
     timer = gt.time_since_first_call()
-    timer.__next__()
+    next(timer)
     print_parameters = {
         "verbose": verbose,
         "printing": printing,
@@ -213,11 +212,11 @@ def encode_file_positions(
         "in_loop": False
     }
 
-    custom_output(
+    gt.custom_output(
         "Function {0} started at {1}".format(
             encode_file_positions.__name__,
             str(datetime.datetime.now())) +
-        "\nProcessing files in {0}:".format(path_to_data), print_parameters)
+        "\nProcessing files in {0}:".format(path_to_data), **print_parameters)
 
     chromosome_name = str(chr_to_be_processed)
     _build_output_tree_structure(
@@ -267,19 +266,19 @@ def encode_file_positions(
                 ["#CHROM", "ID", "QUAL", "FILTER", "INFO", "FORMAT"], 1)
             nb_processed_files += settings.FILEBATCHSIZE
 
-            h, m, s = timer.__next__()
-            custom_output(
+            h, m, s = next(timer)
+            gt.custom_output(
                 "\r{0}/{1}".format(nb_processed_files, len(list_files)) +
                 " files processed after {0}h{1}m{2}s.".format(h, m, s) +
                 " Date: {}".format(str(datetime.datetime.now())),
-                print_parameters)
+                **print_parameters)
 
     print_parameters["in_loop"] = False
     sys.stdout.write("\n")
-    h, m, s = timer.__next__()
-    custom_output(
+    h, m, s = next(timer)
+    gt.custom_output(
         "Finished after {0}h{1}m{2}s.\n".format(h, m, s),
-        print_parameters)
+        **print_parameters)
 
 
 def verify_decoding(
@@ -306,15 +305,15 @@ def verify_decoding(
     errors_prev_pos = []
     errors_next_pos = []
 
-    custom_output(
+    gt.custom_output(
         "Function {0} started at {1}".format(
             verify_decoding.__name__,
             str(datetime.datetime.now())) +
         "\nTesting files in {0}:".format(
             path_to_encoded_data),
-        print_parameters)
+        **print_parameters)
     timer = gt.time_since_first_call()
-    timer.__next__()
+    next(timer)
 
     _meta = pd.read_csv(
         os.path.join(
@@ -359,11 +358,11 @@ def verify_decoding(
                 errors_next_pos.append(
                     _meta.iloc[min(index + 1, _meta.shape[0]), 0])
 
-                custom_output("{0}/{1} files tested. Date : {2}".format(
+                gt.custom_output("{0}/{1} files tested. Date : {2}".format(
                     j+1,
                     min(max_nb_of_files_to_test, len(files)),
                     str(datetime.datetime.now())),
-                    print_parameters)
+                    **print_parameters)
                 continue
             original_alleles =\
                 _meta.loc[(_meta.totest == to_test), :]["originaldata"].tolist()[0].split("/")
@@ -405,14 +404,14 @@ def verify_decoding(
                 errors_next_pos.append(
                     _meta.iloc[min(index + 1, _meta.shape[0]), 0])
 
-        h, m, s = timer.__next__()
-        custom_output(
+        h, m, s = next(timer)
+        gt.custom_output(
             "{0}/{1} files tested ".format(
                 j+1,
                 min(max_nb_of_files_to_test, len(files))) +
             "after  {0}h{1}m{2}s. ".format(h, m, s) +
             "Date : {0}".format(str(datetime.datetime.now())),
-            print_parameters)
+            **print_parameters)
 
     print_parameters["in_loop"] = False
 
@@ -430,7 +429,7 @@ def verify_decoding(
             errors.loc[
                 (errors.Error_type == "Impossible to decode"), :].shape[0]
         total_error = errors.shape[0]
-        custom_output(
+        gt.custom_output(
             "\nAllele 1 errors: {}".format(errors_al_1) +
             "\nAllele 2 errors: {}".format(errors_al_2) +
             "\nPosition errors: {}".format(errors_pos) +
@@ -440,10 +439,10 @@ def verify_decoding(
                 100*total_error/(nb_of_tests_per_file*min(
                     max_nb_of_files_to_test,
                     len(files)))),
-            print_parameters
+            **print_parameters
         )
         print("Date : {}".format(str(datetime.datetime.now())))
         errors.to_csv(
             "Errors_found_in{}.csv".format(chromosome_verified), sep="\t")
     else:
-        custom_output("\nNo error found !", print_parameters)
+        gt.custom_output("\nNo error found !", **print_parameters)

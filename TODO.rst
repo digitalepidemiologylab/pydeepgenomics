@@ -43,6 +43,36 @@ General things to change/do
 * If we want to be more flexible on the file naming and tree structure, it might be interesting to give a file where the user can specify custom name patterns etc
 * Clean old code commented and still present
 * Make the whole thing quiet instead of having prints everywhere !
+* Use dictionary and unpacking when passing tons of argument from functions
+  to functions (http://sametmax.com/operateur-splat-ou-etoile-en-python/):
+
+    .. code-block:: python
+
+
+        >>> def afficher_trois_elements(elem1, elem2=None, elem3=None):
+        ...     print(elem1)
+        ...     print(elem2)
+        ...     print(elem3)
+        ...
+        >>> elements = {"elem1": "eau", "elem2": "feu", "elem3": "air"}
+         # les clés ont le bon nom
+        >>> afficher_trois_elements(**elements)
+        eau
+        feu
+        air
+
+* Use :code:`reduce(function, iterable[, initializer])` when possible
+  and useful. (Also try to use :code:`map()` or `filter()`)
+
+    .. code-block:: python
+
+        multiply_by_two = lambda x : 2*x
+        list_ = list(range(1,4))
+
+        reduce(multiply_by_two, list_)  # With long lists do that instead of
+
+        for element in list_:
+            print(multiply_by_two(element))
 
 Documentation
 *************

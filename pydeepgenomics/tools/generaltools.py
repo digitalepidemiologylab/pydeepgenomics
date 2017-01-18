@@ -7,6 +7,7 @@ used in a lot of the modules.
 
 .. moduleauthor:: Theo Dupuis
 """
+from __future__ import print_function
 import doctest
 import glob
 import gzip
@@ -355,9 +356,9 @@ def time_since_first_call(raw=False):
         >>> import time
         >>> timer = time_since_first_call()
         >>> for _ in range(10):
-        ...     t = timer.__next__()
+        ...     t = next(timer)
         ...     time.sleep(0.1)
-        >>> result = timer.__next__()
+        >>> result = next(timer)
         >>> result == (0, 0, 1)
         True
     """
@@ -397,9 +398,9 @@ def time_between_two_calls(raw=False):
         >>> import time
         >>> timer = time_between_two_calls()
         >>> for _ in range(10):
-        ...     t = timer.__next__()
+        ...     t = next(timer)
         ...     time.sleep(0.1)
-        >>> result = timer.__next__()
+        >>> result = next(timer)
         >>> result == (0, 0, 0)
         True
     """
@@ -495,11 +496,64 @@ if __name__ == "__main__":
     print(__doc__)
 
 
-def custom_output(text, print_parameters):
+def custom_output(text, verbose, printing, logging, in_loop):
 
-    if print_parameters["verbose"] and\
-            print_parameters["printing"]and\
-            print_parameters["in_loop"]:
+    """Shuffles the list and returns chunks.
+
+    This generator takes a list and the proportions in which you want to
+    subdivide it and yields random subsets of this list.
+
+        .. warning::
+           The sizes of the chunks is equal to the floored multiplication of
+           the size of the original list by the given proportions. Thus,
+           a rounding error might often happen and the size of the all the
+           chunks would not match the size of the original list. To correct
+           that, the remaining elements of the list are added to the last
+           chunk (corresponding to :code:`subset_proportions[-1]`). We let it
+           that way as it didn't affect our work a lot but this behaviours
+           will probably change in further versions.
+
+
+    Args:
+        l (:obj:`list`): original list
+        subset_proportions (:obj:`list|tuple`): sizes of the chunks given as\
+         proportions of the original list.
+        output_format (:obj:`type`, optional): type of output format. By\
+         default, chunks are returned in tuples (:code:`output_format=tuple`)\
+         but can also be list.
+        force (:obj:`bool`, optional): Ignores the *ValueError* raised when the\
+         sum of the proportions is not equal to 1.
+
+    Yields:
+        :obj:`tuple|list`:
+
+    Raises:
+        AssertError: Raised when the types of the arguments are not respected.
+        ValueError: Raised when the sum of the proportions (rounded at\
+         :math:`10^{-9}`)\ is different than 1.
+
+    Examples:
+
+        >>> list_ = list(range(100))
+        >>> a, b, c = random_chunks(list_, (0.2, 0.5, 0.3))
+        >>> len(a) == 20
+        True
+        >>> len(b) == 50
+        True
+        >>> len(c) == 30
+        True
+        >>> type(a)
+        <class 'tuple'>
+        >>> for value in a+b+c:
+        ...     try:
+        ...         list_.remove(value)
+        ...     except ValueError:
+        ...         print("Value not in list !")
+        >>> list_
+        []
+    """
+
+    if (verbose and printing) and in_loop :
         print(text, end="\r")
-    elif print_parameters["verbose"] and print_parameters["printing"]:
+    elif verbose and printing:
         print(text)

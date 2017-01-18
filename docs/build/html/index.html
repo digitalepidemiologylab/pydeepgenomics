@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -33,7 +34,6 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="pydeepgenomics  documentation" href="#" />
     <link rel="next" title="1. README" href="README.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -186,7 +186,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/index.txt"
+  <a href="_sources/index.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -520,6 +520,38 @@ process files, it might be cleaner to work with generators)</p>
 </li>
 <li><p class="first">Make the whole thing quiet instead of having prints everywhere !</p>
 </li>
+<li><p class="first">Use dictionary and unpacking when passing tons of argument from functions
+to functions (<a class="reference external" href="http://sametmax.com/operateur-splat-ou-etoile-en-python/">http://sametmax.com/operateur-splat-ou-etoile-en-python/</a>):</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">afficher_trois_elements</span><span class="p">(</span><span class="n">elem1</span><span class="p">,</span> <span class="n">elem2</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">elem3</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">elem1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">elem2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">elem3</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elements</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;elem1&quot;</span><span class="p">:</span> <span class="s2">&quot;eau&quot;</span><span class="p">,</span> <span class="s2">&quot;elem2&quot;</span><span class="p">:</span> <span class="s2">&quot;feu&quot;</span><span class="p">,</span> <span class="s2">&quot;elem3&quot;</span><span class="p">:</span> <span class="s2">&quot;air&quot;</span><span class="p">}</span>
+<span class="go"> # les clés ont le bon nom</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">afficher_trois_elements</span><span class="p">(</span><span class="o">**</span><span class="n">elements</span><span class="p">)</span>
+<span class="go">eau</span>
+<span class="go">feu</span>
+<span class="go">air</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Use <code class="code docutils literal"><span class="pre">reduce(function,</span> <span class="pre">iterable[,</span> <span class="pre">initializer])</span></code> when possible
+and useful. (Also try to use <code class="code docutils literal"><span class="pre">map()</span></code> or <cite>filter()</cite>)</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">multiply_by_two</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<span class="n">list_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="nb">reduce</span><span class="p">(</span><span class="n">multiply_by_two</span><span class="p">,</span> <span class="n">list_</span><span class="p">)</span>  <span class="c1"># With long lists do that instead of</span>
+
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">list_</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">multiply_by_two</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </div>
 <div class="section" id="documentation">
@@ -694,7 +726,7 @@ arguments</li>
     </p>
     <p>
         &copy; Copyright 2017, Digital Epidemiology Lab.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>
