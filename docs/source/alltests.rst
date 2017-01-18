@@ -6,6 +6,7 @@ Subpackages
 
 .. toctree::
 
+    alltests.test_preprocess
     alltests.test_tools
 
 Module contents

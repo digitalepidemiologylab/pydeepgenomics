@@ -1,7 +1,7 @@
-preprocess.examples.2_encode_genotypes module
+alltests.test_preprocess.test_encoding module
 =============================================
 
-.. automodule:: preprocess.examples.2_encode_genotypes
+.. automodule:: alltests.test_preprocess.test_encoding
     :members:
     :undoc-members:
     :show-inheritance:
