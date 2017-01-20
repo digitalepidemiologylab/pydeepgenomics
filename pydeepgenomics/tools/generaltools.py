@@ -20,8 +20,9 @@ import time
 
 from itertools import chain, islice
 
-cmd_subfolder = sys.path.append(
-    os.path.dirname(os.path.abspath(__file__)).split("pydeepgenomics")[0])
+cmd_subfolder = os.path.dirname(os.path.abspath(__file__))
+while not cmd_subfolder .endswith('pydeepgenomics'):
+    cmd_subfolder = os.path.dirname(cmd_subfolder)
 try:
     from pydeepgenomics.tools import generaldecorators as gd
 except ImportError:

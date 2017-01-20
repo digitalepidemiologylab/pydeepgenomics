@@ -24,10 +24,10 @@ SVE = [
 
 # Reverse dictionary to decode information
 LN = {
-    int((NL["C"])*FBP*16): "C2",
-    int((NL["G"])*FBP*16): "G2",
-    int((NL["T"])*FBP*16): "T2",
-    int((NL["A"])*FBP*16): "A2",
+    int((NL["C"])*FBP*int(math.pow(2, 5))): "C2",
+    int((NL["G"])*FBP*int(math.pow(2, 5))): "G2",
+    int((NL["T"])*FBP*int(math.pow(2, 5))): "T2",
+    int((NL["A"])*FBP*int(math.pow(2, 5))): "A2",
     int(NL["C"]*FBP): "C1",
     int(NL["G"]*FBP): "G1",
     int(NL["T"]*FBP): "T1",
@@ -42,4 +42,8 @@ PROPTRAIN = 0.6
 PROPTEST = 0.2
 PROPVALID = 1 - PROPTRAIN - PROPTEST
 
-
+NUCLEOTIDE_LABELS_bin = {
+    "A": '{0:02b}'.format(0),
+    "T": '{0:02b}'.format(1),
+    "G": '{0:02b}'.format(2),
+    "C": '{0:02b}'.format(3)}

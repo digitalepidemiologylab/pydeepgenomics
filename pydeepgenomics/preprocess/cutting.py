@@ -10,8 +10,11 @@ import sys
 import pandas as pd
 
 
-cmd_subfolder = os.path.abspath(os.path.dirname(__file__)).split(
-    "pydeepgenomics")[0]
+cmd_subfolder = os.path.dirname(os.path.abspath(__file__))
+while not cmd_subfolder .endswith('pydeepgenomics'):
+    cmd_subfolder = os.path.dirname(cmd_subfolder)
+cmd_subfolder = os.path.dirname(cmd_subfolder)
+
 try:
     from pydeepgenomics.preprocess import encoding, settings
     from pydeepgenomics.tools import generaltools as gt

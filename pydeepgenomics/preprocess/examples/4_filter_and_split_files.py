@@ -7,8 +7,10 @@ import sys
 import matplotlib
 import matplotlib.pyplot as plt
 
-cmd_subfolder = os.path.abspath(os.path.dirname(__file__)).split(
-    "pydeepgenomics")[0]
+cmd_subfolder = os.path.dirname(os.path.abspath(__file__))
+while not cmd_subfolder .endswith('pydeepgenomics'):
+    cmd_subfolder = os.path.dirname(cmd_subfolder)
+cmd_subfolder = os.path.dirname(cmd_subfolder)
 try:
     from pydeepgenomics.preprocess import settings, subsets, filtering, cutting
     from pydeepgenomics.preprocess.vcf import vcf

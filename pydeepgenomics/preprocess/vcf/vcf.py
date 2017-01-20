@@ -22,13 +22,17 @@ except ImportError as error:
     print(error)
     success_import_naked = False
 
+cmd_subfolder = os.path.dirname(os.path.abspath(__file__))
+while not cmd_subfolder .endswith('pydeepgenomics'):
+    cmd_subfolder = os.path.dirname(cmd_subfolder)
+cmd_subfolder = os.path.dirname(cmd_subfolder)
+
 try:
     import pydeepgenomics
     from pydeepgenomics.tools import generaltools as gt
 except ImportError:
-    cmd_dir = os.path.abspath(os.path.dirname(__file__)).split("alltests")[0]
-    if cmd_dir not in sys.path:
-        sys.path.append(cmd_dir)
+    if cmd_subfolder not in sys.path:
+        sys.path.append(cmd_subfolder)
     import pydeepgenomics
     from pydeepgenomics.tools import generaltools as gt
 

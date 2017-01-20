@@ -10,8 +10,11 @@ import threading
 import pandas as pd
 
 
-cmd_subfolder = os.path.abspath(
-    os.path.dirname(__file__)).split("pydeepgenomics")[0]
+cmd_subfolder = os.path.dirname(os.path.abspath(__file__))
+while not cmd_subfolder .endswith('pydeepgenomics'):
+    cmd_subfolder = os.path.dirname(cmd_subfolder)
+cmd_subfolder = os.path.dirname(cmd_subfolder)
+
 try:
     from pydeepgenomics.tools import generaltools as gt
     from pydeepgenomics.preprocess import settings
@@ -22,99 +25,195 @@ except ImportError:
     from pydeepgenomics.preprocess import settings
 
 
+#    def write_encoded_output(
+#            path_data,
+#            chromosome,
+#            dataframe,
+#            sve,
+#            liste_names,
+#            namedir="floatfiles"):
+#        for i in range(len(liste_names)):
+#            # First allele encoding
+#            # REF
+#            dataframe.loc[
+#                ((dataframe.REF == "A") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "0")),
+#                "output" + liste_names[i]] = sve[0]
+#            dataframe.loc[
+#                ((dataframe.REF == "T") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "0")),
+#                "output" + liste_names[i]] = sve[1]
+#            dataframe.loc[
+#                ((dataframe.REF == "G") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "0")),
+#                "output" + liste_names[i]] = sve[2]
+#            dataframe.loc[
+#                ((dataframe.REF == "C") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "0")),
+#                "output" + liste_names[i]] = sve[3]
+#            # ALT
+#            dataframe.loc[
+#                ((dataframe.ALT == "A") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "1")),
+#                "output" + liste_names[i]] = sve[0]
+#            dataframe.loc[
+#                ((dataframe.ALT == "T") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "1")),
+#                "output" + liste_names[i]] = sve[1]
+#            dataframe.loc[
+#                ((dataframe.ALT == "G") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "1")),
+#                "output" + liste_names[i]] = sve[2]
+#            dataframe.loc[
+#                ((dataframe.ALT == "C") &
+#                 (dataframe.loc[:, liste_names[i]].str[0] == "1")),
+#                "output" + liste_names[i]] = sve[3]
+#
+#            # Second allele encoding
+#            # REF
+#            dataframe.loc[
+#                ((dataframe.REF == "A") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
+#                "output" + liste_names[i]] += sve[4]
+#            dataframe.loc[
+#                ((dataframe.REF == "T") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
+#                "output" + liste_names[i]] += sve[5]
+#            dataframe.loc[
+#                ((dataframe.REF == "G") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
+#                "output" + liste_names[i]] += sve[6]
+#            dataframe.loc[
+#                ((dataframe.REF == "C") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
+#                "output" + liste_names[i]] += sve[7]
+#            # ALT
+#            dataframe.loc[
+#                ((dataframe.ALT == "A") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
+#                "output" + liste_names[i]] += sve[4]
+#            dataframe.loc[
+#                ((dataframe.ALT == "T") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
+#                "output" + liste_names[i]] += sve[5]
+#            dataframe.loc[
+#                ((dataframe.ALT == "G") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
+#                "output" + liste_names[i]] += sve[6]
+#            dataframe.loc[
+#                ((dataframe.ALT == "C") &
+#                 (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
+#                "output" + liste_names[i]] += sve[7]
+#
+#            # Add position
+#            dataframe.loc[:, "output" + liste_names[i]] += dataframe.POS
+#
+#        # Write files
+#
+#        if len(liste_names) > 1:
+#            jobs = []
+#            for i in range(len(liste_names)):
+#                thread = threading.Thread(target=save_samples(
+#                    path_data,
+#                    chromosome,
+#                    dataframe,
+#                    liste_names,
+#                    i,
+#                    name_dir=namedir))
+#                jobs.append(thread)
+#            for j in jobs:
+#                j.start()
+#            for j in jobs:
+#                j.join()
+#        else:
+#            save_samples(
+#                path_data,
+#                chromosome,
+#                dataframe,
+#                liste_names,
+#                0,
+#                name_dir=namedir)
+#
+
+def do_conversion(dataframe,
+                  list_names,
+                  encoding_dict=settings.NUCLEOTIDE_LABELS_bin,
+                  output_conversion="to_int"):
+
+    for i in range(len(list_names)):
+
+        # To put it in a nutshell from left to right -->
+        #
+        # Two bits to tell if first allele is A, T, C or G
+        # two bits as above but for the second allele
+        # The following bits are dedicated to the position
+
+        # First allele encoding
+        for nucleotide, bit_value in encoding_dict.items():
+
+            if output_conversion == "to_int":
+                dataframe.loc[:, "output" + list_names[i]] = "1"
+            else:
+                dataframe.loc[:, "output" + list_names[i]] = ""
+
+            # REF
+            dataframe.loc[
+                (
+                    (dataframe.REF == nucleotide) &
+                    (dataframe.loc[:, list_names[i]].str[0] == "0")
+                ), "output" + list_names[i]] += bit_value
+            # ALT
+            dataframe.loc[
+                (
+                    (dataframe.ALT == nucleotide) &
+                    (dataframe.loc[:, list_names[i]].str[0] == "1")
+                ), "output" + list_names[i]] += bit_value
+        # Second allele encoding
+        for nucleotide, bit_value in encoding_dict.items():
+            # REF
+            dataframe.loc[
+                (
+                    (dataframe.REF == nucleotide) &
+                    (dataframe.loc[:, list_names[i]].str[-1] == "0")
+                ), "output" + list_names[i]] += bit_value
+            # ALT
+            dataframe.loc[
+                (
+                    (dataframe.ALT == nucleotide) &
+                    (dataframe.loc[:, list_names[i]].str[-1] == "1")
+                ), "output" + list_names[i]] += bit_value
+
+        # Add position
+        dataframe.loc[:, "output" + list_names[i]] += \
+            dataframe.POS.apply(lambda x: "{0:01b}".format(x))
+
+        if output_conversion == "to_int":
+            dataframe.loc[:, "output" + list_names[i]] = \
+                dataframe.loc[
+                :,
+                "output" + list_names[i]
+                ].apply(lambda x: int(x, 2))
+
+    return dataframe
+
+
 def write_encoded_output(
         path_data,
         chromosome,
         dataframe,
-        sve,
-        liste_names,
+        list_names,
         namedir="floatfiles"):
-    for i in range(len(liste_names)):
-        # First allele encoding
-        # REF
-        dataframe.loc[
-            ((dataframe.REF == "A") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "0")),
-            "output" + liste_names[i]] = sve[0]
-        dataframe.loc[
-            ((dataframe.REF == "T") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "0")),
-            "output" + liste_names[i]] = sve[1]
-        dataframe.loc[
-            ((dataframe.REF == "G") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "0")),
-            "output" + liste_names[i]] = sve[2]
-        dataframe.loc[
-            ((dataframe.REF == "C") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "0")),
-            "output" + liste_names[i]] = sve[3]
-        # ALT
-        dataframe.loc[
-            ((dataframe.ALT == "A") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "1")),
-            "output" + liste_names[i]] = sve[0]
-        dataframe.loc[
-            ((dataframe.ALT == "T") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "1")),
-            "output" + liste_names[i]] = sve[1]
-        dataframe.loc[
-            ((dataframe.ALT == "G") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "1")),
-            "output" + liste_names[i]] = sve[2]
-        dataframe.loc[
-            ((dataframe.ALT == "C") &
-             (dataframe.loc[:, liste_names[i]].str[0] == "1")),
-            "output" + liste_names[i]] = sve[3]
-
-        # Second allele encoding
-        # REF
-        dataframe.loc[
-            ((dataframe.REF == "A") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
-            "output" + liste_names[i]] += sve[4]
-        dataframe.loc[
-            ((dataframe.REF == "T") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
-            "output" + liste_names[i]] += sve[5]
-        dataframe.loc[
-            ((dataframe.REF == "G") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
-            "output" + liste_names[i]] += sve[6]
-        dataframe.loc[
-            ((dataframe.REF == "C") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "0")),
-            "output" + liste_names[i]] += sve[7]
-        # ALT
-        dataframe.loc[
-            ((dataframe.ALT == "A") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
-            "output" + liste_names[i]] += sve[4]
-        dataframe.loc[
-            ((dataframe.ALT == "T") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
-            "output" + liste_names[i]] += sve[5]
-        dataframe.loc[
-            ((dataframe.ALT == "G") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
-            "output" + liste_names[i]] += sve[6]
-        dataframe.loc[
-            ((dataframe.ALT == "C") &
-             (dataframe.loc[:, liste_names[i]].str[-1] == "1")),
-            "output" + liste_names[i]] += sve[7]
-
-        # Add position
-        dataframe.loc[:, "output" + liste_names[i]] += dataframe.POS
 
     # Write files
 
-    if len(liste_names) > 1:
+    if len(list_names) > 1:
         jobs = []
-        for i in range(len(liste_names)):
+        for i in range(len(list_names)):
             thread = threading.Thread(target=save_samples(
                 path_data,
                 chromosome,
                 dataframe,
-                liste_names,
+                list_names,
                 i,
                 name_dir=namedir))
             jobs.append(thread)
@@ -127,23 +226,64 @@ def write_encoded_output(
             path_data,
             chromosome,
             dataframe,
-            liste_names,
+            list_names,
             0,
             name_dir=namedir)
 
 
-def decode_position(to_test, ln=settings.LN, fbp=settings.FBP):
+#def decode_position(to_test, ln=settings.LN, fbp=settings.FBP):
+#
+#    enc_al1 = fbp
+#    enc_al2 = fbp * math.pow(2, 4)
+#    position = 0
+#    _iter = 20
+#    al1 = al2 = "N"
+#
+#    print("to_test", to_test)
+#    print("ln", ln)
+#    print("fbp", fbp)
+#    while (
+#            (to_test - enc_al2 - enc_al1 - position != 0) and
+#            (enc_al1 <= math.pow(2, 33) and (enc_al2 <= math.pow(2, 37))) and
+#            (_iter > 0)
+#    ):
+#
+#        if (
+#            (enc_al2 * 2 < to_test) and
+#            (enc_al1 == math.pow(2, 28)) and
+#            (position == 0)
+#        ):
+#
+#            enc_al2 *= 2
+#            al2 = ln[enc_al2]
+#        elif (enc_al1 * 2 + enc_al2 < to_test) and (position == 0):
+#            enc_al1 *= 2
+#            al1 = ln[enc_al1]
+#        elif to_test - enc_al1 - enc_al2 < fbp:
+#            position = int(to_test - enc_al1 - enc_al2)
+#        _iter -= 1
+#
+#    if _iter <= 0:
+#        position = -1
+#    return al1[0], al2[0], position
 
-    enc_al1 = fbp
-    enc_al2 = fbp * math.pow(2, 4)
+
+def decode_position(
+        to_test,
+        decoding_dict=settings.LN,
+        fbp=settings.FBP,
+        snps_value_encoded=settings.SVE,
+        max_iter=20):
+
+    enc_al1 = snps_value_encoded[0]
+    enc_al2 = snps_value_encoded[4]
     position = 0
-    _iter = 20
     al1 = al2 = "N"
 
     while (
             (to_test - enc_al2 - enc_al1 - position != 0) and
             (enc_al1 <= math.pow(2, 33) and (enc_al2 <= math.pow(2, 37))) and
-            (_iter > 0)
+            (max_iter > 0)
     ):
 
         if (
@@ -153,18 +293,34 @@ def decode_position(to_test, ln=settings.LN, fbp=settings.FBP):
         ):
 
             enc_al2 *= 2
-            al2 = ln[enc_al2]
+            al2 = decoding_dict[enc_al2]
         elif (enc_al1 * 2 + enc_al2 < to_test) and (position == 0):
             enc_al1 *= 2
-            al1 = ln[enc_al1]
+            al1 = decoding_dict[enc_al1]
         elif to_test - enc_al1 - enc_al2 < fbp:
             position = int(to_test - enc_al1 - enc_al2)
-        _iter -= 1
+        max_iter -= 1
 
-    if _iter <= 0:
+    if max_iter <= 0:
         position = -1
     return al1[0], al2[0], position
 
+
+def decode_position_int(
+        to_test,
+        decoding_dict=settings.REVERSE_NUCLEOTIDE_LABELS_bin):
+    al1 = decoding_dict['{0:01b}'.format(to_test)[1:3]]
+    al2 = decoding_dict['{0:01b}'.format(to_test)[3: 5]]
+    position = int('{0:01b}'.format(to_test)[5:], 2)
+    return al1, al2, position
+
+def decode_position_bin(
+        to_test,
+        decoding_dict=settings.REVERSE_NUCLEOTIDE_LABELS_bin):
+    al1 = decoding_dict[to_test[:2]]
+    al2 = decoding_dict[to_test[2: 4]]
+    position = int(to_test[4:], 2)
+    return al1, al2, position
 
 def save_samples(
         path_data,
@@ -175,7 +331,7 @@ def save_samples(
         name_dir="floatfiles"):
     # Save
     dataframe.loc[:, ["output" + list_names[0]]].to_csv(
-        os.path.join(path_data, name_dir, chromosome, list_names[i] + ".txt.gz"),
+        os.path.join(path_data, name_dir, chromosome, list_names[i]+".txt.gz"),
         index=False,
         header=False,
         compression="gzip")
@@ -253,11 +409,11 @@ def encode_file_positions(
             batch_iter += 1
         else:
             # Reinitialize stuff
+            encoded_data = do_conversion(df, list_, output_conversion="to_int")
             write_encoded_output(
                 path_to_output,
                 chromosome_name,
-                df,
-                settings.SVE,
+                encoded_data,
                 list_,
                 namedir=name_output_dir)
             batch_iter = 0
@@ -343,9 +499,7 @@ def verify_decoding(
         _meta["totest"] = pd.read_csv(testfile, index_col=None, header=None)
         for i in range(nb_of_tests_per_file):
             to_test = random.choice(_meta.totest.tolist())
-            allele_1, allele_2, position = decode_position(
-                float(to_test),
-                settings.LN)
+            allele_1, allele_2, position = decode_position_int(to_test)
 
             if position == -1:
                 index = _meta.loc[
@@ -370,7 +524,15 @@ def verify_decoding(
                 _meta.loc[(_meta.totest == to_test), :]["POS"].tolist()[0]
             ref = _meta.loc[(_meta.totest == to_test), :]["REF"].tolist()[0]
             alt = _meta.loc[(_meta.totest == to_test), :]["ALT"].tolist()[0]
+
             if position != original_pos:
+               #print("#####################################")
+               #print("#####################################")
+               #print(allele_1, allele_2, position)
+               #print(original_alleles, ref, alt, original_pos)
+               #print("#####################################")
+               #print("#####################################")
+
                 index = _meta.loc[
                         (_meta.totest == to_test), :].index.tolist()[0]
                 errors_file.append(testfile)
