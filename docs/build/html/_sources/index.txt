@@ -17,6 +17,7 @@ Pydeepgenomics
    Module Index <modules>
    TODO
    LICENSE
+   contributors
 
 
 .. include:: ../../README.rst
