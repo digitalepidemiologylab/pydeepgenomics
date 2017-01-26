@@ -166,13 +166,17 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
     <span class="n">success_import_naked</span> <span class="o">=</span> <span class="kc">False</span>
 
+<span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">cmd_subfolder</span> <span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;pydeepgenomics&#39;</span><span class="p">):</span>
+    <span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">cmd_subfolder</span><span class="p">)</span>
+<span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">cmd_subfolder</span><span class="p">)</span>
+
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">pydeepgenomics</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaltools</span> <span class="k">as</span> <span class="n">gt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">cmd_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;alltests&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">cmd_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd_dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cmd_subfolder</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd_subfolder</span><span class="p">)</span>
     <span class="kn">import</span> <span class="nn">pydeepgenomics</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaltools</span> <span class="k">as</span> <span class="n">gt</span>
 

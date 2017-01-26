@@ -148,8 +148,10 @@
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
-    <span class="s2">&quot;pydeepgenomics&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">cmd_subfolder</span> <span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;pydeepgenomics&#39;</span><span class="p">):</span>
+    <span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">cmd_subfolder</span><span class="p">)</span>
+<span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">cmd_subfolder</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess</span> <span class="k">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">subsets</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.preprocess.vcf</span> <span class="k">import</span> <span class="n">vcf</span>

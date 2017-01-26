@@ -164,8 +164,9 @@
 
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">islice</span>
 
-<span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;pydeepgenomics&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">cmd_subfolder</span> <span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;pydeepgenomics&#39;</span><span class="p">):</span>
+    <span class="n">cmd_subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">cmd_subfolder</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pydeepgenomics.tools</span> <span class="k">import</span> <span class="n">generaldecorators</span> <span class="k">as</span> <span class="n">gd</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>

@@ -151,7 +151,22 @@
 <span id="preprocess-encoding-module"></span><h1>preprocess.encoding module<a class="headerlink" href="#module-preprocess.encoding" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="preprocess.encoding.decode_position">
-<code class="descname">decode_position</code><span class="sig-paren">(</span><em>to_test</em>, <em>ln={68719476736: 'C2'</em>, <em>17179869184: 'G2'</em>, <em>8589934592: 'T2'</em>, <em>268435456: 'A1'</em>, <em>1073741824: 'G1'</em>, <em>536870912: 'T1'</em>, <em>4294967296: 'C1'}</em>, <em>fbp=268435456</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/encoding.html#decode_position"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.encoding.decode_position" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode_position</code><span class="sig-paren">(</span><em>to_test, decoding_dict={137438953472: 'C2', 34359738368: 'G2', 536870912: 'T1', 17179869184: 'T2', 268435456: 'A1', 4294967296: 'C1', 1073741824: 'G1', 8589934592: 'A2'}, fbp=268435456, snps_value_encoded=[268435456, 536870912, 1073741824, 4294967296, 8589934592, 17179869184, 34359738368, 137438953472], max_iter=20</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/encoding.html#decode_position"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.encoding.decode_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="preprocess.encoding.decode_position_bin">
+<code class="descname">decode_position_bin</code><span class="sig-paren">(</span><em>to_test</em>, <em>decoding_dict={'11': 'C'</em>, <em>'10': 'G'</em>, <em>'00': 'A'</em>, <em>'01': 'T'}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/encoding.html#decode_position_bin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.encoding.decode_position_bin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="preprocess.encoding.decode_position_int">
+<code class="descname">decode_position_int</code><span class="sig-paren">(</span><em>to_test</em>, <em>decoding_dict={'11': 'C'</em>, <em>'10': 'G'</em>, <em>'00': 'A'</em>, <em>'01': 'T'}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/encoding.html#decode_position_int"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.encoding.decode_position_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="preprocess.encoding.do_conversion">
+<code class="descname">do_conversion</code><span class="sig-paren">(</span><em>dataframe</em>, <em>list_names</em>, <em>encoding_dict={'T': '01'</em>, <em>'A': '00'</em>, <em>'C': '11'</em>, <em>'G': '10'}</em>, <em>output_conversion='to_int'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/encoding.html#do_conversion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.encoding.do_conversion" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -171,7 +186,7 @@
 
 <dl class="function">
 <dt id="preprocess.encoding.write_encoded_output">
-<code class="descname">write_encoded_output</code><span class="sig-paren">(</span><em>path_data</em>, <em>chromosome</em>, <em>dataframe</em>, <em>sve</em>, <em>liste_names</em>, <em>namedir='floatfiles'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/encoding.html#write_encoded_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.encoding.write_encoded_output" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_encoded_output</code><span class="sig-paren">(</span><em>path_data</em>, <em>chromosome</em>, <em>dataframe</em>, <em>list_names</em>, <em>namedir='floatfiles'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocess/encoding.html#write_encoded_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocess.encoding.write_encoded_output" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
